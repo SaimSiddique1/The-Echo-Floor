@@ -15,12 +15,12 @@ screenGui.Name = "TimerHUD"
 screenGui.ResetOnSpawn = false
 screenGui.Enabled = false
 screenGui.DisplayOrder = 10
+screenGui.IgnoreGuiInset = true
 screenGui.Parent = playerGui
 
 local topOffset = 10
 local safeAreaTop = 0
 if isMobile then
-	screenGui.IgnoreGuiInset = true
 	local safe = UserInputService:GetSafeAreaInsets()
 	safeAreaTop = safe.Top
 	topOffset = safeAreaTop + 10
@@ -31,6 +31,7 @@ if isMobile then
 	uiscale.Parent = screenGui
 end
 
+-- Timer box (top-left)
 local timerBox = Instance.new("Frame")
 timerBox.Name = "TimerBox"
 timerBox.Size = UDim2.new(0, 100, 0, 40)
@@ -51,6 +52,7 @@ timerLabel.Font = Enum.Font.GothamBold
 timerLabel.Text = ""
 timerLabel.Parent = timerBox
 
+-- Fixed minimap — stationary rooms, player dot moves around
 local MAP_SCALE = isMobile and 2.2 or 1.2
 local MAP_W = isMobile and 380 or 205
 local MAP_H = isMobile and 220 or 115
@@ -99,6 +101,8 @@ local roomDefs = {
 	{ name = "Bathroom",      x = 21,   z = -63,  w = 30, h = 24 },
 }
 
+-- Static room cells, offset so minimap center ≈ world (0,0)
+-- Room (wx, wz) → minimap pos: 90° clockwise (cx = R + z*S, cy = R - x*S)
 for _, def in ipairs(roomDefs) do
 	local sw = def.h * MAP_SCALE
 	local sh = def.w * MAP_SCALE
@@ -128,6 +132,7 @@ for _, def in ipairs(roomDefs) do
 	lb.Parent = cell
 end
 
+-- Moving player dot
 local playerDot = Instance.new("Frame")
 playerDot.Name = "PlayerDot"
 playerDot.Size = UDim2.new(0, 6, 0, 6)
@@ -140,6 +145,7 @@ local dotCorner = Instance.new("UICorner")
 dotCorner.CornerRadius = UDim.new(1, 0)
 dotCorner.Parent = playerDot
 
+-- Direction indicator (rotates with player)
 local dirArrow = Instance.new("Frame")
 dirArrow.Name = "DirArrow"
 dirArrow.Size = UDim2.new(0, 6, 0, 10)
@@ -155,9 +161,6 @@ arrowCorner.Parent = dirArrow
 
 local currentPhase = "explore"
 
-local pingTargetRoom = nil
-local pingEndTime = 0
-
 local function updateMinimap()
 	local char = player.Character
 	if not char then minimap.Visible = false; return end
@@ -168,10 +171,12 @@ local function updateMinimap()
 	local pz = root.Position.Z
 	local lv = root.CFrame.LookVector
 
+	-- Position dot: 90° CW mapping (z→x, -x→y)
 	local dx = pz * MAP_SCALE
 	local dy = -px * MAP_SCALE
 	playerDot.Position = UDim2.new(0, MAP_RX + dx - 3, 0, MAP_RY + dy - 3)
 
+	-- Rotate arrow: facing direction adjusted for 90° CW
 	local yaw = math.atan2(-lv.X, -lv.Z)
 	dirArrow.Rotation = math.deg(yaw) - 90
 
@@ -209,11 +214,15 @@ end
 
 RunService.RenderStepped:Connect(updateMinimap)
 
+local pingTargetRoom = nil
+local pingEndTime = 0
+
 _G.setAnomalyPing = function(roomName, duration)
 	pingTargetRoom = roomName
 	pingEndTime = os.clock() + (duration or 5)
 end
 
+-- Phase box (top-center)
 local phaseBox = Instance.new("Frame")
 phaseBox.Name = "PhaseBox"
 phaseBox.Size = UDim2.new(0, 300, 0, 40)
@@ -234,6 +243,7 @@ phaseLabel.Font = Enum.Font.Gotham
 phaseLabel.Text = ""
 phaseLabel.Parent = phaseBox
 
+-- Coin HUD (separate always-on ScreenGui, visible in lobby and rounds)
 local coinGui = Instance.new("ScreenGui")
 coinGui.Name = "CoinHUD"
 coinGui.ResetOnSpawn = false
@@ -287,6 +297,7 @@ coinCount.Font = Enum.Font.GothamBold
 coinCount.Text = "0"
 coinCount.Parent = coinHUD
 
+-- Update coin count from leaderstats
 local function updateCoinDisplay()
 	local ls = player:FindFirstChild("leaderstats")
 	if ls then
@@ -319,6 +330,9 @@ player.ChildAdded:Connect(function(child)
 end)
 setupCoinWatcher()
 
+
+
+-- Personal result label (centered below phase box, visible during reveal)
 local resultBox = Instance.new("Frame")
 resultBox.Name = "ResultBox"
 resultBox.Size = UDim2.new(0, 400, 0, 70)
@@ -329,6 +343,7 @@ resultBox.BorderSizePixel = 0
 resultBox.Visible = false
 resultBox.Parent = screenGui
 
+-- Mobile: UIScale + safe area updates
 if isMobile then
 	local function updateScale()
 		local camera = workspace.CurrentCamera
@@ -486,3 +501,5 @@ Remotes.FloorReset.OnClientEvent:Connect(function()
 	resultLabel.Text = ""
 	coinResult.Text = ""
 end)
+
+

@@ -15,12 +15,12 @@ screenGui.Name = "TimerHUD"
 screenGui.ResetOnSpawn = false
 screenGui.Enabled = false
 screenGui.DisplayOrder = 10
+screenGui.IgnoreGuiInset = true
 screenGui.Parent = playerGui
 
 local topOffset = 10
 local safeAreaTop = 0
 if isMobile then
-	screenGui.IgnoreGuiInset = true
 	local safe = UserInputService:GetSafeAreaInsets()
 	safeAreaTop = safe.Top
 	topOffset = safeAreaTop + 10

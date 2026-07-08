@@ -3,7 +3,7 @@ local Remotes = ReplicatedStorage.Remotes
 local UserInputService = game:GetService("UserInputService")
 local player = game:GetService("Players").LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
-local isMobile = UserInputService.TouchEnabled and not UserInputService.MouseEnabled
+local isMobile = UserInputService.TouchEnabled
 local currentPhase = ""
 local searchResetDone = false
 
@@ -88,8 +88,9 @@ local function buildBars()
 	barGui.Name = "AnomalyBar"
 	barGui.ResetOnSpawn = false
 	barGui.Enabled = false
+	barGui.DisplayOrder = 15
+	barGui.IgnoreGuiInset = true
 	barGui.Parent = playerGui
-	if isMobile then barGui.IgnoreGuiInset = true end
 
 	-- click sound removed
 
@@ -392,8 +393,9 @@ local function buildSelectionLabels()
 	selGui.Name = "SelectionLabels"
 	selGui.ResetOnSpawn = false
 	selGui.Enabled = false
+	selGui.DisplayOrder = 14
+	selGui.IgnoreGuiInset = true
 	selGui.Parent = playerGui
-	if isMobile then selGui.IgnoreGuiInset = true end
 
 	local SEL_H = isMobile and 32 or 28
 	local PAD = 2
