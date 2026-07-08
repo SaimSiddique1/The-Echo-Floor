@@ -759,6 +759,50 @@ player.ChildAdded:Connect(function(child)
 end)
 watchLeaderstats()
 
+-- Apply cosmetic to anomaly tool parts
+local function applyCosmetic(cosmeticId)
+	local cosmetic = CosmeticConfig.getById(cosmeticId)
+	if not cosmetic then return end
+
+	local tool = player.Backpack:FindFirstChild("Anomaly Tool")
+	if not tool then
+		local char = player.Character
+		if char then
+			tool = char:FindFirstChild("Anomaly Tool")
+		end
+	end
+	if not tool then return end
+
+	for _, child in ipairs(tool:GetChildren()) do
+		if child:IsA("BasePart") then
+			local n = child.Name
+			if n ~= "SensorTip" and n ~= "ScreenGlow" and n ~= "GripLeft" and n ~= "GripRight" then
+				child.Color = cosmetic.color
+				child.Material = cosmetic.material
+			end
+		end
+	end
+end
+
+-- Re-apply equipped cosmetic when tool enters Backpack (respawn / first join)
+local function refreshEquippedCosmetic()
+	local ok, data = pcall(function()
+		return Remotes.GetShopData:InvokeServer()
+	end)
+	if ok and data and data.equippedCosmetic then
+		applyCosmetic(data.equippedCosmetic)
+	end
+end
+player.Backpack.ChildAdded:Connect(function(child)
+	if child.Name == "Anomaly Tool" then
+		task.wait()
+		refreshEquippedCosmetic()
+	end
+end)
+player.CharacterAdded:Connect(function()
+	-- will fire ChildAdded when tool enters Backpack after respawn
+end)
+
 -- Auto-refresh on buy/equip result
 Remotes.BuyCosmetic.OnClientEvent:Connect(function(success, msg)
 	if screenGui.Enabled then
@@ -767,7 +811,10 @@ Remotes.BuyCosmetic.OnClientEvent:Connect(function(success, msg)
 	end
 end)
 
-Remotes.EquipCosmetic.OnClientEvent:Connect(function(success, msg)
+Remotes.EquipCosmetic.OnClientEvent:Connect(function(success, cosmeticId)
+	if success and cosmeticId then
+		applyCosmetic(cosmeticId)
+	end
 	if screenGui.Enabled then
 		task.wait(0.15)
 		refreshShop()

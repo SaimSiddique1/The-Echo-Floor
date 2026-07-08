@@ -16,7 +16,7 @@ Remotes.EquipCosmetic.OnServerEvent:Connect(function(player, cosmeticId)
 	if not player or type(cosmeticId) ~= "string" then return end
 
 	local success, msg = LeaderboardService.equipCosmetic(player, cosmeticId)
-	Remotes.EquipCosmetic:FireClient(player, success, msg)
+	Remotes.EquipCosmetic:FireClient(player, success, cosmeticId)
 end)
 
 Remotes.BuyEchoPing.OnServerEvent:Connect(function(player)
