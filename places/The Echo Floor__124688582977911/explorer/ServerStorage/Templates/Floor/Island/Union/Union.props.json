@@ -1,0 +1,49 @@
+{
+  "name": "Union",
+  "className": "UnionOperation",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": false,
+    "Color": [
+      0.8039,
+      0.8039,
+      0.8039
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      18.384,
+      2.2431,
+      67.3797,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Mid gray",
+    "Position": [
+      18.384,
+      2.2431,
+      67.3797
+    ],
+    "Orientation": [
+      0,
+      90,
+      0
+    ],
+    "Material": "SmoothPlastic",
+    "CastShadow": true,
+    "Size": [
+      1.1268,
+      0.1487,
+      1.1268
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "name": "Lighting Bricks",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": false,
+    "Color": [
+      0.9137,
+      0.8784,
+      0.7882
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      -21.5439,
+      3.5775,
+      -63.3241,
+      1,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "Locked": false,
+    "Transparency": 1,
+    "BrickColor": "Wheat",
+    "Position": [
+      -21.5439,
+      3.5775,
+      -63.3241
+    ],
+    "Orientation": [
+      0,
+      180,
+      180
+    ],
+    "Material": "Plastic",
+    "CastShadow": true,
+    "Size": [
+      1.5755,
+      1.1277,
+      1.6495
+    ]
+  }
+}

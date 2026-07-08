@@ -1,0 +1,49 @@
+{
+  "name": "Nails",
+  "className": "UnionOperation",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.3882,
+      0.3725,
+      0.3843
+    ],
+    "Anchored": false,
+    "Massless": false,
+    "CFrame": [
+      28.4539,
+      0.9294,
+      56.9,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Dark stone grey",
+    "Position": [
+      28.4539,
+      0.9294,
+      56.9
+    ],
+    "Orientation": [
+      0,
+      0,
+      90
+    ],
+    "Material": "SmoothPlastic",
+    "CastShadow": true,
+    "Size": [
+      0.0225,
+      1.8265,
+      1.9595
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "name": "MeshPart",
+  "className": "MeshPart",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.9725,
+      0.9725,
+      0.9725
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      33.0001,
+      2.4961,
+      -30.3112,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Institutional white",
+    "Position": [
+      33.0001,
+      2.4961,
+      -30.3112
+    ],
+    "Orientation": [
+      0,
+      0,
+      0
+    ],
+    "Material": "SmoothPlastic",
+    "CastShadow": true,
+    "Size": [
+      2.4188,
+      3.9922,
+      2.3177
+    ]
+  }
+}

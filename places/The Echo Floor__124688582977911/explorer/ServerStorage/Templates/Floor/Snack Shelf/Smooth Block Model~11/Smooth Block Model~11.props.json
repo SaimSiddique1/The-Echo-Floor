@@ -1,0 +1,49 @@
+{
+  "name": "Smooth Block Model",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.949,
+      0.9529,
+      0.9529
+    ],
+    "Anchored": false,
+    "Massless": false,
+    "CFrame": [
+      28.0543,
+      2.6672,
+      35.2803,
+      -1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "White",
+    "Position": [
+      28.0543,
+      2.6672,
+      35.2803
+    ],
+    "Orientation": [
+      0,
+      180,
+      0
+    ],
+    "Material": "Plastic",
+    "CastShadow": true,
+    "Size": [
+      0.5783,
+      0.6939,
+      1.1565
+    ]
+  }
+}

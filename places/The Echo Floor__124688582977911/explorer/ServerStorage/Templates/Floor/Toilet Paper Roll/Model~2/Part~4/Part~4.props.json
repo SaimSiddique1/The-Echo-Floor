@@ -1,0 +1,49 @@
+{
+  "name": "Part",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.4235,
+      0.3451,
+      0.2941
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      12.8503,
+      3.0657,
+      -73.788,
+      -1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Pine Cone",
+    "Position": [
+      12.8503,
+      3.0657,
+      -73.788
+    ],
+    "Orientation": [
+      0,
+      180,
+      0
+    ],
+    "Material": "Wood",
+    "CastShadow": true,
+    "Size": [
+      1.5813,
+      0.7459,
+      0.0671
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "name": "Shade",
+  "className": "MeshPart",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.7765,
+      0.6667,
+      0.4863
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      -8.9936,
+      10.4829,
+      -49.828,
+      -1,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Burlap",
+    "Position": [
+      -8.9936,
+      10.4829,
+      -49.828
+    ],
+    "Orientation": [
+      0,
+      0,
+      180
+    ],
+    "Material": "Neon",
+    "CastShadow": false,
+    "Size": [
+      1.0898,
+      0.8505,
+      1.0899
+    ]
+  }
+}

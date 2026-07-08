@@ -1,0 +1,49 @@
+{
+  "name": "Meshes/prisontoilet_Sphere.001",
+  "className": "MeshPart",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.6392,
+      0.6353,
+      0.6471
+    ],
+    "Anchored": false,
+    "Massless": false,
+    "CFrame": [
+      9.337,
+      286.7727,
+      -70.438,
+      -1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Medium stone grey",
+    "Position": [
+      9.337,
+      286.7727,
+      -70.438
+    ],
+    "Orientation": [
+      0,
+      180,
+      0
+    ],
+    "Material": "Metal",
+    "CastShadow": true,
+    "Size": [
+      3.5598,
+      1.4231,
+      3.6198
+    ]
+  }
+}

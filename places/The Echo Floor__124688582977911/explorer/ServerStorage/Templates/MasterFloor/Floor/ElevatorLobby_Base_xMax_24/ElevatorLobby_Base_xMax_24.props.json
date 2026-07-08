@@ -1,0 +1,49 @@
+{
+  "name": "ElevatorLobby_Base_xMax_24",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.7843,
+      0.7451,
+      0.6863
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      -6,
+      0.75,
+      -9,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Light grey",
+    "Position": [
+      -6,
+      0.75,
+      -9
+    ],
+    "Orientation": [
+      0,
+      0,
+      0
+    ],
+    "Material": "Wood",
+    "CastShadow": true,
+    "Size": [
+      1.3,
+      1.5,
+      36
+    ]
+  }
+}

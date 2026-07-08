@@ -1,0 +1,49 @@
+{
+  "name": "BlackBlock",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": false,
+    "Color": [
+      0.7922,
+      0.7961,
+      0.8196
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      7.5875,
+      6.4812,
+      -59.5042,
+      1,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Ghost grey",
+    "Position": [
+      7.5875,
+      6.4812,
+      -59.5042
+    ],
+    "Orientation": [
+      0,
+      180,
+      180
+    ],
+    "Material": "Metal",
+    "CastShadow": true,
+    "Size": [
+      1.2083,
+      1.2083,
+      1.2083
+    ]
+  }
+}

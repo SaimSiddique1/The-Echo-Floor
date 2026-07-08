@@ -1,0 +1,49 @@
+{
+  "name": "Color2",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.8039,
+      0.8039,
+      0.8039
+    ],
+    "Anchored": false,
+    "Massless": false,
+    "CFrame": [
+      19.4999,
+      0.5351,
+      -54.6005,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Mid gray",
+    "Position": [
+      19.4999,
+      0.5351,
+      -54.6005
+    ],
+    "Orientation": [
+      -90,
+      -90,
+      0
+    ],
+    "Material": "Grass",
+    "CastShadow": false,
+    "Size": [
+      1,
+      1,
+      0.05
+    ]
+  }
+}

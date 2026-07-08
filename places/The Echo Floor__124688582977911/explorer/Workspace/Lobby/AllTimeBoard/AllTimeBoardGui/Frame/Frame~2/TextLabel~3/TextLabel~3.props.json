@@ -1,0 +1,29 @@
+{
+  "name": "TextLabel",
+  "className": "TextLabel",
+  "properties": {
+    "Visible": true,
+    "Transparency": 1,
+    "Position": [
+      [
+        0,
+        640
+      ],
+      [
+        0,
+        3
+      ]
+    ],
+    "Text": "SCORE",
+    "Size": [
+      [
+        0,
+        120
+      ],
+      [
+        0,
+        24
+      ]
+    ]
+  }
+}

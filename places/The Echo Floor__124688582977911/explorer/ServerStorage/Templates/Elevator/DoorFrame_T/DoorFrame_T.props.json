@@ -1,0 +1,49 @@
+{
+  "name": "DoorFrame_T",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.4706,
+      0.4314,
+      0.3922
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      -37.1,
+      13.15,
+      -9,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Gun metallic",
+    "Position": [
+      -37.1,
+      13.15,
+      -9
+    ],
+    "Orientation": [
+      0,
+      0,
+      0
+    ],
+    "Material": "Metal",
+    "CastShadow": true,
+    "Size": [
+      0.4,
+      0.3,
+      21
+    ]
+  }
+}

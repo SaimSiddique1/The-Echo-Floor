@@ -1,0 +1,49 @@
+{
+  "name": "BayFloor",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.2353,
+      0.2157,
+      0.1961
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      0,
+      1000.35,
+      20,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Earth green",
+    "Position": [
+      0,
+      1000.35,
+      20
+    ],
+    "Orientation": [
+      0,
+      0,
+      0
+    ],
+    "Material": "Slate",
+    "CastShadow": true,
+    "Size": [
+      14,
+      0.2,
+      6
+    ]
+  }
+}

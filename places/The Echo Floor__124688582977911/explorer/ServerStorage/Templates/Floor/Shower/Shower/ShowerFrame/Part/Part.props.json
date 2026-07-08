@@ -1,0 +1,49 @@
+{
+  "name": "Part",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.8745,
+      0.8745,
+      0.8706
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      31.6395,
+      7.4419,
+      -74.1368,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Quill grey",
+    "Position": [
+      31.6395,
+      7.4419,
+      -74.1368
+    ],
+    "Orientation": [
+      0,
+      90,
+      0
+    ],
+    "Material": "SmoothPlastic",
+    "CastShadow": true,
+    "Size": [
+      0.4264,
+      13.8838,
+      7.3683
+    ]
+  }
+}

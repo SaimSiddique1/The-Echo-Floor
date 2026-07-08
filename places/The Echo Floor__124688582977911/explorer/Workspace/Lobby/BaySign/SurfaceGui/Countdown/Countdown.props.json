@@ -1,0 +1,29 @@
+{
+  "name": "Countdown",
+  "className": "TextLabel",
+  "properties": {
+    "Visible": true,
+    "Transparency": 1,
+    "Position": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "Text": "WAITING",
+    "Size": [
+      [
+        1,
+        0
+      ],
+      [
+        0.6,
+        0
+      ]
+    ]
+  }
+}

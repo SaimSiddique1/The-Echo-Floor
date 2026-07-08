@@ -1,0 +1,12 @@
+{
+  "name": "SpotLight",
+  "className": "SpotLight",
+  "properties": {
+    "Color": [
+      1,
+      0.9373,
+      0.898
+    ],
+    "Enabled": true
+  }
+}

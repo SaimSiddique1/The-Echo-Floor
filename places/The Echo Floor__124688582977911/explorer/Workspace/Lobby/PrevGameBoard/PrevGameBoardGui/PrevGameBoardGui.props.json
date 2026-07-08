@@ -1,0 +1,7 @@
+{
+  "name": "PrevGameBoardGui",
+  "className": "SurfaceGui",
+  "properties": {
+    "Enabled": true
+  }
+}

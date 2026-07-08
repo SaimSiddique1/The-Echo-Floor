@@ -1,0 +1,49 @@
+{
+  "name": "Shelf Holder",
+  "className": "UnionOperation",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.6235,
+      0.6314,
+      0.6745
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      28.4877,
+      3.2463,
+      57,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Fossil",
+    "Position": [
+      28.4877,
+      3.2463,
+      57
+    ],
+    "Orientation": [
+      0,
+      0,
+      0
+    ],
+    "Material": "Metal",
+    "CastShadow": true,
+    "Size": [
+      2.0245,
+      0.09,
+      8.7953
+    ]
+  }
+}

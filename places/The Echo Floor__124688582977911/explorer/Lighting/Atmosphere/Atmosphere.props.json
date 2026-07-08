@@ -1,0 +1,11 @@
+{
+  "name": "Atmosphere",
+  "className": "Atmosphere",
+  "properties": {
+    "Color": [
+      0.7804,
+      0.7804,
+      0.7804
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "Bottom Glass-to-Wick Strong Joint",
+  "className": "ManualWeld",
+  "properties": {
+    "Enabled": true
+  }
+}

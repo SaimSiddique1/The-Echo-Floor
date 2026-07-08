@@ -1,0 +1,7 @@
+{
+  "name": "Part-to-Part Strong Joint",
+  "className": "ManualWeld",
+  "properties": {
+    "Enabled": true
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "name": "Part",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": false,
+    "Color": [
+      0.4118,
+      0.251,
+      0.1569
+    ],
+    "Anchored": false,
+    "Massless": false,
+    "CFrame": [
+      -30,
+      3.5,
+      -48.5,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "Locked": false,
+    "Transparency": 1,
+    "BrickColor": "Reddish brown",
+    "Position": [
+      -30,
+      3.5,
+      -48.5
+    ],
+    "Orientation": [
+      0,
+      90,
+      0
+    ],
+    "Material": "Wood",
+    "CastShadow": true,
+    "Size": [
+      4,
+      2,
+      8
+    ]
+  }
+}

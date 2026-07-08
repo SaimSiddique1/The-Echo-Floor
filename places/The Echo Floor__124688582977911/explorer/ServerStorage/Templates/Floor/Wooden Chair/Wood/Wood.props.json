@@ -1,0 +1,49 @@
+{
+  "name": "Wood",
+  "className": "MeshPart",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.2549,
+      0.2118,
+      0.1843
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      -6.7869,
+      2.8378,
+      -74.4226,
+      -1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Medium brown",
+    "Position": [
+      -6.7869,
+      2.8378,
+      -74.4226
+    ],
+    "Orientation": [
+      0,
+      180,
+      0
+    ],
+    "Material": "Wood",
+    "CastShadow": true,
+    "Size": [
+      2.1016,
+      3.3745,
+      2.0404
+    ]
+  }
+}

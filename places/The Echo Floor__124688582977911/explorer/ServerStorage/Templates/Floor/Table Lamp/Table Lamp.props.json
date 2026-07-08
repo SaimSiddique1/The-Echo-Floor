@@ -1,0 +1,49 @@
+{
+  "name": "Table Lamp",
+  "className": "MeshPart",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.3529,
+      0.298,
+      0.2588
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      -25.2905,
+      4.2137,
+      -79.78,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Dark taupe",
+    "Position": [
+      -25.2905,
+      4.2137,
+      -79.78
+    ],
+    "Orientation": [
+      -90,
+      180,
+      0
+    ],
+    "Material": "Metal",
+    "CastShadow": true,
+    "Size": [
+      1.52,
+      1.44,
+      2.4
+    ]
+  }
+}

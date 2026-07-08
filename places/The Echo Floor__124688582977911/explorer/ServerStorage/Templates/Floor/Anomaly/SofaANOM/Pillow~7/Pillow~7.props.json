@@ -1,0 +1,49 @@
+{
+  "name": "Pillow",
+  "className": "MeshPart",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.3882,
+      0.3725,
+      0.3843
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      28.1681,
+      204.2045,
+      -25.7357,
+      1,
+      0,
+      0,
+      0,
+      0.2588,
+      -0.9659,
+      0,
+      0.9659,
+      0.2588
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Dark stone grey",
+    "Position": [
+      28.1681,
+      204.2045,
+      -25.7357
+    ],
+    "Orientation": [
+      75,
+      0,
+      0
+    ],
+    "Material": "Fabric",
+    "CastShadow": true,
+    "Size": [
+      3.0785,
+      0.9531,
+      3.5478
+    ]
+  }
+}

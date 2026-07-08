@@ -1,0 +1,49 @@
+{
+  "name": "Secondary Color",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.149,
+      0.149,
+      0.149
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      26.8503,
+      4.301,
+      78.2192,
+      -1,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Black",
+    "Position": [
+      26.8503,
+      4.301,
+      78.2192
+    ],
+    "Orientation": [
+      0,
+      0,
+      180
+    ],
+    "Material": "Metal",
+    "CastShadow": true,
+    "Size": [
+      4.996,
+      0.1086,
+      4.1272
+    ]
+  }
+}

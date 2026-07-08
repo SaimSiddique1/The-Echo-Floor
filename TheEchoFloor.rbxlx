@@ -1,0 +1,3532 @@
+<roblox version="4">
+  <Item class="Lighting" referent="0">
+    <Properties>
+      <string name="Name">Lighting</string>
+    </Properties>
+  </Item>
+  <Item class="ReplicatedStorage" referent="1">
+    <Properties>
+      <string name="Name">ReplicatedStorage</string>
+    </Properties>
+    <Item class="Folder" referent="2">
+      <Properties>
+        <string name="Name">Remotes</string>
+      </Properties>
+      <Item class="RemoteEvent" referent="3">
+        <Properties>
+          <string name="Name">FloorReset</string>
+        </Properties>
+      </Item>
+      <Item class="RemoteEvent" referent="4">
+        <Properties>
+          <string name="Name">LockInGuess</string>
+        </Properties>
+      </Item>
+      <Item class="RemoteEvent" referent="5">
+        <Properties>
+          <string name="Name">LogGuess</string>
+        </Properties>
+      </Item>
+      <Item class="RemoteEvent" referent="6">
+        <Properties>
+          <string name="Name">QueueExit</string>
+        </Properties>
+      </Item>
+      <Item class="RemoteEvent" referent="7">
+        <Properties>
+          <string name="Name">QueueUpdate</string>
+        </Properties>
+      </Item>
+      <Item class="RemoteEvent" referent="8">
+        <Properties>
+          <string name="Name">RevealResults</string>
+        </Properties>
+      </Item>
+      <Item class="RemoteEvent" referent="9">
+        <Properties>
+          <string name="Name">RoundChatStart</string>
+        </Properties>
+      </Item>
+      <Item class="RemoteEvent" referent="10">
+        <Properties>
+          <string name="Name">RoundEnd</string>
+        </Properties>
+      </Item>
+      <Item class="RemoteEvent" referent="11">
+        <Properties>
+          <string name="Name">RoundStart</string>
+        </Properties>
+      </Item>
+      <Item class="RemoteEvent" referent="12">
+        <Properties>
+          <string name="Name">RoundTimerTick</string>
+        </Properties>
+      </Item>
+    </Item>
+    <Item class="Folder" referent="13">
+      <Properties>
+        <string name="Name">Shared</string>
+      </Properties>
+      <Item class="ModuleScript" referent="14">
+        <Properties>
+          <string name="Name">AnomalySwapConfig</string>
+          <string name="Source"><![CDATA[return {
+	["Lamp"] = {
+		show = CFrame.new(-4.773, 5.093, -54.727, 1, -8.74227766e-08, -8.74227766e-08, -8.74227766e-08, -1, 0, -8.74227766e-08, 7.64274186e-15, -1),
+		hide = CFrame.new(-4.773, -200, -54.727, 1, -8.74227766e-08, -8.74227766e-08, -8.74227766e-08, -1, 0, -8.74227766e-08, 7.64274186e-15, -1),
+		replacementShow = CFrame.new(-3, 5.5, -55.737, -4.37113883e-08, 0, 1, 0, 1, 0, -1, 0, -4.37113883e-08),
+		replacementHide = CFrame.new(-3, -200, -55.737, -4.37113883e-08, 0, 1, 0, 1, 0, -1, 0, -4.37113883e-08),
+	},
+	["Painting"] = {
+		show = CFrame.new(-16.27, 115.677, -80.311, -1, 0, -8.74227766e-08, 0, 1, 0, 8.74227766e-08, 0, -1),
+		hide = CFrame.new(-16.27, -200, -80.311, -1, 0, -8.74227766e-08, 0, 1, 0, 8.74227766e-08, 0, -1),
+		replacementShow = CFrame.new(-16.172, 9, -80.26, 4.37113883e-08, -1, 8.74227766e-08, -1, -4.37113883e-08, -0, 3.82137093e-15, -8.74227766e-08, -1),
+		replacementHide = CFrame.new(-16.172, -200, -80.26, 4.37113883e-08, -1, 8.74227766e-08, -1, -4.37113883e-08, -0, 3.82137093e-15, -8.74227766e-08, -1),
+	},
+	["Bed"] = {
+		show = CFrame.new(-46.68, -198, -76.346, 0, 1, 0, 0, 0, -1, -1, 0, 0),
+		hide = CFrame.new(-46.68, -400, -76.346, 0, 1, 0, 0, 0, -1, -1, 0, 0),
+		replacementShow = CFrame.new(-31.678, 1.5, -74.85, -4.37113883e-08, 0, -1, 0, 1, 0, 1, 0, -4.37113883e-08),
+		replacementHide = CFrame.new(-31.678, -200, -74.85, -4.37113883e-08, 0, -1, 0, 1, 0, 1, 0, -4.37113883e-08),
+	},
+	["Carpet"] = {
+		show = CFrame.new(-18.264, 0, -64.971),
+		hide = CFrame.new(-18.264, -200, -64.971),
+		replacementShow = CFrame.new(-18, 0.55, -65.612, -4.37113883e-08, 0, 1, 0, 1, 0, -1, 0, -4.37113883e-08),
+		replacementHide = CFrame.new(-18, -200, -65.612, -4.37113883e-08, 0, 1, 0, 1, 0, -1, 0, -4.37113883e-08),
+	},
+	["Sofa"] = {
+		show = CFrame.new(30.651, 0.936, -16.53),
+		hide = CFrame.new(30.651, -200, -16.53),
+		replacementShow = CFrame.new(28.976, 3.271, -20.042),
+		replacementHide = CFrame.new(28.976, -200, -20.042),
+	},
+	["Bookshelf"] = {
+		show = CFrame.new(34.4360008, 5, 8, -4.37113883e-08, 0, -1, 0, 1, 0, 1, 0, -4.37113883e-08),
+		hide = CFrame.new(34.436, -200, 8, -4.37113883e-08, 0, -1, 0, 1, 0, 1, 0, -4.37113883e-08),
+		replacementShow = CFrame.new(34.325, 5.093, 7.571) * CFrame.Angles(0, math.rad(270), 0),
+		replacementHide = CFrame.new(34.325, -200, 7.571) * CFrame.Angles(0, math.rad(270), 0),
+	},
+	["Recliner Chair"] = {
+		show = CFrame.new(19.6037598, 2.97066092, -1.05041122, 0.707104445, 0, 0.707104445, 0, 1, 0, -0.707104445, 0, 0.707104445),
+		hide = CFrame.new(19.6037598, -200, -1.05041122, 0.707104445, 0, 0.707104445, 0, 1, 0, -0.707104445, 0, 0.707104445),
+		replacementShow = CFrame.new(8.61778259, 3.97400737, -0.0941367149, -0.70710659, 0, -0.70710659, 0, 1, 0, 0.70710659, 0, -0.70710659),
+		replacementHide = CFrame.new(8.61778259, -200, -0.0941367149, -0.70710659, 0, -0.70710659, 0, 1, 0, 0.70710659, 0, -0.70710659),
+	},
+	["Toilet"] = {
+		show = CFrame.new(9.34001064, 3.67990351, -72.0088959, 0, 0, 1, 0, 1, -0, -1, 0, 0),
+		hide = CFrame.new(9.34001064, -200, -72.0088959, 0, 0, 1, 0, 1, -0, -1, 0, 0),
+		replacementShow = CFrame.new(9.17745495, 3.94229126, -71.4890137, -1, 0, 0, 0, 1, 0, 0, 0, -1),
+		replacementHide = CFrame.new(9.17745495, -200, -71.4890137, -1, 0, 0, 0, 1, 0, 0, 0, -1),
+	},
+	["Microwave"] = {
+		show = CFrame.new(8.11566448, 4.9966445, 77.5855026),
+		hide = CFrame.new(8.11566448, -200, 77.5855026),
+		replacementShow = CFrame.new(8.08561611, 5.32972002, 79.0703506),
+		replacementHide = CFrame.new(8.08561611, -200, 79.0703506),
+	},
+	["Safety"] = {
+		show = CFrame.new(27.4760895, 6.62680054, -50.3997192, -1, 0, 0, 0, 1, 0, 0, 0, -1),
+		hide = CFrame.new(27.4760895, -200, -50.3997192, -1, 0, 0, 0, 1, 0, 0, 0, -1),
+		replacementShow = CFrame.new(27.1882362, 6.906003, -50.2999992, 0, 1.49011612e-08, 1, 0, 1, 1.49011612e-08, -1, 0, 0),
+		replacementHide = CFrame.new(27.1882362, -200, -50.2999992, 0, 1.49011612e-08, 1, 0, 1, 1.49011612e-08, -1, 0, 0),
+	},
+}
+]]></string>
+        </Properties>
+      </Item>
+    </Item>
+    <Item class="Folder" referent="15">
+      <Properties>
+        <string name="Name">Tools</string>
+      </Properties>
+      <Item class="ModuleScript" referent="16">
+        <Properties>
+          <string name="Name">ElevatorGenerator</string>
+          <string name="Source"><![CDATA[-- ElevatorGenerator.luau
+-- Run from Command Bar: loadstring(game.ReplicatedStorage.Tools.ElevatorGenerator.Source)()
+-- Builds the elevator model in Workspace. Persistent hub, never destroyed.
+
+local DW = 22
+local DD = 18
+local DH = 15
+local T = 0.5
+
+local WC = Color3.fromRGB(170, 140, 100)
+local FC = Color3.fromRGB(40, 35, 30)
+local CC = Color3.fromRGB(240, 240, 235)
+local MC = Color3.fromRGB(200, 175, 120)
+local DC = Color3.fromRGB(160, 150, 140)
+
+local function part(name, size, cf, color, mat, trans)
+	local o = Instance.new("Part")
+	o.Name = name
+	o.Size = size
+	o.CFrame = cf
+	o.Color = color
+	o.Material = mat or Enum.Material.Plastic
+	o.Anchored = true
+	o.Locked = false
+	o.Transparency = trans or 0
+	return o
+end
+
+local elevator = Instance.new("Model")
+elevator.Name = "Elevator"
+elevator.Parent = workspace
+
+-- Floor
+local floor = part("Floor", Vector3.new(DD, 0.5, DW),
+	CFrame.new(0, 0, 0), FC, Enum.Material.Fabric)
+floor.Parent = elevator
+
+-- Teleport target (where players land when round starts)
+local spawn = part("TeleportTarget", Vector3.new(4, 0.5, 4),
+	CFrame.new(0, 0.5, 0), Color3.fromRGB(100, 200, 100), Enum.Material.Plastic, 0.8)
+spawn.Parent = elevator
+
+-- Ceiling
+local ceiling = part("Ceiling", Vector3.new(DD, 0.3, DW),
+	CFrame.new(0, DH, 0), CC)
+ceiling.Parent = elevator
+
+-- Back wall (xMin, wood paneling)
+local backWall = part("BackWall", Vector3.new(T, DH, DW),
+	CFrame.new(-DD/2, DH/2, 0), WC, Enum.Material.Wood)
+backWall.Parent = elevator
+
+-- Left wall (zMin, wood paneling)
+local leftWall = part("LeftWall", Vector3.new(DD, DH, T),
+	CFrame.new(0, DH/2, -DW/2), WC, Enum.Material.Wood)
+leftWall.Parent = elevator
+
+-- Right wall (zMax, wood paneling)
+local rightWall = part("RightWall", Vector3.new(DD, DH, T),
+	CFrame.new(0, DH/2, DW/2), WC, Enum.Material.Wood)
+rightWall.Parent = elevator
+
+-- Brass handrails along side walls
+local railL = part("Handrail_L", Vector3.new(DD - 1, 0.15, 0.15),
+	CFrame.new(0, 4.5, -DW/2 + 0.5), MC, Enum.Material.Metal)
+railL.Parent = elevator
+
+local railR = part("Handrail_R", Vector3.new(DD - 1, 0.15, 0.15),
+	CFrame.new(0, 4.5, DW/2 - 0.5), MC, Enum.Material.Metal)
+railR.Parent = elevator
+
+-- Two sliding metal doors (front wall, xMax side)
+-- Door opening spans 20 of 22 studs (1 stud frame each side)
+-- Left door: z=-10 to 0, Right door: z=0 to 10
+local doorH = 13
+local doorY = 0
+local doorX = DD/2
+local doorHalfW = 10
+local doorGap = 0.1
+
+local doorL = part("Door_Left", Vector3.new(0.2, doorH, doorHalfW),
+	CFrame.new(doorX, doorY + doorH/2, -doorHalfW/2), DC, Enum.Material.Metal)
+doorL.Parent = elevator
+
+local doorR = part("Door_Right", Vector3.new(0.2, doorH, doorHalfW),
+	CFrame.new(doorX, doorY + doorH/2, doorHalfW/2), DC, Enum.Material.Metal)
+doorR.Parent = elevator
+
+-- Door frame
+local frameW = DW - doorHalfW * 2
+local frameThick = 0.3
+
+local frameLeft = part("DoorFrame_L", Vector3.new(0.4, doorH, frameThick),
+	CFrame.new(doorX, doorY + doorH/2, -DW/2 + frameThick/2), Color3.fromRGB(120, 110, 100), Enum.Material.Metal)
+frameLeft.Parent = elevator
+
+local frameRight = part("DoorFrame_R", Vector3.new(0.4, doorH, frameThick),
+	CFrame.new(doorX, doorY + doorH/2, DW/2 - frameThick/2), Color3.fromRGB(120, 110, 100), Enum.Material.Metal)
+frameRight.Parent = elevator
+
+local frameTop = part("DoorFrame_T", Vector3.new(0.4, frameThick, DW - 1),
+	CFrame.new(doorX, doorY + doorH + frameThick/2, 0), Color3.fromRGB(120, 110, 100), Enum.Material.Metal)
+frameTop.Parent = elevator
+
+-- Wall above doors
+local aboveDoor = part("AboveDoor", Vector3.new(T, DH - doorY - doorH, DW),
+	CFrame.new(doorX, doorY + doorH + (DH - doorY - doorH)/2, 0), WC, Enum.Material.Wood)
+aboveDoor.Parent = elevator
+
+-- Floor number display on back wall
+local displayW = 7
+local displayH = 5
+local displayFrame = part("FloorDisplay", Vector3.new(0.1, displayH, displayW),
+	CFrame.new(-DD/2 + 0.3, DH * 0.55, 0),
+	Color3.fromRGB(10, 10, 10), Enum.Material.Plastic)
+displayFrame.Parent = elevator
+
+-- Invisible backing with larger surface for the text
+local textSurface = part("FloorTextSurface", Vector3.new(0.1, 12, 16),
+	CFrame.new(-DD/2 + 0.6, DH * 0.55, 0),
+	Color3.fromRGB(0, 0, 0), Enum.Material.Plastic, 1)
+textSurface.Parent = elevator
+
+local sg = Instance.new("SurfaceGui")
+sg.Face = Enum.NormalId.Right
+sg.AlwaysOnTop = false
+sg.ResetOnSpawn = false
+sg.Parent = textSurface
+
+local label = Instance.new("TextLabel")
+label.Name = "FloorNumber"
+label.Size = UDim2.new(1, 0, 1, 0)
+label.BackgroundTransparency = 1
+label.TextColor3 = Color3.fromRGB(0, 255, 100)
+label.TextScaled = true
+label.Font = Enum.Font.GothamBold
+label.Text = "0"
+label.Parent = sg
+
+-- Dim yellow light in center of ceiling
+local lightPart = part("LightFixture", Vector3.new(1, 0.2, 1),
+	CFrame.new(0, DH - 0.3, 0), Color3.fromRGB(255, 240, 200))
+lightPart.Parent = elevator
+
+local pointLight = Instance.new("PointLight")
+pointLight.Color = Color3.fromRGB(255, 220, 150)
+pointLight.Brightness = 1.5
+pointLight.Range = 20
+pointLight.Shadows = true
+pointLight.Parent = lightPart
+
+-- Ambient hum placeholder (add real SoundId later)
+
+-- Position the elevator at the elevator lobby opening on the game floor
+-- Elevator lobby zMin wall is at z=-27 (after floor centering), opening x=-30..-12
+-- Elevator rotated 90° so doors face +Z toward the lobby opening
+local OFFSET = CFrame.new(-46.1, 0, -9)
+for _, child in elevator:GetChildren() do
+	if child:IsA("BasePart") then
+		child.CFrame = OFFSET * child.CFrame
+	end
+end
+
+-- Clone to ServerStorage.Templates.Elevator
+local templates = game.ServerStorage.Templates
+local existing = templates:FindFirstChild("Elevator")
+if existing then existing:Destroy() end
+local saved = elevator:Clone()
+saved.Name = "Elevator"
+saved.Parent = templates
+
+print("Elevator built in Workspace and saved to ServerStorage.Templates.Elevator.")
+return true
+]]></string>
+        </Properties>
+      </Item>
+      <Item class="ModuleScript" referent="17">
+        <Properties>
+          <string name="Name">FloorGenerator</string>
+          <string name="Source"><![CDATA[-- FloorGenerator.luau
+-- Run from Command Bar: loadstring(game.ReplicatedStorage.Tools.FloorGenerator.Source)()
+
+local H = 15
+local T = 1
+local BH = 1.5
+local CC = Color3.fromRGB(255, 255, 255)
+local BC = Color3.fromRGB(200, 190, 175)
+local DC = Color3.fromRGB(160, 120, 80)
+local LC = Color3.fromRGB(255, 245, 230)
+
+local function part(name, size, cf, color, mat, trans)
+	local o = Instance.new("Part")
+	o.Name = name
+	o.Size = size
+	o.CFrame = cf
+	o.Color = color
+	o.Material = mat or Enum.Material.Plastic
+	o.Anchored = true
+	o.Locked = false
+	o.Transparency = trans or 0
+	return o
+end
+
+local function addRoomLabel(ceiling, roomName)
+	local sg = Instance.new("SurfaceGui")
+	sg.Face = Enum.NormalId.Bottom
+	sg.AlwaysOnTop = true
+	sg.ResetOnSpawn = false
+	sg.Parent = ceiling
+	local label = Instance.new("TextLabel")
+	label.Size = UDim2.new(1, 0, 1, 0)
+	label.BackgroundTransparency = 1
+	label.TextColor3 = Color3.fromRGB(200, 200, 200)
+	label.TextScaled = true
+	label.Font = Enum.Font.GothamBold
+	label.Text = roomName
+	label.Parent = sg
+end
+
+-- Rooms: {name, xMin, xMax, zMin, zMax, floorColor, floorMat, wallColor, wallMat}
+local WALL_TINTS = {
+	Hallway = Color3.fromRGB(240, 235, 225),
+	ElevatorLobby = Color3.fromRGB(235, 230, 220),
+	LivingRoom = Color3.fromRGB(245, 235, 220),
+	Kitchen = Color3.fromRGB(240, 240, 235),
+	Bedroom = Color3.fromRGB(235, 230, 225),
+	Bathroom = Color3.fromRGB(230, 235, 240),
+}
+
+local rooms = {
+	{ "Hallway", 0, 72, 0, 24, Color3.fromRGB(180, 140, 100), Enum.Material.Wood },
+	{ "ElevatorLobby", 0, 30, 24, 60, Color3.fromRGB(200, 190, 175), Enum.Material.Slate },
+	{ "LivingRoom", 30, 72, 24, 84, Color3.fromRGB(170, 130, 85), Enum.Material.Wood },
+	{ "Kitchen", 30, 66, 84, 132, Color3.fromRGB(210, 200, 190), Enum.Material.Granite },
+	{ "Bedroom", 0, 36, -30, 0, Color3.fromRGB(155, 145, 140), Enum.Material.Carpet },
+	{ "Bathroom", 42, 72, -24, 0, Color3.fromRGB(215, 210, 205), Enum.Material.Slate },
+}
+
+local cutouts = {
+	{ "ElevatorLobby", "zMin", 6, 24 },
+	{ "Hallway", "zMax", 6, 24 },
+	{ "Hallway", "zMax", 32, 50 },
+	{ "LivingRoom", "zMin", 32, 50 },
+	{ "LivingRoom", "zMax", 32, 50 },
+	{ "Kitchen", "zMin", 32, 50 },
+	{ "Hallway", "zMin", 12, 24 },
+	{ "Bedroom", "zMax", 12, 24 },
+	{ "Hallway", "zMin", 48, 60 },
+	{ "Bathroom", "zMax", 48, 60 },
+	{ "ElevatorLobby", "xMin", 32, 52 },
+}
+
+local cutoutsByRoom = {}
+for _, r in ipairs(rooms) do
+	cutoutsByRoom[r[1]] = {}
+end
+for _, c in ipairs(cutouts) do
+	local roomName, side, a, b = unpack(c)
+	if not cutoutsByRoom[roomName] then cutoutsByRoom[roomName] = {} end
+	if not cutoutsByRoom[roomName][side] then cutoutsByRoom[roomName][side] = {} end
+	table.insert(cutoutsByRoom[roomName][side], { a, b })
+end
+
+local floorModel = Instance.new("Folder")
+floorModel.Name = "CurrentFloor"
+floorModel.Parent = workspace
+
+-- Floors and ceilings
+for _, r in ipairs(rooms) do
+	local name, xMin, xMax, zMin, zMax, flColor, flMat = unpack(r)
+	local w = xMax - xMin
+	local d = zMax - zMin
+	local cx = (xMin + xMax) / 2
+	local cz = (zMin + zMax) / 2
+
+	local fl = part(name.."_Floor", Vector3.new(w, 1, d),
+		CFrame.new(cx, 0, cz), flColor, flMat)
+	fl.Parent = floorModel
+
+	local cl = part(name.."_Ceiling", Vector3.new(w, 1, d),
+		CFrame.new(cx, H, cz), CC)
+	cl.Parent = floorModel
+	addRoomLabel(cl, name)
+end
+
+-- Walls + baseboards + crown molding
+local function makeWalls(name, xMin, xMax, zMin, zMax, side)
+	local totalStart, totalEnd, fixedPos, isHorizontal
+	if side == "zMin" or side == "zMax" then
+		totalStart = xMin; totalEnd = xMax
+		fixedPos = (side == "zMin") and zMin or zMax
+		isHorizontal = true
+	else
+		totalStart = zMin; totalEnd = zMax
+		fixedPos = (side == "xMin") and xMin or xMax
+		isHorizontal = false
+	end
+
+	local openings = {}
+	if cutoutsByRoom[name] and cutoutsByRoom[name][side] then
+		openings = cutoutsByRoom[name][side]
+	end
+	table.sort(openings, function(a, b) return a[1] < b[1] end)
+
+	local segments = {}
+	local cursor = totalStart
+	for _, gap in ipairs(openings) do
+		local gs, ge = gap[1], gap[2]
+		if cursor < gs then
+			table.insert(segments, { cursor, gs })
+		end
+		cursor = math.max(cursor, ge)
+	end
+	if cursor < totalEnd then
+		table.insert(segments, { cursor, totalEnd })
+	end
+
+	local wallColor = WALL_TINTS[name] or WC
+
+	for _, seg in ipairs(segments) do
+		local segStart, segEnd = seg[1], seg[2]
+		local segSize = segEnd - segStart
+		local segCenter = (segStart + segEnd) / 2
+
+		local wallPart
+		if isHorizontal then
+			wallPart = part(name.."_W_"..side.."_"..segStart,
+				Vector3.new(segSize, H, T),
+				CFrame.new(segCenter, H/2, fixedPos), wallColor, Enum.Material.SmoothPlastic)
+		else
+			wallPart = part(name.."_W_"..side.."_"..segStart,
+				Vector3.new(T, H, segSize),
+				CFrame.new(fixedPos, H/2, segCenter), wallColor, Enum.Material.SmoothPlastic)
+		end
+		wallPart.Parent = floorModel
+
+		-- Baseboard at bottom
+		local basePart
+		if isHorizontal then
+			basePart = part(name.."_Base_"..side.."_"..segStart,
+				Vector3.new(segSize, BH, T + 0.3),
+				CFrame.new(segCenter, BH/2, fixedPos), BC, Enum.Material.Wood)
+		else
+			basePart = part(name.."_Base_"..side.."_"..segStart,
+				Vector3.new(T + 0.3, BH, segSize),
+				CFrame.new(fixedPos, BH/2, segCenter), BC, Enum.Material.Wood)
+		end
+		basePart.Parent = floorModel
+
+		-- Crown molding at top
+		local crownPart
+		if isHorizontal then
+			crownPart = part(name.."_Crown_"..side.."_"..segStart,
+				Vector3.new(segSize, BH, T + 0.3),
+				CFrame.new(segCenter, H - BH/2, fixedPos), BC, Enum.Material.Wood)
+		else
+			crownPart = part(name.."_Crown_"..side.."_"..segStart,
+				Vector3.new(T + 0.3, BH, segSize),
+				CFrame.new(fixedPos, H - BH/2, segCenter), BC, Enum.Material.Wood)
+		end
+		crownPart.Parent = floorModel
+	end
+end
+
+for _, r in ipairs(rooms) do
+	local name, xMin, xMax, zMin, zMax = unpack(r)
+	makeWalls(name, xMin, xMax, zMin, zMax, "xMin")
+	makeWalls(name, xMin, xMax, zMin, zMax, "xMax")
+	makeWalls(name, xMin, xMax, zMin, zMax, "zMin")
+	makeWalls(name, xMin, xMax, zMin, zMax, "zMax")
+end
+
+
+-- Ceiling light fixtures per room
+for _, r in ipairs(rooms) do
+	local name, xMin, xMax, zMin, zMax = unpack(r)
+	local cx = (xMin + xMax) / 2
+	local cz = (zMin + zMax) / 2
+
+	local lightFixture = part(name.."_Light", Vector3.new(2, 0.3, 2),
+		CFrame.new(cx, H - 0.5, cz), LC, Enum.Material.Plastic)
+	lightFixture.Parent = floorModel
+
+	local pointLight = Instance.new("PointLight")
+	pointLight.Color = Color3.fromRGB(255, 240, 210)
+	pointLight.Brightness = 0.8
+	pointLight.Range = 40
+	pointLight.Shadows = false
+	pointLight.Parent = lightFixture
+end
+
+-- Window at hallway dead end (xMax wall at x=72)
+-- The window frame extrudes 0.5 studs too far into the room
+local winW = 10
+local winH = 8
+local winY = 4
+local winZ = 12
+
+-- Wall inner face is at x=71.5, outer face at x=72.5
+-- Frame sits from x=71.0 to x=72.0 (0.5 past inner face, 0.5 into wall)
+local fDepth = 1.0
+local fThick = 0.4
+
+-- Glass centered at wall inner face
+local glass = part("HallwayWindow_Glass", Vector3.new(0.3, winH, winW),
+	CFrame.new(71.5, winY + winH/2, winZ),
+	Color3.fromRGB(180, 210, 255), Enum.Material.Glass, 0.3)
+glass.Parent = floorModel
+
+-- Frame extrudes inward 0.5 past inner wall face
+local frameX = 71.5
+local frameLeft = part("HallwayWindow_Frame_L", Vector3.new(fDepth, winH + fThick*2, fThick),
+	CFrame.new(frameX, winY + winH/2, winZ - winW/2 - fThick/2),
+	Color3.fromRGB(220, 210, 190), Enum.Material.Wood)
+frameLeft.Parent = floorModel
+
+local frameRight = part("HallwayWindow_Frame_R", Vector3.new(fDepth, winH + fThick*2, fThick),
+	CFrame.new(frameX, winY + winH/2, winZ + winW/2 + fThick/2),
+	Color3.fromRGB(220, 210, 190), Enum.Material.Wood)
+frameRight.Parent = floorModel
+
+local frameTop = part("HallwayWindow_Frame_T", Vector3.new(fDepth, fThick, winW + fThick*2),
+	CFrame.new(frameX, winY + winH + fThick/2, winZ),
+	Color3.fromRGB(220, 210, 190), Enum.Material.Wood)
+frameTop.Parent = floorModel
+
+local frameBot = part("HallwayWindow_Frame_B", Vector3.new(fDepth, fThick, winW + fThick*2),
+	CFrame.new(frameX, winY - fThick/2, winZ),
+	Color3.fromRGB(220, 210, 190), Enum.Material.Wood)
+frameBot.Parent = floorModel
+
+-- Sill extruding past inner face
+local sill = part("HallwayWindow_Sill", Vector3.new(1.3, 0.4, winW + 1.5),
+	CFrame.new(frameX, winY - 0.2, winZ),
+	Color3.fromRGB(200, 190, 175), Enum.Material.Wood)
+sill.Parent = floorModel
+
+-- Set warm ambient lighting so rooms aren't dark between fixtures
+local lighting = game:GetService("Lighting")
+lighting.Ambient = Color3.fromRGB(60, 55, 50)
+lighting.Brightness = 0.5
+lighting.OutdoorAmbient = Color3.fromRGB(60, 55, 50)
+lighting.ClockTime = 14
+
+-- Center the floor
+local minX, maxX, minZ, maxZ = math.huge, -math.huge, math.huge, -math.huge
+for _, child in floorModel:GetChildren() do
+	if child:IsA("BasePart") then
+		local c = child.Position
+		local s = child.Size / 2
+		minX = math.min(minX, c.X - s.X)
+		maxX = math.max(maxX, c.X + s.X)
+		minZ = math.min(minZ, c.Z - s.Z)
+		maxZ = math.max(maxZ, c.Z + s.Z)
+	end
+end
+local centerX = (minX + maxX) / 2
+local centerZ = (minZ + maxZ) / 2
+for _, child in floorModel:GetChildren() do
+	if child:IsA("BasePart") then
+		local pos = child.Position
+		child.CFrame = CFrame.new(pos.X - centerX, pos.Y, pos.Z - centerZ) * child.CFrame.Rotation
+	end
+end
+
+-- Clone to ServerStorage.Templates.MasterFloor (keep workspace copy)
+local templates = game.ServerStorage.Templates
+local existing = templates:FindFirstChild("MasterFloor")
+if existing then existing:Destroy() end
+local master = Instance.new("Model")
+master.Name = "MasterFloor"
+local saved = floorModel:Clone()
+saved.Name = "Floor"
+saved.Parent = master
+master.Parent = templates
+
+floorModel.Name = "Floor"
+
+print("Floor built in Workspace and saved to ServerStorage.Templates.MasterFloor.")
+return true
+]]></string>
+        </Properties>
+      </Item>
+      <Item class="ModuleScript" referent="18">
+        <Properties>
+          <string name="Name">LobbyGenerator</string>
+          <string name="Source"><![CDATA[-- LobbyGenerator.luau
+-- Builds the hotel lobby at Y=1000 with an open elevator bay for matchmaking.
+
+local function part(name, size, cf, color, mat)
+	local o = Instance.new("Part")
+	o.Name = name
+	o.Size = size
+	o.CFrame = cf
+	o.Color = color
+	o.Material = mat or Enum.Material.Plastic
+	o.Anchored = true
+	o.Locked = false
+	return o
+end
+
+local LOBBY = workspace
+local Y = 1000
+local W = 60
+local D = 40
+local H = 15
+local T = 1
+
+local WC = Color3.fromRGB(220, 210, 195)
+local FC = Color3.fromRGB(200, 185, 165)
+local CC = Color3.fromRGB(245, 240, 235)
+local BC = Color3.fromRGB(70, 65, 60)
+
+local lobby = Instance.new("Model")
+lobby.Name = "Lobby"
+lobby.Parent = LOBBY
+
+-- Floor
+local floor = part("Floor", Vector3.new(W, 0.5, D), CFrame.new(0, Y, 0), FC, Enum.Material.Marble)
+floor.Parent = lobby
+
+-- Ceiling
+local ceil = part("Ceiling", Vector3.new(W, 0.3, D), CFrame.new(0, Y + H, 0), CC)
+ceil.Parent = lobby
+
+-- Back wall (zMin) — solid
+local backWall = part("Wall_Back", Vector3.new(W, H, T), CFrame.new(0, Y + H/2, -D/2), WC)
+backWall.Parent = lobby
+
+-- Left wall (xMin) — solid
+local leftWall = part("Wall_Left", Vector3.new(T, H, D), CFrame.new(-W/2, Y + H/2, 0), WC)
+leftWall.Parent = lobby
+
+-- Right wall (xMax) — solid
+local rightWall = part("Wall_Right", Vector3.new(T, H, D), CFrame.new(W/2, Y + H/2, 0), WC)
+rightWall.Parent = lobby
+
+-- Front wall (zMax) — three segments with a 16-stud opening for the bay
+local bayW = 16
+local frontZ = D/2
+
+-- Left segment: from x=-W/2 to x=-bayW/2
+local segLeft = part("Wall_Front_L", Vector3.new((W - bayW) / 2, H, T),
+	CFrame.new(-(W + bayW) / 4, Y + H/2, frontZ), WC)
+segLeft.Parent = lobby
+
+-- Right segment: from x=bayW/2 to x=W/2
+local segRight = part("Wall_Front_R", Vector3.new((W - bayW) / 2, H, T),
+	CFrame.new((W + bayW) / 4, Y + H/2, frontZ), WC)
+segRight.Parent = lobby
+
+-- Top segment: above the bay opening
+local segTop = part("Wall_Front_T", Vector3.new(bayW, H - 14, T),
+	CFrame.new(0, Y + (H + 14) / 2, frontZ), WC)
+segTop.Parent = lobby
+
+-- Bay floor (slightly raised, different material to mark the zone)
+local bayFloor = part("BayFloor", Vector3.new(bayW - 2, 0.2, 6),
+	CFrame.new(0, Y + 0.35, frontZ - 3), Color3.fromRGB(60, 55, 50), Enum.Material.Slate)
+bayFloor.Parent = lobby
+
+-- Door frame around the bay opening (metal trim)
+local fT = 0.5
+local frameL = part("BayFrame_L", Vector3.new(0.8, 14, 0.8),
+	CFrame.new(-bayW/2, Y + 7.5, frontZ), BC, Enum.Material.Metal)
+frameL.Parent = lobby
+
+local frameR = part("BayFrame_R", Vector3.new(0.8, 14, 0.8),
+	CFrame.new(bayW/2, Y + 7.5, frontZ), BC, Enum.Material.Metal)
+frameR.Parent = lobby
+
+local frameT = part("BayFrame_T", Vector3.new(bayW + 1.6, 0.8, 0.8),
+	CFrame.new(0, Y + 14.4, frontZ), BC, Enum.Material.Metal)
+frameT.Parent = lobby
+
+-- Elevator bay room (extends outward from the opening)
+local bayDepth = 8
+local bayHeight = 14
+local bayY = Y + 1
+
+-- Bay floor
+local bayFloorOuter = part("BayFloor_Outer", Vector3.new(bayW, 0.3, bayDepth),
+	CFrame.new(0, bayY, frontZ + bayDepth/2), Color3.fromRGB(40, 35, 30), Enum.Material.Fabric)
+bayFloorOuter.Parent = lobby
+
+-- Bay side walls
+local bayWallL = part("BayWall_L", Vector3.new(0.5, bayHeight, bayDepth),
+	CFrame.new(-bayW/2, bayY + bayHeight/2, frontZ + bayDepth/2), Color3.fromRGB(170, 140, 100), Enum.Material.Wood)
+bayWallL.Parent = lobby
+
+local bayWallR = part("BayWall_R", Vector3.new(0.5, bayHeight, bayDepth),
+	CFrame.new(bayW/2, bayY + bayHeight/2, frontZ + bayDepth/2), Color3.fromRGB(170, 140, 100), Enum.Material.Wood)
+bayWallR.Parent = lobby
+
+-- Bay ceiling
+local bayCeil = part("BayCeiling", Vector3.new(bayW, 0.3, bayDepth),
+	CFrame.new(0, bayY + bayHeight, frontZ + bayDepth/2), CC)
+bayCeil.Parent = lobby
+
+-- Bay back wall (inner side, faces the lobby opening)
+local bayBack = part("BayBack", Vector3.new(bayW - 1, bayHeight, 0.3),
+	CFrame.new(0, bayY + bayHeight/2, frontZ + bayDepth), Color3.fromRGB(170, 140, 100), Enum.Material.Wood)
+bayBack.Parent = lobby
+
+-- Bay light
+local bayLight = part("BayLight", Vector3.new(1, 0.2, 1),
+	CFrame.new(0, bayY + bayHeight - 0.5, frontZ + bayDepth/2), Color3.fromRGB(255, 240, 200))
+bayLight.Parent = lobby
+
+local bpl = Instance.new("PointLight")
+bpl.Color = Color3.fromRGB(255, 220, 150)
+bpl.Brightness = 1.5
+bpl.Range = 12
+bpl.Shadows = true
+bpl.Parent = bayLight
+
+-- Overhead sign inside the bay
+local innerSign = part("BayInnerSign", Vector3.new(bayW - 2, 1.5, 0.2),
+	CFrame.new(0, bayY + bayHeight - 2, frontZ + bayDepth - 0.5), Color3.fromRGB(30, 30, 30))
+innerSign.Parent = lobby
+
+local isg = Instance.new("SurfaceGui")
+isg.Face = Enum.NormalId.Front
+isg.AlwaysOnTop = true
+isg.ResetOnSpawn = false
+isg.Parent = innerSign
+
+local ilabel = Instance.new("TextLabel")
+ilabel.Size = UDim2.new(1, 0, 1, 0)
+ilabel.BackgroundTransparency = 1
+ilabel.TextColor3 = Color3.fromRGB(255, 220, 50)
+ilabel.TextScaled = true
+ilabel.Font = Enum.Font.GothamBold
+ilabel.Text = "ELEVATOR BAY"
+ilabel.Parent = isg
+
+-- Countdown sign above the bay opening (lobby side)
+local sign = part("BaySign", Vector3.new(bayW, 2, 0.3),
+	CFrame.new(0, Y + 15.5, frontZ - 0.5), Color3.fromRGB(30, 30, 30))
+sign.Parent = lobby
+
+local sg = Instance.new("SurfaceGui")
+sg.Face = Enum.NormalId.Back
+sg.AlwaysOnTop = true
+sg.ResetOnSpawn = false
+sg.Parent = sign
+
+local label = Instance.new("TextLabel")
+label.Name = "Countdown"
+label.Size = UDim2.new(1, 0, 0.6, 0)
+label.BackgroundTransparency = 1
+label.TextColor3 = Color3.fromRGB(255, 220, 50)
+label.TextScaled = true
+label.Font = Enum.Font.GothamBold
+label.Text = "WAITING"
+label.Parent = sg
+
+local sub = Instance.new("TextLabel")
+sub.Name = "SubText"
+sub.Size = UDim2.new(1, 0, 0.4, 0)
+sub.Position = UDim2.new(0, 0, 0.6, 0)
+sub.BackgroundTransparency = 1
+sub.TextColor3 = Color3.fromRGB(200, 200, 200)
+sub.TextScaled = true
+sub.Font = Enum.Font.Gotham
+sub.Text = "Max 8 Players"
+sub.Parent = sg
+
+-- Touch detector (invisible, inside the bay cab)
+local detector = part("BayDetector", Vector3.new(bayW - 3, 3, bayDepth - 2),
+	CFrame.new(0, Y + 1.5, frontZ + bayDepth/2), Color3.fromRGB(255, 0, 0))
+detector.Transparency = 1
+detector.CanCollide = false
+detector.Parent = lobby
+
+-- Spawn location
+local spawn = Instance.new("SpawnLocation")
+spawn.Name = "SpawnLocation"
+spawn.Size = Vector3.new(4, 0.5, 4)
+spawn.CFrame = CFrame.new(0, Y + 0.6, -10)
+spawn.Anchored = true
+spawn.Locked = false
+spawn.Transparency = 0.5
+spawn.BrickColor = BrickColor.new("Bright green")
+spawn.Duration = 0
+spawn.Parent = lobby
+
+-- Light fixture
+local light = part("Light", Vector3.new(2, 0.3, 2),
+	CFrame.new(0, Y + H - 0.5, 0), Color3.fromRGB(255, 245, 230))
+light.Parent = lobby
+
+local pl = Instance.new("PointLight")
+pl.Color = Color3.fromRGB(255, 230, 200)
+pl.Brightness = 2
+pl.Range = 40
+pl.Shadows = true
+pl.Parent = light
+
+print("Lobby built at Y=" .. Y .. " with open elevator bay (16-stud opening, front wall cutout).")
+print("Walk into the bay opening to queue. SpawnLocation at center of lobby.")
+return true
+]]></string>
+        </Properties>
+      </Item>
+    </Item>
+  </Item>
+  <Item class="ServerScriptService" referent="19">
+    <Properties>
+      <string name="Name">ServerScriptService</string>
+    </Properties>
+    <Item class="Folder" referent="20">
+      <Properties>
+        <string name="Name">Core</string>
+      </Properties>
+      <Item class="ModuleScript" referent="21">
+        <Properties>
+          <string name="Name">AnomalySwapper</string>
+          <string name="Source"><![CDATA[-- AnomalySwapper.luau (ModuleScript)
+-- Exports: swapAnomaly() — picks one target, hides original, shows replacement
+
+local SwapConfig = require(game.ReplicatedStorage.Shared.AnomalySwapConfig)
+
+local FLOOR_SURFACE_Y = 0.5
+local usedAnomalies = {}
+
+local function liftAboveFloor(inst)
+	local parts = {}
+	if inst:IsA("BasePart") then
+		parts = { inst }
+	elseif inst:IsA("Model") then
+		for _, v in inst:GetDescendants() do
+			if v:IsA("BasePart") then
+				table.insert(parts, v)
+			end
+		end
+	end
+	for _, p in ipairs(parts) do
+		local top = p.Position.Y + p.Size.Y / 2
+		if top <= FLOOR_SURFACE_Y then
+			p.CFrame = p.CFrame + Vector3.new(0, FLOOR_SURFACE_Y - top + 0.05, 0)
+		end
+	end
+end
+
+local function moveTo(obj, cf)
+	if obj:IsA("BasePart") then
+		obj.CFrame = cf
+	elseif obj:IsA("Model") then
+		local parts = {}
+		for _, v in obj:GetDescendants() do
+			if v:IsA("BasePart") then
+				table.insert(parts, v)
+			end
+		end
+		if #parts > 0 then
+			local saved = {}
+			local min, max = Vector3.new(math.huge, math.huge, math.huge), Vector3.new(-math.huge, -math.huge, -math.huge)
+			for _, p in ipairs(parts) do
+				saved[p] = p.CFrame
+				local pos = p.Position
+				min = Vector3.new(math.min(min.X, pos.X), math.min(min.Y, pos.Y), math.min(min.Z, pos.Z))
+				max = Vector3.new(math.max(max.X, pos.X), math.max(max.Y, pos.Y), math.max(max.Z, pos.Z))
+				p.CanQuery = true
+			end
+			local center = (min + max) / 2
+			local oldCenterCF = CFrame.new(center)
+			for _, p in ipairs(parts) do
+				local relCF = oldCenterCF:ToObjectSpace(saved[p])
+				p.CFrame = cf * relCF
+			end
+		end
+	end
+	if cf.Position.Y > -50 then
+		liftAboveFloor(obj)
+		if obj:IsA("BasePart") then
+			print("lifted", obj.Name, "to", obj.Position.Y)
+		end
+	end
+end
+
+local function getTargets()
+	local floor = workspace:FindFirstChild("Floor")
+	if not floor then return {} end
+	local targets = {}
+	for _, v in floor:GetDescendants() do
+		if v:GetAttribute("AnomalyTarget") then
+			table.insert(targets, v)
+		end
+	end
+	return targets
+end
+
+local function getReplacement(targetName)
+	local floor = workspace:FindFirstChild("Floor")
+	if not floor then return nil end
+	local anomalyFolder = floor:FindFirstChild("Anomaly")
+	if not anomalyFolder then return nil end
+	for _, v in anomalyFolder:GetChildren() do
+		if v:GetAttribute("Replaces") == targetName then
+			return v
+		end
+	end
+	return nil
+end
+
+local function hideAllReplacements()
+	local floor = workspace:FindFirstChild("Floor")
+	if not floor then return end
+	local anomalyFolder = floor:FindFirstChild("Anomaly")
+	if not anomalyFolder then return end
+	for _, v in anomalyFolder:GetChildren() do
+		local replaces = v:GetAttribute("Replaces")
+		if replaces and SwapConfig[replaces] then
+			moveTo(v, SwapConfig[replaces].replacementHide)
+		end
+	end
+end
+
+local function revertAll()
+	local floor = workspace:FindFirstChild("Floor")
+	if not floor then return end
+
+	for _, v in floor:GetDescendants() do
+		if v:GetAttribute("AnomalyTarget") then
+			local config = SwapConfig[v.Name]
+			if config then
+				moveTo(v, config.show)
+			end
+		end
+	end
+
+	hideAllReplacements()
+end
+
+local function swapAnomaly()
+	hideAllReplacements()
+
+	local targets = getTargets()
+	if #targets == 0 then
+		warn("No AnomalyTarget objects found")
+		return nil
+	end
+
+	local available = {}
+	for _, t in ipairs(targets) do
+		if not usedAnomalies[t.Name] then
+			table.insert(available, t)
+		end
+	end
+
+	if #available == 0 then
+		warn("All anomalies already used in this session")
+		usedAnomalies = {}
+		for _, t in ipairs(targets) do
+			table.insert(available, t)
+		end
+	end
+
+	local chosen = available[math.random(1, #available)]
+	local chosenName = chosen.Name
+	usedAnomalies[chosenName] = true
+
+	local config = SwapConfig[chosenName]
+	if not config then
+		warn("No swap config for: " .. chosenName)
+		return nil
+	end
+
+	local replacement = getReplacement(chosenName)
+	if not replacement then
+		warn("No replacement found for: " .. chosenName)
+		return nil
+	end
+
+	moveTo(chosen, config.hide)
+	moveTo(replacement, config.replacementShow)
+	replacement.Name = chosenName
+
+	local parts = {}
+	if replacement:IsA("BasePart") then
+		parts = { replacement }
+	elseif replacement:IsA("Model") then
+		for _, v in replacement:GetDescendants() do
+			if v:IsA("BasePart") then table.insert(parts, v) end
+		end
+	end
+	for _, p in ipairs(parts) do
+		p.Transparency = 0
+	end
+
+	print("Anomaly activated: " .. chosenName)
+	if replacement:IsA("Model") then
+		local pc = {}
+		for _, v in replacement:GetDescendants() do
+			if v:IsA("BasePart") then table.insert(pc, v) end
+		end
+		print("  replacement parts:", #pc)
+		for _, p in ipairs(pc) do
+			print("    ", p.Name, p.Position.Y, p.Size.Y)
+		end
+	elseif replacement:IsA("BasePart") then
+		print("  BasePart at", replacement.Position.Y, "size", replacement.Size.Y)
+	end
+	return chosenName
+end
+
+local function resetUsed()
+	usedAnomalies = {}
+end
+
+return { swapAnomaly = swapAnomaly, revertAll = revertAll, resetUsed = resetUsed }
+]]></string>
+        </Properties>
+      </Item>
+      <Item class="ModuleScript" referent="22">
+        <Properties>
+          <string name="Name">FloorCloner</string>
+          <string name="Source"><![CDATA[-- FloorCloner.luau (ModuleScript)
+-- Exports: spawnFloor() — clones floor template into Workspace, destroys previous
+
+local ServerStorage = game:GetService("ServerStorage")
+local Workspace = game:GetService("Workspace")
+
+local TEMPLATES = ServerStorage.Templates
+
+local function destroyScripts(inst)
+	for _, child in inst:GetDescendants() do
+		if child:IsA("Script") or child:IsA("LocalScript") or child:IsA("ModuleScript") or child:IsA("PackageLink") then
+			child:Destroy()
+		end
+	end
+	-- Also catch anything named "PoseTexture" or "Package"
+	for _, child in inst:GetDescendants() do
+		if child.Name == "PoseTexture" or child.Name == "Package" then
+			child:Destroy()
+		end
+	end
+end
+
+local function anchorAll(inst)
+	for _, child in inst:GetDescendants() do
+		if child:IsA("BasePart") then
+			child.Anchored = true
+		end
+	end
+end
+
+local function spawnFloor()
+	local existing = Workspace:FindFirstChild("Floor")
+	if existing then
+		existing:Destroy()
+	end
+
+	local template = TEMPLATES:FindFirstChild("Floor")
+	if not template then
+		warn("Floor not found in ServerStorage.Templates")
+		return nil
+	end
+
+	local floor = template:Clone()
+	destroyScripts(floor)
+	anchorAll(floor)
+	floor.Parent = Workspace
+	print("Floor spawned into Workspace")
+	return floor
+end
+
+return { spawnFloor = spawnFloor }
+]]></string>
+        </Properties>
+      </Item>
+      <Item class="ModuleScript" referent="23">
+        <Properties>
+          <string name="Name">LeaderboardService</string>
+          <string name="Source"><![CDATA[local Players = game:GetService("Players")
+local DataStoreService = game:GetService("DataStoreService")
+
+local statsStore = DataStoreService:GetDataStore("PlayerStats")
+local leaderStore = DataStoreService:GetOrderedDataStore("Leaderboard")
+
+local function defaultStats()
+	return {
+		points = 0,
+		correct = 0,
+		wrong = 0,
+		abstained = 0,
+		gamesPlayed = 0,
+	}
+end
+
+local function createLeaderstats(player, data)
+	local ls = Instance.new("Folder")
+	ls.Name = "leaderstats"
+
+	local points = Instance.new("IntValue")
+	points.Name = "Points"
+	points.Value = data.points
+	points.Parent = ls
+
+	local correct = Instance.new("IntValue")
+	correct.Name = "Correct"
+	correct.Value = data.correct
+	correct.Parent = ls
+
+	local wrong = Instance.new("IntValue")
+	wrong.Name = "Wrong"
+	wrong.Value = data.wrong
+	wrong.Parent = ls
+
+	local abstained = Instance.new("IntValue")
+	abstained.Name = "Abstained"
+	abstained.Value = data.abstained
+	abstained.Parent = ls
+
+	local rounds = Instance.new("IntValue")
+	rounds.Name = "Rounds"
+	rounds.Value = data.gamesPlayed
+	rounds.Parent = ls
+
+	ls.Parent = player
+end
+
+local function loadStats(userId)
+	local success, data = pcall(function()
+		return statsStore:GetAsync(tostring(userId))
+	end)
+	if success and data then
+		return data
+	end
+	return defaultStats()
+end
+
+local function saveStats(userId, data)
+	pcall(function()
+		statsStore:SetAsync(tostring(userId), data)
+	end)
+	pcall(function()
+		leaderStore:SetAsync(tostring(userId), data.points)
+	end)
+end
+
+local function updateStats(player, correct, abstained)
+	local data = loadStats(player.UserId)
+	if correct then
+		data.correct += 1
+		data.points += 10
+	elseif abstained then
+		data.abstained += 1
+	else
+		data.wrong += 1
+		data.points -= 5
+	end
+	data.gamesPlayed += 1
+	saveStats(player.UserId, data)
+
+	local ls = player:FindFirstChild("leaderstats")
+	if ls then
+		local p = ls:FindFirstChild("Points")
+		if p then p.Value = data.points end
+		local c = ls:FindFirstChild("Correct")
+		if c then c.Value = data.correct end
+		local w = ls:FindFirstChild("Wrong")
+		if w then w.Value = data.wrong end
+		local a = ls:FindFirstChild("Abstained")
+		if a then a.Value = data.abstained end
+		local r = ls:FindFirstChild("Rounds")
+		if r then r.Value = data.gamesPlayed end
+	end
+end
+
+local function init()
+	Players.PlayerAdded:Connect(function(player)
+		local data = loadStats(player.UserId)
+		createLeaderstats(player, data)
+	end)
+
+	Players.PlayerRemoving:Connect(function(player)
+		local ls = player:FindFirstChild("leaderstats")
+		if ls then
+			local data = {
+				points = ls.Points and ls.Points.Value or 0,
+				correct = ls.Correct and ls.Correct.Value or 0,
+				wrong = ls.Wrong and ls.Wrong.Value or 0,
+				abstained = ls.Abstained and ls.Abstained.Value or 0,
+				gamesPlayed = ls.Rounds and ls.Rounds.Value or 0,
+			}
+			saveStats(player.UserId, data)
+		end
+	end)
+end
+
+return {
+	init = init,
+	updateStats = updateStats,
+}
+]]></string>
+        </Properties>
+      </Item>
+      <Item class="Script" referent="24">
+        <Properties>
+          <string name="Name">MatchmakingService</string>
+          <token name="RunContext">0</token>
+          <string name="Source"><![CDATA[-- MatchmakingService.server.luau
+-- Queue: walk into bay → countdown on screen → exit button → teleport at 0
+
+local Workspace = game:GetService("Workspace")
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local Remotes = ReplicatedStorage.Remotes
+
+local BAY_TIMER = 10
+local MAX_PLAYERS = 8
+local LOBBY_NAME = "Lobby"
+local BAY_DETECTOR_NAME = "BayDetector"
+
+local bayPlayers = {}
+local countdownActive = false
+local currentTimer = BAY_TIMER
+local bayCenter, bayRadius
+
+-- Find parts
+local function findLobby()
+	return Workspace:FindFirstChild(LOBBY_NAME)
+end
+
+local function findDetector()
+	local lobby = findLobby()
+	if lobby then
+		return lobby:FindFirstChild(BAY_DETECTOR_NAME)
+	end
+	return nil
+end
+
+local function findSpawnPoint()
+	local lobby = findLobby()
+	if lobby then
+		local spawn = lobby:FindFirstChildOfClass("SpawnLocation")
+		if spawn then
+			return spawn.CFrame + Vector3.new(0, 3, 0)
+		end
+	end
+	return CFrame.new(0, 1003, 0)
+end
+
+local function findGameTeleport()
+	local elevator = Workspace:FindFirstChild("Elevator")
+	if elevator then
+		local target = elevator:FindFirstChild("TeleportTarget")
+		if target then
+			return target.CFrame + Vector3.new(0, 3, 0)
+		end
+	end
+	return CFrame.new(0, 3, 0)
+end
+
+-- Send queue UI state to a player
+local function sendUI(player, show, seconds, count)
+	Remotes.QueueUpdate:FireClient(player, {
+		show = show,
+		seconds = seconds or 0,
+		count = count or 0,
+	})
+end
+
+-- Update UI for all bay players
+local function broadcastUI(show, seconds)
+	local count = #bayPlayers
+	for _, player in ipairs(bayPlayers) do
+		sendUI(player, show, seconds, count)
+	end
+end
+
+-- Lobby music
+local lobbyMusic = Instance.new("Sound")
+lobbyMusic.Name = "LobbyMusic"
+lobbyMusic.SoundId = "rbxassetid://1848354536"
+lobbyMusic.Volume = 0.4
+lobbyMusic.Looped = true
+lobbyMusic.Parent = game:GetService("SoundService")
+
+local function startLobbyMusic()
+	if not lobbyMusic.Playing then
+		lobbyMusic:Play()
+	end
+end
+
+local function stopLobbyMusic()
+	lobbyMusic:Stop()
+end
+
+-- Teleport player to game
+local function teleportToGame(player)
+	local cf = findGameTeleport()
+	local char = player.Character
+	if char and char:FindFirstChild("HumanoidRootPart") then
+		char.HumanoidRootPart.CFrame = cf
+	end
+end
+
+-- Teleport player back to lobby
+local function teleportToLobby(player)
+	local cf = findSpawnPoint()
+	local char = player.Character
+	if char and char:FindFirstChild("HumanoidRootPart") then
+		char.HumanoidRootPart.CFrame = cf
+	end
+end
+
+-- Start the round
+local function startRound()
+	if #bayPlayers == 0 then return end
+
+	local players = {}
+	for _, p in ipairs(bayPlayers) do
+		table.insert(players, p)
+	end
+
+	-- Clear queue before teleporting
+	local toTeleport = {}
+	for _, p in ipairs(bayPlayers) do
+		table.insert(toTeleport, p)
+	end
+	bayPlayers = {}
+	countdownActive = false
+	stopLobbyMusic()
+
+	for _, player in ipairs(toTeleport) do
+		sendUI(player, false, 0, 0)
+		teleportToGame(player)
+	end
+
+	task.wait(0.5)
+
+	local RoundRunner = require(script.Parent:FindFirstChild("RoundRunner"))
+	if RoundRunner and RoundRunner.Start then
+		RoundRunner.Start(toTeleport)
+	end
+end
+
+-- Check if a player is still inside the bay (distance check)
+local function isInBay(player)
+	if not player.Character or not player.Character:FindFirstChild("HumanoidRootPart") then
+		return false
+	end
+	return (player.Character.HumanoidRootPart.Position - bayCenter).Magnitude <= bayRadius
+end
+
+-- Remove players who left the bay
+local function purgeLeavers()
+	for i = #bayPlayers, 1, -1 do
+		local player = bayPlayers[i]
+		if not isInBay(player) then
+			sendUI(player, false, 0, 0)
+			table.remove(bayPlayers, i)
+		end
+	end
+end
+
+-- Countdown loop
+local function runCountdown()
+	countdownActive = true
+	currentTimer = BAY_TIMER
+
+	while countdownActive and #bayPlayers > 0 do
+		purgeLeavers()
+		if #bayPlayers == 0 then break end
+
+		broadcastUI(true, currentTimer)
+
+		if currentTimer <= 0 then
+			startRound()
+			return
+		end
+
+		task.wait(1)
+		currentTimer -= 1
+
+		if #bayPlayers >= MAX_PLAYERS and currentTimer > 3 then
+			currentTimer = 3
+		end
+	end
+
+	-- No players left
+	broadcastUI(false, 0)
+	countdownActive = false
+end
+
+-- Player enters the bay
+local function onPlayerEntered(player)
+	for _, v in ipairs(bayPlayers) do
+		if v == player then return end
+	end
+	table.insert(bayPlayers, player)
+	sendUI(player, true, currentTimer, #bayPlayers)
+
+	if not countdownActive then
+		coroutine.wrap(runCountdown)()
+	end
+end
+
+-- Player leaves the bay
+local function onPlayerLeft(player)
+	for i, v in ipairs(bayPlayers) do
+		if v == player then
+			table.remove(bayPlayers, i)
+			sendUI(player, false, 0, 0)
+			break
+		end
+	end
+end
+
+-- Player leaves via exit button
+Remotes.QueueExit.OnServerEvent:Connect(function(player)
+	onPlayerLeft(player)
+	teleportToLobby(player)
+end)
+
+-- Detect players entering the bay
+local function setupDetector()
+	local detector = findDetector()
+	if not detector then
+		warn("BayDetector not found")
+		return
+	end
+
+	local cf = detector.CFrame
+	local sz = detector.Size
+	bayCenter = cf.Position
+	bayRadius = math.max(sz.X, sz.Z) / 2 + 2
+
+	local prompt = Instance.new("ProximityPrompt")
+	prompt.Name = "QueuePrompt"
+	prompt.ActionText = "Join Queue"
+	prompt.ObjectText = "Elevator Bay"
+	prompt.HoldDuration = 0
+	prompt.MaxActivationDistance = 8
+	prompt.Parent = detector
+
+	prompt.Triggered:Connect(function(player)
+		onPlayerEntered(player)
+	end)
+end
+
+-- Player disconnected
+local function onPlayerRemoved(player)
+	onPlayerLeft(player)
+end
+
+-- Return players to lobby after round ends
+local function returnAllPlayers(players)
+	for _, player in ipairs(players) do
+		teleportToLobby(player)
+	end
+	startLobbyMusic()
+end
+
+-- Init
+local function init()
+	setupDetector()
+	Players.PlayerRemoving:Connect(onPlayerRemoved)
+	local LeaderboardService = require(script.Parent.LeaderboardService)
+	LeaderboardService.init()
+	startLobbyMusic()
+	print("MatchmakingService ready")
+end
+
+local api = {}
+api.returnAllPlayers = returnAllPlayers
+api.teleportToLobby = teleportToLobby
+api.teleportToGame = teleportToGame
+
+init()
+return api
+]]></string>
+        </Properties>
+      </Item>
+      <Item class="ModuleScript" referent="25">
+        <Properties>
+          <string name="Name">RoundRunner</string>
+          <string name="Source"><![CDATA[-- RoundRunner.luau (ModuleScript)
+-- Exports: Start(players) — runs the full round lifecycle
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Workspace = game:GetService("Workspace")
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+
+local FloorCloner = require(script.Parent.FloorCloner)
+local AnomalySwapper = require(script.Parent.AnomalySwapper)
+local LeaderboardService = require(script.Parent.LeaderboardService)
+local Remotes = ReplicatedStorage.Remotes
+
+local EXPLORE_TIME = 5
+local GOING_UP_TIME = 5
+local SEARCH_TIME = 30
+local CHAT_TIME = 30
+local REVEAL_TIME = 8
+local BOARDING_TIME = 5
+local MAX_ANOMALY_FLOORS = 3
+local scores = {}
+
+local function findElevator()
+	return Workspace:FindFirstChild("Elevator")
+end
+
+local doorClosedL, doorClosedR
+
+local function cacheDoorPositions()
+	local elevator = findElevator()
+	if not elevator then return end
+	local dl = elevator:FindFirstChild("Door_Left")
+	local dr = elevator:FindFirstChild("Door_Right")
+	if dl and dr then
+		doorClosedL = dl.CFrame
+		doorClosedR = dr.CFrame
+	end
+end
+
+local function getOrCreateMusic(elevator)
+	local m = elevator:FindFirstChild("ElevatorMusic")
+	if not m then
+		m = Instance.new("Sound")
+		m.Name = "ElevatorMusic"
+		m.SoundId = "rbxassetid://1837198630"
+		m.Volume = 0.4
+		m.Looped = true
+		m.Parent = elevator
+	end
+	return m
+end
+
+local function startElevatorMusic()
+	local elevator = findElevator()
+	if not elevator then return end
+	getOrCreateMusic(elevator):Play()
+end
+
+local function stopElevatorMusic()
+	local elevator = findElevator()
+	if elevator then
+		local m = elevator:FindFirstChild("ElevatorMusic")
+		if m then m:Stop() end
+	end
+end
+
+local function playDing()
+	local elevator = findElevator()
+	if not elevator then return end
+	stopElevatorMusic()
+	local s = elevator:FindFirstChild("Ding")
+	if s and s:IsA("Sound") then
+		s:Play()
+		task.delay(0.9, function()
+			s:Stop()
+		end)
+	end
+end
+
+local function setDoors(open)
+	if not doorClosedL or not doorClosedR then
+		cacheDoorPositions()
+	end
+	if not doorClosedL or not doorClosedR then return end
+
+	local elevator = findElevator()
+	local doorL = elevator and elevator:FindFirstChild("Door_Left")
+	local doorR = elevator and elevator:FindFirstChild("Door_Right")
+	if not doorL or not doorR then return end
+
+	local offset = doorL.Size.Z
+	local duration = 0.5
+
+	local tweenInfo = TweenInfo.new(duration, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut)
+
+	if open then
+		local goalL = { CFrame = doorClosedL * CFrame.new(0, 0, -offset) }
+		local goalR = { CFrame = doorClosedR * CFrame.new(0, 0, offset) }
+		local tweenL = TweenService:Create(doorL, tweenInfo, goalL)
+		local tweenR = TweenService:Create(doorR, tweenInfo, goalR)
+		tweenL:Play()
+		tweenR:Play()
+	else
+		local goalL = { CFrame = doorClosedL }
+		local goalR = { CFrame = doorClosedR }
+		local tweenL = TweenService:Create(doorL, tweenInfo, goalL)
+		local tweenR = TweenService:Create(doorR, tweenInfo, goalR)
+		tweenL:Play()
+		tweenR:Play()
+	end
+
+	local elevator = findElevator()
+	if elevator then
+		local name = open and "DoorOpen" or "DoorClose"
+		local s = elevator:FindFirstChild(name)
+		if s and s:IsA("Sound") then
+			s:Play()
+			task.delay(0.6, function()
+				s:Stop()
+			end)
+		end
+
+	end
+end
+
+local function updateDisplay(text)
+	local elevator = findElevator()
+	if not elevator then return end
+
+	local textSurface = elevator:FindFirstChild("FloorTextSurface")
+	if not textSurface then return end
+
+	local sg = textSurface:FindFirstChildOfClass("SurfaceGui")
+	if not sg then return end
+
+	local label = sg:FindFirstChild("FloorNumber")
+	if label then
+		label.Text = text
+	end
+end
+
+local function addResultsScreen(floor)
+	local screen = Instance.new("Part")
+	screen.Name = "ResultsScreen"
+	screen.Size = Vector3.new(26, 14, 0.3)
+	screen.CFrame = CFrame.new(-21, 7.5, 8.3)
+	screen.Anchored = true
+	screen.Locked = false
+	screen.Color = Color3.fromRGB(8, 8, 12)
+	screen.Material = Enum.Material.SmoothPlastic
+	screen.Parent = floor
+
+	local sg = Instance.new("SurfaceGui")
+	sg.Name = "ResultsGui"
+	sg.Face = Enum.NormalId.Front
+	sg.AlwaysOnTop = false
+	sg.ResetOnSpawn = false
+	sg.CanvasSize = Vector2.new(600, 340)
+	sg.Parent = screen
+
+	local title = Instance.new("TextLabel")
+	title.Name = "Title"
+	title.Size = UDim2.new(1, -40, 0, 34)
+	title.Position = UDim2.new(0, 20, 0, 12)
+	title.BackgroundTransparency = 1
+	title.TextColor3 = Color3.fromRGB(255, 220, 100)
+	title.Text = ""
+	title.TextScaled = true
+	title.TextXAlignment = Enum.TextXAlignment.Center
+	title.TextYAlignment = Enum.TextYAlignment.Center
+	title.Font = Enum.Font.GothamBold
+	title.Parent = sg
+
+	local sub = Instance.new("TextLabel")
+	sub.Name = "Subtitle"
+	sub.Size = UDim2.new(1, -40, 0, 18)
+	sub.Position = UDim2.new(0, 20, 0, 50)
+	sub.BackgroundTransparency = 1
+	sub.TextColor3 = Color3.fromRGB(180, 180, 200)
+	sub.Text = ""
+	sub.TextScaled = true
+	sub.TextXAlignment = Enum.TextXAlignment.Left
+	sub.TextYAlignment = Enum.TextYAlignment.Center
+	sub.Font = Enum.Font.GothamBold
+	sub.Visible = false
+	sub.Parent = sg
+
+	local body = Instance.new("TextLabel")
+	body.Name = "Body"
+	body.Size = UDim2.new(1, -40, 0, 90)
+	body.Position = UDim2.new(0, 20, 0, 72)
+	body.BackgroundTransparency = 1
+	body.TextColor3 = Color3.fromRGB(200, 200, 210)
+	body.Text = ""
+	body.TextScaled = true
+	body.TextXAlignment = Enum.TextXAlignment.Left
+	body.TextYAlignment = Enum.TextYAlignment.Top
+	body.Font = Enum.Font.Gotham
+	body.Visible = false
+	body.Parent = sg
+
+	local timer = Instance.new("TextLabel")
+	timer.Name = "Timer"
+	timer.Size = UDim2.new(0, 70, 0, 44)
+	timer.Position = UDim2.new(0.5, -35, 1, -56)
+	timer.BackgroundTransparency = 1
+	timer.TextColor3 = Color3.fromRGB(255, 255, 255)
+	timer.Text = ""
+	timer.TextScaled = true
+	timer.TextXAlignment = Enum.TextXAlignment.Center
+	timer.TextYAlignment = Enum.TextYAlignment.Center
+	timer.Font = Enum.Font.GothamBlack
+	timer.Visible = false
+	timer.Parent = sg
+
+	local resBody = Instance.new("TextLabel")
+	resBody.Name = "ResultsBody"
+	resBody.Size = UDim2.new(1, -40, 1, -55)
+	resBody.Position = UDim2.new(0, 20, 0, 50)
+	resBody.BackgroundTransparency = 1
+	resBody.TextColor3 = Color3.fromRGB(200, 200, 210)
+	resBody.Text = ""
+	resBody.TextScaled = true
+	resBody.TextXAlignment = Enum.TextXAlignment.Left
+	resBody.TextYAlignment = Enum.TextYAlignment.Top
+	resBody.Font = Enum.Font.Gotham
+	resBody.Visible = false
+	resBody.Parent = sg
+
+	return screen
+end
+
+local function showPhase(screen, title, subtitle, body, timerSeconds)
+	local sg = screen:FindFirstChild("ResultsGui")
+	if not sg then return end
+
+	local tl = sg:FindFirstChild("Title")
+	local st = sg:FindFirstChild("Subtitle")
+	local bd = sg:FindFirstChild("Body")
+	local tm = sg:FindFirstChild("Timer")
+	local rb = sg:FindFirstChild("ResultsBody")
+
+	if tl then tl.Text = title end
+	if st then st.Text = subtitle or ""; st.Visible = subtitle ~= nil end
+	if bd then bd.Text = body or ""; bd.Visible = body ~= nil end
+	if tm then tm.Text = timerSeconds and tostring(timerSeconds) or ""; tm.Visible = timerSeconds ~= nil end
+	if rb then rb.Visible = false end
+end
+
+local function showResultsOnScreen(screen, results, anomalyName)
+	local sg = screen:FindFirstChild("ResultsGui")
+	if not sg then return end
+
+	-- Clear previous widgets
+	local oldBox = sg:FindFirstChild("RevealHeadshotBox")
+	if oldBox then oldBox:Destroy() end
+	local oldPodium = sg:FindFirstChild("PodiumFrame")
+	if oldPodium then oldPodium:Destroy() end
+
+	sg:FindFirstChild("Title").Text = "ROUND RESULTS"
+	sg:FindFirstChild("Subtitle").Visible = false
+	sg:FindFirstChild("Body").Visible = false
+	sg:FindFirstChild("Timer").Visible = false
+
+	local rb = sg:FindFirstChild("ResultsBody")
+	rb.Visible = false
+
+	-- Top 3 podium
+	local sorted = {}
+	for _, r in ipairs(results) do
+		table.insert(sorted, r)
+	end
+	table.sort(sorted, function(a, b) return (a.total or 0) > (b.total or 0) end)
+
+	local podiumFrame = Instance.new("Frame")
+	podiumFrame.Name = "PodiumFrame"
+	podiumFrame.Size = UDim2.new(1, -40, 0, 110)
+	podiumFrame.Position = UDim2.new(0, 20, 0, 78)
+	podiumFrame.BackgroundTransparency = 1
+	podiumFrame.Parent = sg
+
+	local podiumColors = {
+		Color3.fromRGB(255, 215, 0),
+		Color3.fromRGB(192, 192, 192),
+		Color3.fromRGB(205, 127, 50),
+	}
+
+	for i = 1, math.min(3, #sorted) do
+		local r = sorted[i]
+		local heights = { 0.75, 0.5, 0.35 }
+		local h = heights[i]
+
+		local col = podiumColors[i]
+
+		local block = Instance.new("Frame")
+		block.Size = UDim2.new(0, 70, 0, 40 + 40 * h)
+		block.Position = UDim2.new(0.5, -105 + (i - 1) * 105, 1, -10 - 40 * h)
+		block.AnchorPoint = Vector2.new(0, 1)
+		block.BackgroundColor3 = col
+		block.BackgroundTransparency = 0.3
+		block.BorderSizePixel = 0
+		block.Parent = podiumFrame
+
+		local medal = Instance.new("TextLabel")
+		medal.Size = UDim2.new(1, 0, 0, 18)
+		medal.Position = UDim2.new(0, 0, 0, 4)
+		medal.BackgroundTransparency = 1
+		medal.TextColor3 = Color3.fromRGB(255, 255, 255)
+		medal.TextScaled = true
+		medal.Font = Enum.Font.GothamBold
+		medal.TextXAlignment = Enum.TextXAlignment.Center
+		if i == 1 then medal.Text = "#1"
+		elseif i == 2 then medal.Text = "#2"
+		else medal.Text = "#3" end
+		medal.Parent = block
+
+		local nameLabel = Instance.new("TextLabel")
+		nameLabel.Size = UDim2.new(1, -8, 0, 18)
+		nameLabel.Position = UDim2.new(0, 4, 0, 22)
+		nameLabel.BackgroundTransparency = 1
+		nameLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+		nameLabel.TextScaled = true
+		nameLabel.Font = Enum.Font.GothamBold
+		nameLabel.TextXAlignment = Enum.TextXAlignment.Center
+		nameLabel.Text = r.name
+		nameLabel.Parent = block
+
+		local scoreLabel = Instance.new("TextLabel")
+		scoreLabel.Size = UDim2.new(1, -8, 0, 16)
+		scoreLabel.Position = UDim2.new(0, 4, 0, 42)
+		scoreLabel.BackgroundTransparency = 1
+		scoreLabel.TextColor3 = Color3.fromRGB(255, 255, 200)
+		scoreLabel.TextScaled = true
+		scoreLabel.Font = Enum.Font.Gotham
+		scoreLabel.TextXAlignment = Enum.TextXAlignment.Center
+		scoreLabel.Text = tostring(r.total) .. " pts"
+		scoreLabel.Parent = block
+	end
+
+	-- Anomaly label at top
+	local anomalyLabel = sg:FindFirstChild("AnomalyLabel")
+	if not anomalyLabel then
+		anomalyLabel = Instance.new("TextLabel")
+		anomalyLabel.Name = "AnomalyLabel"
+		anomalyLabel.Size = UDim2.new(1, -40, 0, 24)
+		anomalyLabel.Position = UDim2.new(0, 20, 0, 50)
+		anomalyLabel.BackgroundTransparency = 1
+		anomalyLabel.TextColor3 = Color3.fromRGB(255, 220, 100)
+		anomalyLabel.TextScaled = true
+		anomalyLabel.TextXAlignment = Enum.TextXAlignment.Center
+		anomalyLabel.Font = Enum.Font.GothamBold
+		anomalyLabel.Parent = sg
+	end
+	anomalyLabel.Visible = true
+	anomalyLabel.Text = "ANOMALY: " .. (anomalyName or "None")
+
+	-- Headshot box at bottom
+	local box = Instance.new("Frame")
+	box.Name = "RevealHeadshotBox"
+	box.Size = UDim2.new(1, -20, 0, 100)
+	box.Position = UDim2.new(0, 10, 1, -115)
+	box.BackgroundColor3 = Color3.fromRGB(15, 15, 20)
+	box.BackgroundTransparency = 0.25
+	box.BorderSizePixel = 0
+	box.Parent = sg
+
+	local cellSize = 60
+	local totalW = #results * (cellSize + 8) - 8
+	local startX = math.max(0, (600 - 20 - totalW) / 2)
+
+	for i, r in ipairs(results) do
+		local x = startX + (i - 1) * (cellSize + 8)
+
+		local borderColor
+		if r.correct then
+			borderColor = Color3.fromRGB(80, 255, 80)
+		elseif r.noAnomaly then
+			borderColor = Color3.fromRGB(255, 220, 100)
+		elseif r.abstained then
+			borderColor = Color3.fromRGB(140, 140, 140)
+		else
+			borderColor = Color3.fromRGB(255, 60, 60)
+		end
+
+		local border = Instance.new("Frame")
+		border.Size = UDim2.new(0, cellSize, 0, cellSize)
+		border.Position = UDim2.new(0, x, 0, 6)
+		border.BackgroundColor3 = borderColor
+		border.BorderSizePixel = 0
+		border.Parent = box
+
+		local img = Instance.new("ImageLabel")
+		img.Size = UDim2.new(1, -4, 1, -4)
+		img.Position = UDim2.new(0, 2, 0, 2)
+		img.BackgroundColor3 = Color3.fromRGB(30, 30, 35)
+		img.BorderSizePixel = 0
+		img.Parent = border
+
+		local nameLabel = Instance.new("TextLabel")
+		nameLabel.Size = UDim2.new(0, cellSize + 8, 0, 14)
+		nameLabel.Position = UDim2.new(0, -4, 0, cellSize + 2)
+		nameLabel.BackgroundTransparency = 1
+		nameLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+		nameLabel.TextScaled = true
+		nameLabel.TextXAlignment = Enum.TextXAlignment.Center
+		nameLabel.Font = Enum.Font.Gotham
+		nameLabel.Text = r.name
+		nameLabel.Parent = border
+
+		local ptsLabel = Instance.new("TextLabel")
+		ptsLabel.Size = UDim2.new(0, cellSize + 8, 0, 12)
+		ptsLabel.Position = UDim2.new(0, -4, 0, cellSize + 16)
+		ptsLabel.BackgroundTransparency = 1
+		ptsLabel.TextColor3 = borderColor
+		ptsLabel.TextScaled = true
+		ptsLabel.TextXAlignment = Enum.TextXAlignment.Center
+		ptsLabel.Font = Enum.Font.GothamBold
+		if r.correct then
+			ptsLabel.Text = "+" .. r.points .. " (" .. r.total .. ")"
+		elseif r.noAnomaly then
+			ptsLabel.Text = "+" .. r.points .. " (" .. r.total .. ")"
+		elseif r.abstained then
+			ptsLabel.Text = "—"
+		else
+			ptsLabel.Text = r.points .. " (" .. r.total .. ")"
+		end
+		ptsLabel.Parent = border
+
+		task.spawn(function()
+			local ok, url = pcall(function()
+				return Players:GetUserThumbnailAsync(r.userId, Enum.ThumbnailType.AvatarBust, Enum.ThumbnailSize.Size420x420)
+			end)
+			if ok then
+				img.Image = url
+			end
+		end)
+	end
+end
+
+local function findSpawnPoint()
+	local lobby = Workspace:FindFirstChild("Lobby")
+	if lobby then
+		local spawn = lobby:FindFirstChildOfClass("SpawnLocation")
+		if spawn then
+			return spawn.CFrame + Vector3.new(0, 3, 0)
+		end
+	end
+	return CFrame.new(0, 1003, 0)
+end
+
+local function teleportToElevator(player)
+	local elevator = findElevator()
+	if not elevator then return end
+	local target = elevator:FindFirstChild("TeleportTarget")
+	if not target then return end
+	local char = player.Character
+	if char and char:FindFirstChild("HumanoidRootPart") then
+		char.HumanoidRootPart.CFrame = target.CFrame + Vector3.new(0, 3, 0)
+	end
+end
+
+local function teleportToLobby(player)
+	local cf = findSpawnPoint()
+	local char = player.Character
+	if char and char:FindFirstChild("HumanoidRootPart") then
+		char.HumanoidRootPart.CFrame = cf
+	end
+end
+
+local function teleportToElevatorLobby(player)
+	local char = player.Character
+	if char and char:FindFirstChild("HumanoidRootPart") then
+		char.HumanoidRootPart.CFrame = CFrame.lookAt(
+			Vector3.new(-21, 3, 2),
+			Vector3.new(-21, 3, 9)
+		)
+	end
+end
+
+local function returnAllPlayers(players)
+	for _, player in ipairs(players) do
+		teleportToLobby(player)
+	end
+	local lobbyMusic = game:GetService("SoundService"):FindFirstChild("LobbyMusic")
+	if lobbyMusic then lobbyMusic:Play() end
+end
+
+local function runChatPhase(players, guesses, guessNames, anomalyName, floorNum, screen)
+	setDoors(false)
+
+	-- Place players in the elevator lobby
+	for _, player in ipairs(players) do
+		teleportToElevatorLobby(player)
+	end
+
+	-- Block the doorway between elevator lobby and hallway
+	local floor = Workspace:FindFirstChild("Floor")
+	local barrier = nil
+	if floor then
+		barrier = Instance.new("Part")
+		barrier.Name = "ChatBarrier"
+		barrier.Size = Vector3.new(18, 15, 1)
+		barrier.CFrame = CFrame.new(-21, 7.5, -27)
+		barrier.Anchored = true
+		barrier.Locked = false
+		barrier.CanCollide = true
+		barrier.Transparency = 0.6
+		barrier.Color = Color3.fromRGB(60, 60, 70)
+		barrier.Material = Enum.Material.Metal
+		barrier.Parent = floor
+	end
+
+	-- Aggregate unique guessed names from the search phase
+	local pool = {}
+	for userId, name in pairs(guessNames) do
+		pool[name] = true
+	end
+	local options = {}
+	for name, _ in pairs(pool) do
+		table.insert(options, name)
+	end
+
+	local lockedIn = {}
+	local totalActive = 0
+	for _, player in ipairs(players) do
+		if player.Parent then
+			totalActive += 1
+		end
+	end
+
+	local remaining = CHAT_TIME
+	local chatActive = true
+	local sg = screen:FindFirstChild("ResultsGui")
+	local headshotWidgets = {}
+
+	local chatConnection
+	chatConnection = Remotes.LogGuess.OnServerEvent:Connect(function(player, objectName)
+		if not chatActive then return end
+		if lockedIn[player.UserId] then return end
+
+		if objectName == "NoAnomaly" then
+			guesses[player.UserId] = "noAnomaly"
+		else
+			guesses[player.UserId] = (objectName == anomalyName)
+		end
+		guessNames[player.UserId] = objectName
+		Remotes.LogGuess:FireClient(player, "updated")
+	end)
+
+	local lockConnection
+	lockConnection = Remotes.LockInGuess.OnServerEvent:Connect(function(player)
+		if not chatActive then return end
+		if lockedIn[player.UserId] then return end
+		lockedIn[player.UserId] = true
+
+		local headshotWidget = headshotWidgets[player.UserId]
+		if headshotWidget then
+			headshotWidget.BackgroundColor3 = Color3.fromRGB(80, 255, 80)
+		end
+
+		local allLocked = 0
+		for _, p in ipairs(players) do
+			if p.Parent and lockedIn[p.UserId] then
+				allLocked += 1
+			end
+		end
+		if allLocked >= totalActive and remaining > 3 then
+			remaining = 3
+		end
+	end)
+
+	-- Set up headshots on the wall screen — box at bottom, text stays above
+	if sg then
+		local tm = sg:FindFirstChild("Timer")
+		if tm then tm.Visible = false end
+
+		local box = Instance.new("Frame")
+		box.Name = "ChatHeadshotBox"
+		box.Size = UDim2.new(1, -20, 0, 80)
+		box.Position = UDim2.new(0, 10, 1, -95)
+		box.BackgroundColor3 = Color3.fromRGB(15, 15, 20)
+		box.BackgroundTransparency = 0.3
+		box.BorderSizePixel = 0
+		box.Parent = sg
+
+		local cellSize = 52
+		local totalW = #players * (cellSize + 6) - 6
+		local startX = math.max(0, (600 - 20 - totalW) / 2)
+
+		for i, player in ipairs(players) do
+			local x = startX + (i - 1) * (cellSize + 6)
+
+			local border = Instance.new("Frame")
+			border.Name = "HS_" .. player.UserId
+			border.Size = UDim2.new(0, cellSize, 0, cellSize)
+			border.Position = UDim2.new(0, x, 0, 6)
+			border.BackgroundColor3 = Color3.fromRGB(180, 40, 40)
+			border.BorderSizePixel = 0
+			border.Parent = box
+
+			local img = Instance.new("ImageLabel")
+			img.Size = UDim2.new(1, -4, 1, -4)
+			img.Position = UDim2.new(0, 2, 0, 2)
+			img.BackgroundColor3 = Color3.fromRGB(30, 30, 35)
+			img.BorderSizePixel = 0
+			img.Parent = border
+
+			local nameLabel = Instance.new("TextLabel")
+			nameLabel.Size = UDim2.new(0, cellSize + 8, 0, 14)
+			nameLabel.Position = UDim2.new(0, -4, 0, cellSize + 2)
+			nameLabel.BackgroundTransparency = 1
+			nameLabel.TextColor3 = Color3.fromRGB(180, 180, 180)
+			nameLabel.TextScaled = true
+			nameLabel.TextXAlignment = Enum.TextXAlignment.Center
+			nameLabel.Font = Enum.Font.Gotham
+			nameLabel.Text = player.Name
+			nameLabel.Parent = border
+
+			headshotWidgets[player.UserId] = border
+
+			task.spawn(function()
+				local ok, url = pcall(function()
+					return Players:GetUserThumbnailAsync(player.UserId, Enum.ThumbnailType.AvatarBust, Enum.ThumbnailSize.Size420x420)
+				end)
+				if ok then
+					img.Image = url
+				end
+			end)
+		end
+	end
+
+	for _, player in ipairs(players) do
+		Remotes.RoundChatStart:FireClient(player, {
+			options = options,
+			currentGuess = guessNames[player.UserId],
+		})
+	end
+
+	remaining = CHAT_TIME
+	while remaining > 0 do
+		Remotes.RoundTimerTick:FireAllClients(remaining, "chat")
+		showPhase(screen, "FLOOR " .. floorNum,
+			"— DISCUSSION —",
+			"Talk it over with the group.\nNot sure? You can swap your pick to anything another player found.\nLock it in when you're ready.",
+			nil)
+		task.wait(1)
+		remaining -= 1
+	end
+
+	chatActive = false
+	chatConnection:Disconnect()
+	lockConnection:Disconnect()
+
+	-- Remove headshot box
+	if sg then
+		local box = sg:FindFirstChild("ChatHeadshotBox")
+		if box then box:Destroy() end
+	end
+
+	-- Remove barrier
+	if barrier then
+		barrier:Destroy()
+	end
+end
+
+local function scoreAndReveal(players, guesses, guessNames, guessTimes, anomalyName, floorNum, screen, includeBoarding, playersRef)
+	local results = {}
+	for _, player in ipairs(players) do
+		local guess = guesses[player.UserId]
+		local correct = (guess == true)
+		local abstained = (guess == nil)
+		local noAnomaly = (guess == "noAnomaly") and (anomalyName == nil)
+		local time = guessTimes[player.UserId]
+
+		local points = 0
+		if correct then
+			points = 10
+		elseif noAnomaly then
+			points = 5
+		elseif not abstained then
+			points = -5
+		end
+
+		scores[player.UserId] = (scores[player.UserId] or 0) + points
+		table.insert(results, {
+			name = player.Name,
+			userId = player.UserId,
+			correct = correct,
+			abstained = abstained,
+			noAnomaly = noAnomaly,
+			points = points,
+			total = scores[player.UserId],
+			time = time,
+		})
+		LeaderboardService.updateStats(player, correct, abstained)
+	end
+
+	showResultsOnScreen(screen, results, anomalyName)
+	Remotes.RevealResults:FireAllClients(results)
+
+	-- Highlight the anomaly object with a yellow outline during reveal
+	if anomalyName then
+		local floor = Workspace:FindFirstChild("Floor")
+		local anomalyFolder = floor and floor:FindFirstChild("Anomaly")
+		local anomalyObj = anomalyFolder and anomalyFolder:FindFirstChild(anomalyName)
+		if anomalyObj then
+			local highlight = Instance.new("Highlight")
+			highlight.Adornee = anomalyObj
+			highlight.FillColor = Color3.fromRGB(255, 220, 50)
+			highlight.FillTransparency = 0.6
+			highlight.OutlineColor = Color3.fromRGB(255, 200, 0)
+			highlight.OutlineTransparency = 0
+			highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+			highlight.Parent = anomalyObj
+		end
+	end
+
+	task.wait(REVEAL_TIME)
+
+	for _, r in ipairs(results) do
+		print(r.name .. ": " .. r.points .. " (" .. r.total .. " total)")
+	end
+
+	if includeBoarding then
+		updateDisplay("▲")
+		setDoors(true)
+		startElevatorMusic()
+		for i = BOARDING_TIME, 1, -1 do
+			Remotes.RoundTimerTick:FireAllClients(i, "boarding")
+			showPhase(screen, "BOARDING", nil, "Elevator doors are open.\nStep inside for the next floor.", i)
+			task.wait(1)
+		end
+
+		for _, player in ipairs(players) do
+			teleportToElevator(player)
+		end
+		setDoors(false)
+	end
+end
+
+local function spawnAndRun(players, floorNum, anomalyName, doAnomalySwap, includeBoarding)
+	local floor = FloorCloner.spawnFloor()
+	if not floor then return end
+	local screen = addResultsScreen(floor)
+
+	-- Going up + anomaly swap
+	updateDisplay("▲\nto Floor " .. floorNum)
+	for i = GOING_UP_TIME, 1, -1 do
+		Remotes.RoundTimerTick:FireAllClients(i, "goingUp")
+		showPhase(screen, "GOING UP", nil, "Something changed while you weren't looking...", i)
+		if i == GOING_UP_TIME and doAnomalySwap then
+			anomalyName = AnomalySwapper.swapAnomaly()
+		end
+		if i == 1 then
+			playDing()
+		end
+		task.wait(1)
+	end
+
+	-- Search
+	setDoors(true)
+	updateDisplay(tostring(floorNum))
+	local guesses = {}
+	local guessNames = {}
+	local guessTimes = {}
+	local guessCount = 0
+	local totalPlayers = #players
+	local searchActive = true
+	local remaining = SEARCH_TIME
+
+	for _, player in ipairs(players) do
+		guesses[player.UserId] = nil
+	end
+
+	local connection
+	connection = Remotes.LogGuess.OnServerEvent:Connect(function(player, objectName)
+		if not searchActive then return end
+		if guesses[player.UserId] ~= nil then return end
+
+		if objectName == "NoAnomaly" then
+			guesses[player.UserId] = "noAnomaly"
+			guessNames[player.UserId] = "NoAnomaly"
+			guessTimes[player.UserId] = SEARCH_TIME - remaining
+			guessCount += 1
+			Remotes.LogGuess:FireClient(player, "logged")
+			return
+		end
+
+		if not anomalyName then return end
+
+		local correct = (objectName == anomalyName)
+		guesses[player.UserId] = correct
+		guessNames[player.UserId] = objectName
+		guessTimes[player.UserId] = SEARCH_TIME - remaining
+		guessCount += 1
+		Remotes.LogGuess:FireClient(player, correct and "correct" or "wrong")
+	end)
+
+	while remaining > 0 and guessCount < totalPlayers do
+		Remotes.RoundTimerTick:FireAllClients(remaining, "search")
+		showPhase(screen, "FLOOR " .. floorNum,
+			"FIND THE ANOMALY",
+			"Use your magnifying glass to investigate the rooms.\nClick on what you believe is the anomaly.",
+			remaining)
+		task.wait(1)
+		remaining -= 1
+	end
+
+	searchActive = false
+	connection:Disconnect()
+
+	-- Chat phase
+	runChatPhase(players, guesses, guessNames, anomalyName, floorNum, screen)
+
+	-- Scoring + Reveal
+	scoreAndReveal(players, guesses, guessNames, guessTimes, anomalyName, floorNum, screen, includeBoarding)
+
+	AnomalySwapper.revertAll()
+	floor:Destroy()
+	Remotes.FloorReset:FireAllClients()
+end
+
+local function Start(players)
+	print("Round started with " .. #players .. " players")
+	AnomalySwapper.resetUsed()
+	cacheDoorPositions()
+
+	-- === ROUND 0: Explore (floor 0) + First anomaly (floor 1) ===
+	local floor = FloorCloner.spawnFloor()
+	if not floor then return end
+	local screen = addResultsScreen(floor)
+
+	-- Arriving at floor 0
+	updateDisplay("0")
+	showPhase(screen, "FLOOR 0", nil, "Arriving...", nil)
+	task.wait(1.5)
+	playDing()
+	task.wait(0.3)
+	setDoors(true)
+	for i = EXPLORE_TIME, 1, -1 do
+		Remotes.RoundTimerTick:FireAllClients(i, "explore")
+		showPhase(screen, "FLOOR 0",
+			"OBJECTIVE",
+			"Learn your environment.\nThings may or may not change on the next floor.",
+			i)
+		task.wait(1)
+	end
+
+	for _, player in ipairs(players) do
+		teleportToElevator(player)
+	end
+	setDoors(false)
+	startElevatorMusic()
+
+	-- Going up + swap first anomaly
+	updateDisplay("▲\nto Floor 1")
+	local anomalyNameFloor1
+	for i = GOING_UP_TIME, 1, -1 do
+		Remotes.RoundTimerTick:FireAllClients(i, "goingUp")
+		showPhase(screen, "GOING UP", nil, "Something changed while you weren't looking...", i)
+		if i == GOING_UP_TIME then
+			anomalyNameFloor1 = AnomalySwapper.swapAnomaly()
+		end
+		if i == 1 then
+			playDing()
+		end
+		task.wait(1)
+	end
+
+	-- Search floor 1 (first anomaly)
+	setDoors(true)
+	updateDisplay("1")
+	local guesses = {}
+	local guessNames = {}
+	local guessTimes = {}
+	local guessCount = 0
+	local totalPlayers = #players
+	local searchActive = true
+	local remaining = SEARCH_TIME
+
+	for _, player in ipairs(players) do
+		guesses[player.UserId] = nil
+	end
+
+	local connection
+	connection = Remotes.LogGuess.OnServerEvent:Connect(function(player, objectName)
+		if not searchActive then return end
+		if guesses[player.UserId] ~= nil then return end
+
+		if objectName == "NoAnomaly" then
+			guesses[player.UserId] = "noAnomaly"
+			guessNames[player.UserId] = "NoAnomaly"
+			guessTimes[player.UserId] = SEARCH_TIME - remaining
+			guessCount += 1
+			Remotes.LogGuess:FireClient(player, "logged")
+			return
+		end
+
+		local correct = (objectName == anomalyNameFloor1)
+		guesses[player.UserId] = correct
+		guessNames[player.UserId] = objectName
+		guessTimes[player.UserId] = SEARCH_TIME - remaining
+		guessCount += 1
+		Remotes.LogGuess:FireClient(player, correct and "correct" or "wrong")
+	end)
+
+	while remaining > 0 and guessCount < totalPlayers do
+		Remotes.RoundTimerTick:FireAllClients(remaining, "search")
+		showPhase(screen, "FLOOR 1",
+			"FIND THE ANOMALY",
+			"Use your magnifying glass to investigate the rooms.\nClick on what you believe is the anomaly.",
+			remaining)
+		task.wait(1)
+		remaining -= 1
+	end
+
+	searchActive = false
+	connection:Disconnect()
+
+	-- Chat phase for floor 1
+	runChatPhase(players, guesses, guessNames, anomalyNameFloor1, 1, screen)
+
+	-- Scoring + Reveal floor 1
+	local resultsFloor1 = {}
+	for _, player in ipairs(players) do
+		local guess = guesses[player.UserId]
+		local correct = (guess == true)
+		local abstained = (guess == nil)
+		local noAnomaly = (guess == "noAnomaly") and (anomalyNameFloor1 == nil)
+		local time = guessTimes[player.UserId]
+
+		local points = 0
+		if correct then points = 10
+		elseif noAnomaly then points = 5
+		elseif not abstained then points = -5 end
+
+		scores[player.UserId] = (scores[player.UserId] or 0) + points
+		table.insert(resultsFloor1, {
+			name = player.Name, userId = player.UserId, correct = correct, abstained = abstained,
+			noAnomaly = noAnomaly, points = points, total = scores[player.UserId],
+			time = time,
+		})
+		LeaderboardService.updateStats(player, correct, abstained)
+	end
+
+	for _, player in ipairs(players) do
+		teleportToElevatorLobby(player)
+	end
+
+	showResultsOnScreen(screen, resultsFloor1, anomalyNameFloor1)
+	Remotes.RevealResults:FireAllClients(resultsFloor1)
+
+	if anomalyNameFloor1 then
+		local anomalyFolder = floor and floor:FindFirstChild("Anomaly")
+		local anomalyObj = anomalyFolder and anomalyFolder:FindFirstChild(anomalyNameFloor1)
+		if anomalyObj then
+			local h = Instance.new("Highlight")
+			h.Adornee = anomalyObj
+			h.FillColor = Color3.fromRGB(255, 220, 50)
+			h.FillTransparency = 0.6
+			h.OutlineColor = Color3.fromRGB(255, 200, 0)
+			h.OutlineTransparency = 0
+			h.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+			h.Parent = anomalyObj
+		end
+	end
+
+	task.wait(REVEAL_TIME)
+
+	for _, r in ipairs(resultsFloor1) do
+		print(r.name .. ": " .. r.points .. " (" .. r.total .. " total)")
+	end
+
+	-- Boarding → destroy floor 0/1
+	updateDisplay("▲")
+	setDoors(true)
+	startElevatorMusic()
+	for i = BOARDING_TIME, 1, -1 do
+		Remotes.RoundTimerTick:FireAllClients(i, "boarding")
+		showPhase(screen, "BOARDING", nil, "Elevator doors are open.\nStep inside for the next floor.", i)
+		task.wait(1)
+	end
+
+	for _, player in ipairs(players) do
+		teleportToElevator(player)
+	end
+	setDoors(false)
+
+	AnomalySwapper.revertAll()
+	floor:Destroy()
+	Remotes.FloorReset:FireAllClients()
+
+	-- === ROUND 2 (floor 2): fresh build ===
+	spawnAndRun(players, 2, nil, true, true)
+
+	-- === ROUND 3 (floor 3): fresh build, last ===
+	spawnAndRun(players, 3, nil, true, false)
+
+	-- Done
+	updateDisplay("0")
+	returnAllPlayers(players)
+	print("All floors completed. Players returned to lobby.")
+end
+
+return { Start = Start }
+]]></string>
+        </Properties>
+      </Item>
+    </Item>
+  </Item>
+  <Item class="ServerStorage" referent="26">
+    <Properties>
+      <string name="Name">ServerStorage</string>
+    </Properties>
+    <Item class="Folder" referent="27">
+      <Properties>
+        <string name="Name">Templates</string>
+      </Properties>
+      <Item class="Folder" referent="28">
+        <Properties>
+          <string name="Name">Floor</string>
+        </Properties>
+      </Item>
+    </Item>
+  </Item>
+  <Item class="SoundService" referent="29">
+    <Properties>
+      <string name="Name">SoundService</string>
+    </Properties>
+  </Item>
+  <Item class="StarterGui" referent="30">
+    <Properties>
+      <string name="Name">StarterGui</string>
+    </Properties>
+    <Item class="LocalScript" referent="31">
+      <Properties>
+        <string name="Name">ChatMenu</string>
+        <string name="Source"><![CDATA[local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local UserInputService = game:GetService("UserInputService")
+local Remotes = ReplicatedStorage.Remotes
+
+local player = Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+local isMobile = UserInputService.TouchEnabled
+
+-- Root GUI
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "ChatMenu"
+screenGui.ResetOnSpawn = false
+screenGui.Enabled = false
+screenGui.Parent = playerGui
+
+local clickSound = Instance.new("Sound")
+clickSound.SoundId = "rbxassetid://1238528678"
+clickSound.Volume = 0.5
+clickSound.Parent = screenGui
+if isMobile then
+	screenGui.IgnoreGuiInset = true
+end
+
+if isMobile then
+	local uiscale = Instance.new("UIScale")
+	uiscale.Parent = screenGui
+	local function updateScale()
+		local camera = workspace.CurrentCamera
+		if camera then
+			local sz = camera.ViewportSize
+			local s = math.min(sz.X / 1920, sz.Y / 1080)
+			uiscale.Scale = math.clamp(s, 0.35, 2)
+		end
+	end
+	updateScale()
+	workspace:GetPropertyChangedSignal("CurrentCamera"):Connect(function()
+		updateScale()
+		local cam = workspace.CurrentCamera
+		if cam then
+			cam:GetPropertyChangedSignal("ViewportSize"):Connect(updateScale)
+		end
+	end)
+end
+
+-- Change Guess button (bottom-left)
+local changeBtn = Instance.new("TextButton")
+changeBtn.Name = "ChangeGuessBtn"
+changeBtn.Size = UDim2.new(0, 180, 0, 36)
+changeBtn.Position = UDim2.new(0, 15, 1, -50)
+changeBtn.AnchorPoint = Vector2.new(0, 1)
+changeBtn.BackgroundColor3 = Color3.fromRGB(50, 50, 55)
+changeBtn.BorderColor3 = Color3.fromRGB(255, 220, 50)
+changeBtn.BorderSizePixel = 1
+changeBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+changeBtn.TextScaled = true
+changeBtn.Font = Enum.Font.Gotham
+changeBtn.Text = "Change Guess"
+changeBtn.Visible = false
+changeBtn.Parent = screenGui
+
+-- Current guess label (centered above buttons)
+local guessLabel = Instance.new("TextLabel")
+guessLabel.Name = "GuessLabel"
+guessLabel.Size = UDim2.new(0, 300, 0, 24)
+guessLabel.Position = UDim2.new(0.5, -150, 1, -100)
+guessLabel.BackgroundTransparency = 1
+guessLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+guessLabel.TextScaled = true
+guessLabel.TextXAlignment = Enum.TextXAlignment.Center
+guessLabel.Font = Enum.Font.Gotham
+guessLabel.Text = "Your guess: None"
+guessLabel.Visible = false
+guessLabel.Parent = screenGui
+
+-- Lock In button (bottom-right)
+local lockBtn = Instance.new("TextButton")
+lockBtn.Name = "LockInBtn"
+lockBtn.Size = UDim2.new(0, 160, 0, 36)
+lockBtn.Position = UDim2.new(1, -15, 1, -50)
+lockBtn.AnchorPoint = Vector2.new(1, 1)
+lockBtn.BackgroundColor3 = Color3.fromRGB(60, 160, 60)
+lockBtn.BorderSizePixel = 0
+lockBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+lockBtn.TextScaled = true
+lockBtn.Font = Enum.Font.GothamBold
+lockBtn.Text = "Lock In"
+lockBtn.Visible = false
+lockBtn.Parent = screenGui
+
+-- Popup overlay (hidden by default)
+local popupOverlay = Instance.new("Frame")
+popupOverlay.Name = "PopupOverlay"
+popupOverlay.Size = UDim2.new(1, 0, 1, 0)
+popupOverlay.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+popupOverlay.BackgroundTransparency = 0.5
+popupOverlay.Visible = false
+popupOverlay.Parent = screenGui
+
+local popupFrame = Instance.new("Frame")
+popupFrame.Name = "PopupFrame"
+popupFrame.Size = UDim2.new(0, 360, 0, 300)
+popupFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+popupFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+popupFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 45)
+popupFrame.BorderColor3 = Color3.fromRGB(255, 220, 50)
+popupFrame.BorderSizePixel = 2
+popupFrame.Parent = popupOverlay
+
+local popupTitle = Instance.new("TextLabel")
+popupTitle.Name = "Title"
+popupTitle.Size = UDim2.new(1, -40, 0, 36)
+popupTitle.Position = UDim2.new(0, 20, 0, 10)
+popupTitle.BackgroundTransparency = 1
+popupTitle.TextColor3 = Color3.fromRGB(255, 220, 50)
+popupTitle.TextScaled = true
+popupTitle.Font = Enum.Font.GothamBold
+popupTitle.Text = "Change Your Guess"
+popupTitle.Parent = popupFrame
+
+local popupList = Instance.new("ScrollingFrame")
+popupList.Name = "OptionList"
+popupList.Size = UDim2.new(1, -20, 1, -95)
+popupList.Position = UDim2.new(0, 10, 0, 50)
+popupList.BackgroundTransparency = 1
+popupList.BorderSizePixel = 0
+popupList.ScrollBarThickness = 4
+popupList.CanvasSize = UDim2.new(0, 0, 0, 0)
+popupList.Parent = popupFrame
+
+local popupCancel = Instance.new("TextButton")
+popupCancel.Name = "CancelBtn"
+popupCancel.Size = UDim2.new(0, 120, 0, 32)
+popupCancel.Position = UDim2.new(0.5, -60, 1, -14)
+popupCancel.AnchorPoint = Vector2.new(0.5, 1)
+popupCancel.BackgroundColor3 = Color3.fromRGB(80, 80, 85)
+popupCancel.TextColor3 = Color3.fromRGB(255, 255, 255)
+popupCancel.TextScaled = true
+popupCancel.Font = Enum.Font.Gotham
+popupCancel.Text = "Cancel"
+popupCancel.Parent = popupFrame
+
+-- State
+local options = {}
+local lockedIn = false
+local currentSelection = nil
+
+local function closePopup()
+	popupOverlay.Visible = false
+end
+
+local function selectOption(name)
+	if lockedIn then return end
+	Remotes.LogGuess:FireServer(name)
+	currentSelection = name
+	closePopup()
+end
+
+local function openPopup()
+	if lockedIn then return end
+	-- Clear old options
+	for _, child in ipairs(popupList:GetChildren()) do
+		if child:IsA("TextButton") then child:Destroy() end
+	end
+
+	local sorted = {}
+	for _, name in ipairs(options) do
+		table.insert(sorted, name)
+	end
+	table.sort(sorted)
+
+	local rowSize = 38
+	local rowPad = 4
+	local topPad = 4
+	local totalH = #sorted * (rowSize + rowPad) - rowPad + topPad * 2
+	popupList.CanvasSize = UDim2.new(0, 0, 0, math.max(totalH, popupList.AbsoluteSize.Y))
+
+	-- Top spacer
+	local spacer = Instance.new("Frame")
+	spacer.Size = UDim2.new(1, 0, 0, topPad)
+	spacer.BackgroundTransparency = 1
+	spacer.Parent = popupList
+
+	for i, name in ipairs(sorted) do
+		local isSel = (name == currentSelection)
+		local btn = Instance.new("TextButton")
+		btn.Name = name
+		btn.Size = UDim2.new(1, -10, 0, rowSize)
+		btn.Position = UDim2.new(0, 5, 0, topPad + (i - 1) * (rowSize + rowPad))
+		btn.BackgroundColor3 = isSel and Color3.fromRGB(60, 160, 60) or Color3.fromRGB(50, 50, 55)
+		btn.BorderSizePixel = 0
+		btn.Text = ""
+		btn.Parent = popupList
+
+		local label = Instance.new("TextLabel")
+		label.Size = UDim2.new(1, -10, 1, 0)
+		label.Position = UDim2.new(0, 8, 0, 0)
+		label.BackgroundTransparency = 1
+		label.TextColor3 = isSel and Color3.fromRGB(255, 255, 255) or Color3.fromRGB(200, 200, 200)
+		label.TextScaled = true
+		label.TextXAlignment = Enum.TextXAlignment.Left
+		label.Font = isSel and Enum.Font.GothamBold or Enum.Font.Gotham
+		label.Text = name
+		label.Parent = btn
+
+		if isSel then
+			local check = Instance.new("TextLabel")
+			check.Size = UDim2.new(0, 18, 0, 18)
+			check.Position = UDim2.new(1, -22, 0.5, -9)
+			check.BackgroundTransparency = 1
+			check.TextColor3 = Color3.fromRGB(80, 255, 80)
+			check.TextScaled = true
+			check.Font = Enum.Font.GothamBold
+			check.Text = "✓"
+			check.Parent = btn
+		end
+
+		btn.MouseButton1Click:Connect(function()
+			selectOption(name)
+		end)
+	end
+
+	popupOverlay.Visible = true
+end
+
+changeBtn.MouseButton1Click:Connect(openPopup)
+popupCancel.MouseButton1Click:Connect(closePopup)
+
+lockBtn.MouseButton1Click:Connect(function()
+	if lockedIn then return end
+	lockedIn = true
+	Remotes.LockInGuess:FireServer()
+	lockBtn.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+	lockBtn.Text = "Locked In ✓"
+	lockBtn.TextColor3 = Color3.fromRGB(180, 255, 180)
+	changeBtn.Visible = false
+	clickSound:Play()
+end)
+
+-- Remote handlers
+Remotes.RoundChatStart.OnClientEvent:Connect(function(data)
+	screenGui.Enabled = true
+	currentSelection = data.currentGuess
+	options = data.options or {}
+	lockedIn = false
+	changeBtn.Visible = true
+	lockBtn.Visible = true
+	guessLabel.Visible = true
+	guessLabel.Text = "Your guess: " .. (data.currentGuess or "None")
+	lockBtn.BackgroundColor3 = Color3.fromRGB(60, 160, 60)
+	lockBtn.Text = "Lock In"
+	lockBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+	closePopup()
+end)
+
+Remotes.RevealResults.OnClientEvent:Connect(function()
+	screenGui.Enabled = false
+	guessLabel.Visible = false
+	closePopup()
+end)
+
+Remotes.RoundStart.OnClientEvent:Connect(function()
+	screenGui.Enabled = false
+	guessLabel.Visible = false
+	closePopup()
+end)
+
+Remotes.FloorReset.OnClientEvent:Connect(function()
+	screenGui.Enabled = false
+	guessLabel.Visible = false
+	closePopup()
+end)
+]]></string>
+      </Properties>
+    </Item>
+    <Item class="LocalScript" referent="32">
+      <Properties>
+        <string name="Name">QueueUI</string>
+        <string name="Source"><![CDATA[local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local Remotes = ReplicatedStorage.Remotes
+
+local player = Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+local isMobile = UserInputService.TouchEnabled
+
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "QueueUI"
+screenGui.ResetOnSpawn = false
+screenGui.Enabled = false
+if isMobile then
+	screenGui.IgnoreGuiInset = true
+end
+screenGui.Parent = playerGui
+
+if isMobile then
+	local uiscale = Instance.new("UIScale")
+	uiscale.Parent = screenGui
+	local function updateScale()
+		local camera = workspace.CurrentCamera
+		if camera then
+			local sz = camera.ViewportSize
+			local s = math.min(sz.X / 1920, sz.Y / 1080)
+			uiscale.Scale = math.clamp(s, 0.35, 2)
+		end
+	end
+	updateScale()
+	workspace:GetPropertyChangedSignal("CurrentCamera"):Connect(function()
+		updateScale()
+		local cam = workspace.CurrentCamera
+		if cam then
+			cam:GetPropertyChangedSignal("ViewportSize"):Connect(updateScale)
+		end
+	end)
+end
+
+local timerLabel = Instance.new("TextLabel")
+timerLabel.Name = "Timer"
+timerLabel.Size = UDim2.fromOffset(300, 80)
+timerLabel.Position = UDim2.new(0.5, 0, 0, 30)
+timerLabel.AnchorPoint = Vector2.new(0.5, 0)
+timerLabel.BackgroundTransparency = 1
+timerLabel.TextColor3 = Color3.fromRGB(255, 220, 50)
+timerLabel.TextScaled = true
+timerLabel.Font = Enum.Font.GothamBold
+timerLabel.Text = ""
+timerLabel.ZIndex = 10
+timerLabel.Parent = screenGui
+
+local subText = Instance.new("TextLabel")
+subText.Name = "SubText"
+subText.Size = UDim2.fromOffset(400, 40)
+subText.Position = UDim2.new(0.5, 0, 0, 110)
+subText.AnchorPoint = Vector2.new(0.5, 0)
+subText.BackgroundTransparency = 1
+subText.TextColor3 = Color3.fromRGB(200, 200, 200)
+subText.TextScaled = true
+subText.Font = Enum.Font.Gotham
+subText.Text = ""
+subText.ZIndex = 10
+subText.Parent = screenGui
+
+local countLabel = Instance.new("TextLabel")
+countLabel.Name = "PlayerCount"
+countLabel.Size = UDim2.fromOffset(300, 40)
+countLabel.Position = UDim2.new(0.5, 0, 0, 160)
+countLabel.AnchorPoint = Vector2.new(0.5, 0)
+countLabel.BackgroundTransparency = 1
+countLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+countLabel.TextScaled = true
+countLabel.Font = Enum.Font.Gotham
+countLabel.Text = ""
+countLabel.ZIndex = 10
+countLabel.Parent = screenGui
+
+local exitButton = Instance.new("TextButton")
+exitButton.Name = "ExitButton"
+exitButton.Size = UDim2.fromOffset(200, 60)
+exitButton.Position = UDim2.new(0.5, 0, 1, -80)
+exitButton.AnchorPoint = Vector2.new(0.5, 1)
+exitButton.BackgroundColor3 = Color3.fromRGB(180, 40, 40)
+exitButton.BackgroundTransparency = 0.3
+exitButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+exitButton.TextScaled = true
+exitButton.Font = Enum.Font.GothamBold
+exitButton.Text = "LEAVE QUEUE"
+exitButton.ZIndex = 10
+exitButton.Parent = screenGui
+
+exitButton.MouseButton1Click:Connect(function()
+	Remotes.QueueExit:FireServer()
+end)
+
+Remotes.QueueUpdate.OnClientEvent:Connect(function(data)
+	screenGui.Enabled = data.show
+	if data.show then
+		timerLabel.Text = tostring(data.seconds)
+		countLabel.Text = data.count .. "/8 players"
+		if data.seconds <= 5 then
+			timerLabel.TextColor3 = Color3.fromRGB(255, 80, 80)
+			subText.Text = "Departing..."
+		else
+			timerLabel.TextColor3 = Color3.fromRGB(255, 220, 50)
+			subText.Text = "Searching for players..."
+		end
+	end
+end)
+
+Remotes.RoundStart.OnClientEvent:Connect(function()
+	screenGui.Enabled = false
+end)
+]]></string>
+      </Properties>
+    </Item>
+    <Item class="LocalScript" referent="33">
+      <Properties>
+        <string name="Name">TimerHUD</string>
+        <string name="Source"><![CDATA[local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local UserInputService = game:GetService("UserInputService")
+local Remotes = ReplicatedStorage.Remotes
+
+local player = Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+local isMobile = UserInputService.TouchEnabled
+
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "TimerHUD"
+screenGui.ResetOnSpawn = false
+screenGui.Enabled = false
+if isMobile then
+	screenGui.IgnoreGuiInset = true
+end
+screenGui.Parent = playerGui
+
+if isMobile then
+	local uiscale = Instance.new("UIScale")
+	uiscale.Parent = screenGui
+	local function updateScale()
+		local camera = workspace.CurrentCamera
+		if camera then
+			local sz = camera.ViewportSize
+			local s = math.min(sz.X / 1920, sz.Y / 1080)
+			uiscale.Scale = math.clamp(s, 0.35, 2)
+		end
+	end
+	updateScale()
+	workspace:GetPropertyChangedSignal("CurrentCamera"):Connect(function()
+		updateScale()
+		local cam = workspace.CurrentCamera
+		if cam then
+			cam:GetPropertyChangedSignal("ViewportSize"):Connect(updateScale)
+		end
+	end)
+end
+
+-- Timer box (left)
+local timerBox = Instance.new("Frame")
+timerBox.Name = "TimerBox"
+timerBox.Size = UDim2.new(0, 100, 0, 40)
+timerBox.Position = UDim2.new(0, 15, 0, 10)
+timerBox.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+timerBox.BackgroundTransparency = 0.4
+timerBox.BorderSizePixel = 0
+timerBox.Parent = screenGui
+
+local timerLabel = Instance.new("TextLabel")
+timerLabel.Name = "TimerLabel"
+timerLabel.Size = UDim2.new(1, 0, 1, 0)
+timerLabel.BackgroundTransparency = 1
+timerLabel.TextColor3 = Color3.fromRGB(255, 220, 50)
+timerLabel.TextScaled = true
+timerLabel.TextXAlignment = Enum.TextXAlignment.Center
+timerLabel.Font = Enum.Font.GothamBold
+timerLabel.Text = ""
+timerLabel.Parent = timerBox
+
+-- Phase box (center)
+local phaseBox = Instance.new("Frame")
+phaseBox.Name = "PhaseBox"
+phaseBox.Size = UDim2.new(0, 300, 0, 40)
+phaseBox.Position = UDim2.new(0.5, -150, 0, 10)
+phaseBox.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+phaseBox.BackgroundTransparency = 0.4
+phaseBox.BorderSizePixel = 0
+phaseBox.Parent = screenGui
+
+local phaseLabel = Instance.new("TextLabel")
+phaseLabel.Name = "PhaseLabel"
+phaseLabel.Size = UDim2.new(1, 0, 1, 0)
+phaseLabel.BackgroundTransparency = 1
+phaseLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+phaseLabel.TextScaled = true
+phaseLabel.TextXAlignment = Enum.TextXAlignment.Center
+phaseLabel.Font = Enum.Font.Gotham
+phaseLabel.Text = ""
+phaseLabel.Parent = phaseBox
+
+-- Personal result label (centered below phase box, visible during reveal)
+local resultBox = Instance.new("Frame")
+resultBox.Name = "ResultBox"
+resultBox.Size = UDim2.new(0, 400, 0, 50)
+resultBox.Position = UDim2.new(0.5, -200, 0, 65)
+resultBox.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+resultBox.BackgroundTransparency = 0.4
+resultBox.BorderSizePixel = 0
+resultBox.Visible = false
+resultBox.Parent = screenGui
+
+local resultLabel = Instance.new("TextLabel")
+resultLabel.Name = "ResultLabel"
+resultLabel.Size = UDim2.new(1, -20, 1, 0)
+resultLabel.Position = UDim2.new(0, 10, 0, 0)
+resultLabel.BackgroundTransparency = 1
+resultLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+resultLabel.TextScaled = true
+resultLabel.TextXAlignment = Enum.TextXAlignment.Center
+resultLabel.Font = Enum.Font.GothamBold
+resultLabel.Text = ""
+resultLabel.Parent = resultBox
+
+Remotes.RoundTimerTick.OnClientEvent:Connect(function(seconds, phase)
+	screenGui.Enabled = true
+	resultBox.Visible = false
+
+	if phase == "explore" then
+		timerLabel.Text = tostring(seconds)
+		timerLabel.TextColor3 = Color3.fromRGB(100, 200, 255)
+		phaseLabel.Text = "Explore the floor"
+	elseif phase == "goingUp" then
+		timerLabel.Text = tostring(seconds)
+		timerLabel.TextColor3 = Color3.fromRGB(255, 200, 50)
+		phaseLabel.Text = "GOING UP"
+	elseif phase == "search" then
+		timerLabel.Text = tostring(seconds)
+		phaseLabel.Text = "Find the Anomaly"
+		if seconds <= 10 then
+			timerLabel.TextColor3 = Color3.fromRGB(255, 80, 80)
+		else
+			timerLabel.TextColor3 = Color3.fromRGB(255, 220, 50)
+		end
+	elseif phase == "chat" then
+		timerLabel.Text = tostring(seconds)
+		timerLabel.TextColor3 = Color3.fromRGB(180, 180, 255)
+		phaseLabel.Text = "Discussion"
+	elseif phase == "boarding" then
+		timerLabel.Text = tostring(seconds)
+		timerLabel.TextColor3 = Color3.fromRGB(100, 255, 100)
+		phaseLabel.Text = "Board the elevator"
+	end
+end)
+
+Remotes.RoundStart.OnClientEvent:Connect(function()
+	timerLabel.Text = ""
+	phaseLabel.Text = ""
+	screenGui.Enabled = false
+end)
+
+local answerRightSound = Instance.new("Sound")
+answerRightSound.Name = "AnswerRight"
+answerRightSound.SoundId = "rbxassetid://3450794184"
+answerRightSound.Volume = 0.5
+answerRightSound.Parent = screenGui
+
+local errorSound = Instance.new("Sound")
+errorSound.Name = "ErrorSound"
+errorSound.SoundId = "rbxassetid://550209561"
+errorSound.Volume = 0.5
+errorSound.Parent = screenGui
+
+Remotes.RevealResults.OnClientEvent:Connect(function(results)
+	screenGui.Enabled = true
+	timerLabel.Text = "ROUND OVER"
+	timerLabel.TextColor3 = Color3.fromRGB(255, 220, 50)
+	phaseLabel.Text = "Results"
+
+	for _, r in ipairs(results) do
+		if r.name == player.Name then
+			if r.correct then
+				resultLabel.Text = "CORRECT! +" .. r.points
+				resultLabel.TextColor3 = Color3.fromRGB(80, 255, 80)
+				answerRightSound:Play()
+			elseif r.noAnomaly then
+				resultLabel.Text = "No Anomaly — Correct! +" .. r.points
+				resultLabel.TextColor3 = Color3.fromRGB(255, 220, 100)
+				answerRightSound:Play()
+			elseif r.abstained then
+				resultLabel.Text = "You didn't guess"
+				resultLabel.TextColor3 = Color3.fromRGB(180, 180, 180)
+				errorSound:Play()
+			else
+				resultLabel.Text = "WRONG! " .. r.points
+				resultLabel.TextColor3 = Color3.fromRGB(255, 80, 80)
+				errorSound:Play()
+			end
+			resultBox.Visible = true
+			break
+		end
+	end
+end)
+
+Remotes.FloorReset.OnClientEvent:Connect(function()
+	screenGui.Enabled = false
+	timerLabel.Text = ""
+	phaseLabel.Text = ""
+	resultBox.Visible = false
+	resultLabel.Text = ""
+end)
+]]></string>
+      </Properties>
+    </Item>
+    <Item class="LocalScript" referent="34">
+      <Properties>
+        <string name="Name">ToolManager</string>
+        <string name="Source"><![CDATA[local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local Remotes = ReplicatedStorage.Remotes
+
+local isMobile = UserInputService.TouchEnabled
+
+local player = Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+local backpack = player:WaitForChild("Backpack")
+
+local hasGuessed = false
+local currentGuess = nil
+local toolEquipped = false
+
+local clickSound = Instance.new("Sound")
+clickSound.SoundId = "rbxassetid://1238528678"
+clickSound.Volume = 0.5
+clickSound.Parent = playerGui
+
+local hoveredObject = nil
+local currentPhase = ""
+
+local highlight = Instance.new("Highlight")
+highlight.FillColor = Color3.fromRGB(255, 220, 50)
+highlight.FillTransparency = 0.5
+highlight.OutlineColor = Color3.fromRGB(255, 200, 0)
+highlight.OutlineTransparency = 0
+highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+highlight.Enabled = false
+highlight.Parent = workspace
+
+local hoverSound = Instance.new("Sound")
+hoverSound.SoundId = "rbxassetid://1238528678"
+hoverSound.Volume = 0.4
+hoverSound.Parent = workspace
+
+local function clearHighlight()
+	if hoveredObject then
+		highlight.Adornee = nil
+		highlight.Enabled = false
+		hoveredObject = nil
+	end
+end
+
+local function setHighlight(obj)
+	if not (obj:IsA("BasePart") or obj:IsA("Model")) then return end
+	clearHighlight()
+	hoveredObject = obj
+	highlight.Adornee = obj
+	highlight.Enabled = true
+	hoverSound:Play()
+end
+
+local function isStructural(name)
+	if name:find("_Floor$") then return true end
+	if name:find("_Ceiling$") then return true end
+	if name:find("_Light$") then return true end
+	if name:find("_W_") then return true end
+	if name:find("_Base_") then return true end
+	if name:find("_Crown_") then return true end
+	if name:find("HallwayWindow") then return true end
+	if name:find("^Bay") then return true end
+	return false
+end
+
+local function getFloorObject(target)
+	local floor = workspace:FindFirstChild("Floor")
+	if not floor then return nil end
+
+	local isInFloor = false
+	local check = target
+	while check do
+		if check == floor then
+			isInFloor = true
+			break
+		end
+		check = check.Parent
+	end
+	if not isInFloor then return nil end
+
+	local floorObject = target
+	while floorObject and floorObject.Parent ~= floor do
+		floorObject = floorObject.Parent
+	end
+	if floorObject and floorObject.Parent == floor and floorObject.Name == "Anomaly" then
+		local child = target
+		while child and child.Parent ~= floorObject do
+			child = child.Parent
+		end
+		if child then floorObject = child end
+	end
+	if not floorObject then return nil end
+
+	if isStructural(floorObject.Name) then return nil end
+
+	return floorObject
+end
+
+local function addUIScale(gui)
+	if not isMobile then return end
+	local scale = Instance.new("UIScale")
+	scale.Parent = gui
+	local function update()
+		local camera = workspace.CurrentCamera
+		if camera then
+			local sz = camera.ViewportSize
+			local s = math.min(sz.X / 1920, sz.Y / 1080)
+			scale.Scale = math.clamp(s, 0.35, 2)
+		end
+	end
+	update()
+	local conn
+	conn = workspace:GetPropertyChangedSignal("CurrentCamera"):Connect(function()
+		if conn then conn:Disconnect() end
+		update()
+		local cam = workspace.CurrentCamera
+		if cam then
+			cam:GetPropertyChangedSignal("ViewportSize"):Connect(update)
+		end
+	end)
+end
+
+-- Guess display (above hotbar, bottom right)
+local guessGui = Instance.new("ScreenGui")
+guessGui.Name = "GuessDisplay"
+guessGui.ResetOnSpawn = false
+guessGui.Enabled = false
+guessGui.Parent = playerGui
+addUIScale(guessGui)
+
+local guessLabel = Instance.new("TextLabel")
+guessLabel.Name = "GuessLabel"
+guessLabel.Size = UDim2.new(0, 280, 0, 36)
+guessLabel.Position = UDim2.new(1, -295, 1, -55)
+guessLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+guessLabel.BackgroundTransparency = 0.4
+guessLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+guessLabel.TextScaled = true
+guessLabel.TextXAlignment = Enum.TextXAlignment.Center
+guessLabel.Font = Enum.Font.Gotham
+guessLabel.Text = "Your Guess: None"
+guessLabel.Parent = guessGui
+
+-- Confirmation popup
+local confirmGui = Instance.new("ScreenGui")
+confirmGui.Name = "ConfirmPopup"
+confirmGui.ResetOnSpawn = false
+confirmGui.Enabled = false
+confirmGui.Parent = playerGui
+addUIScale(confirmGui)
+
+local overlay = Instance.new("Frame")
+overlay.Name = "Overlay"
+overlay.Size = UDim2.new(1, 0, 1, 0)
+overlay.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+overlay.BackgroundTransparency = 0.6
+overlay.Parent = confirmGui
+
+local popup = Instance.new("Frame")
+popup.Name = "Popup"
+popup.Size = UDim2.new(0, 400, 0, 180)
+popup.Position = UDim2.new(0.5, 0, 0.5, 0)
+popup.AnchorPoint = Vector2.new(0.5, 0.5)
+popup.BackgroundColor3 = Color3.fromRGB(40, 40, 45)
+popup.BorderColor3 = Color3.fromRGB(255, 220, 50)
+popup.BorderSizePixel = 2
+popup.Parent = confirmGui
+
+local popupTitle = Instance.new("TextLabel")
+popupTitle.Name = "Title"
+popupTitle.Size = UDim2.new(1, -40, 0, 50)
+popupTitle.Position = UDim2.new(0, 20, 0, 15)
+popupTitle.BackgroundTransparency = 1
+popupTitle.TextColor3 = Color3.fromRGB(255, 220, 50)
+popupTitle.TextScaled = true
+popupTitle.Font = Enum.Font.GothamBold
+popupTitle.Text = "Confirm your guess"
+popupTitle.Parent = popup
+
+local popupBody = Instance.new("TextLabel")
+popupBody.Name = "Body"
+popupBody.Size = UDim2.new(1, -40, 0, 50)
+popupBody.Position = UDim2.new(0, 20, 0, 65)
+popupBody.BackgroundTransparency = 1
+popupBody.TextColor3 = Color3.fromRGB(200, 200, 200)
+popupBody.TextScaled = true
+popupBody.Font = Enum.Font.Gotham
+popupBody.Text = ""
+popupBody.Parent = popup
+
+local cancelBtn = Instance.new("TextButton")
+cancelBtn.Name = "Cancel"
+cancelBtn.Size = UDim2.new(0, 140, 0, 40)
+cancelBtn.Position = UDim2.new(0.5, -80, 1, -15)
+cancelBtn.AnchorPoint = Vector2.new(0.5, 1)
+cancelBtn.BackgroundColor3 = Color3.fromRGB(80, 80, 85)
+cancelBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+cancelBtn.TextScaled = true
+cancelBtn.Font = Enum.Font.Gotham
+cancelBtn.Text = "Cancel"
+cancelBtn.ZIndex = 10
+cancelBtn.Parent = popup
+
+local confirmBtn = Instance.new("TextButton")
+confirmBtn.Name = "Confirm"
+confirmBtn.Size = UDim2.new(0, 140, 0, 40)
+confirmBtn.Position = UDim2.new(0.5, 80, 1, -15)
+confirmBtn.AnchorPoint = Vector2.new(0.5, 1)
+confirmBtn.BackgroundColor3 = Color3.fromRGB(60, 160, 60)
+confirmBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+confirmBtn.TextScaled = true
+confirmBtn.Font = Enum.Font.GothamBold
+confirmBtn.Text = "Confirm"
+confirmBtn.ZIndex = 10
+confirmBtn.Parent = popup
+
+local pendingGuess = nil
+
+cancelBtn.MouseButton1Click:Connect(function()
+	confirmGui.Enabled = false
+	pendingGuess = nil
+end)
+
+confirmBtn.MouseButton1Click:Connect(function()
+	if pendingGuess then
+		hasGuessed = true
+		currentGuess = pendingGuess
+		guessLabel.Text = "Your Guess: " .. currentGuess
+		Remotes.LogGuess:FireServer(pendingGuess)
+		confirmGui.Enabled = false
+		pendingGuess = nil
+		clearHighlight()
+		clickSound:Play()
+	end
+end)
+
+-- Anomaly Tool
+local scanner = Instance.new("Tool")
+scanner.Name = "Anomaly Tool"
+scanner.RequiresHandle = false
+scanner.ToolTip = "Investigate objects for anomalies"
+scanner.Parent = backpack
+
+scanner.Equipped:Connect(function()
+	toolEquipped = true
+end)
+
+scanner.Unequipped:Connect(function()
+	toolEquipped = false
+	clearHighlight()
+end)
+
+scanner.Activated:Connect(function()
+	if currentPhase ~= "search" then return end
+	if hasGuessed then return end
+	if pendingGuess then return end
+	if confirmGui.Enabled then return end
+
+	local mouse = player:GetMouse()
+	if not mouse or not mouse.Target then return end
+
+	local floorObject = getFloorObject(mouse.Target)
+	if not floorObject then return end
+
+	clearHighlight()
+	confirmGui.Enabled = true
+	pendingGuess = floorObject:GetAttribute("Replaces") or floorObject.Name
+	popupTitle.Text = "Confirm your guess"
+	popupBody.Text = '"' .. pendingGuess .. '"'
+end)
+
+-- No Anomaly tool
+local noAnomaly = Instance.new("Tool")
+noAnomaly.Name = "No Anomaly"
+noAnomaly.RequiresHandle = false
+noAnomaly.ToolTip = "Nothing seems wrong"
+noAnomaly.Parent = backpack
+
+noAnomaly.Activated:Connect(function()
+	if currentPhase ~= "search" then return end
+	if hasGuessed then return end
+	if confirmGui.Enabled then return end
+
+	confirmGui.Enabled = true
+	pendingGuess = "NoAnomaly"
+	popupTitle.Text = "Are you sure?"
+	popupBody.Text = "Do you want to claim there is no anomaly?"
+end)
+
+-- Hover highlight: mouse-based on desktop, camera-center raycast on mobile
+RunService.RenderStepped:Connect(function()
+	if not toolEquipped or hasGuessed or confirmGui.Enabled then
+		clearHighlight()
+		return
+	end
+
+	if isMobile then
+		local camera = workspace.CurrentCamera
+		if not camera then return end
+
+		local params = RaycastParams.new()
+		params.FilterType = Enum.RaycastFilterType.Blacklist
+		params.FilterDescendantsInstances = {player.Character}
+
+		local result = workspace:Raycast(
+			camera.CFrame.Position,
+			camera.CFrame.LookVector * 100,
+			params
+		)
+
+		if result and result.Instance then
+			local floorObject = getFloorObject(result.Instance)
+			if floorObject and floorObject ~= hoveredObject then
+				setHighlight(floorObject)
+			elseif not floorObject then
+				clearHighlight()
+			end
+		else
+			clearHighlight()
+		end
+	else
+		local mouse = player:GetMouse()
+		if not mouse or not mouse.Target then return end
+
+		local floorObject = getFloorObject(mouse.Target)
+		if floorObject and floorObject ~= hoveredObject then
+			setHighlight(floorObject)
+		elseif not floorObject then
+			clearHighlight()
+		end
+	end
+end)
+
+-- Reset on new round
+Remotes.RoundStart.OnClientEvent:Connect(function()
+	hasGuessed = false
+	currentGuess = nil
+	currentPhase = ""
+	guessLabel.Text = "Your Guess: None"
+	clearHighlight()
+	confirmGui.Enabled = false
+end)
+
+Remotes.FloorReset.OnClientEvent:Connect(function()
+	hasGuessed = false
+	currentGuess = nil
+	guessLabel.Text = "Your Guess: None"
+	clearHighlight()
+	confirmGui.Enabled = false
+end)
+
+-- Track phase and show guess display during search
+Remotes.RoundTimerTick.OnClientEvent:Connect(function(seconds, phase)
+	currentPhase = phase
+	guessGui.Enabled = (phase == "search")
+end)
+
+-- Show results on reveal
+Remotes.RevealResults.OnClientEvent:Connect(function()
+	toolEquipped = false
+	clearHighlight()
+	guessGui.Enabled = false
+end)
+]]></string>
+      </Properties>
+    </Item>
+  </Item>
+</roblox>

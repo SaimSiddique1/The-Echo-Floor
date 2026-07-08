@@ -1,0 +1,49 @@
+{
+  "name": "Carpet",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.6667,
+      0.3333,
+      0
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      -18.0885,
+      0.0005,
+      -65.675,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "CGA brown",
+    "Position": [
+      -18.0885,
+      0.0005,
+      -65.675
+    ],
+    "Orientation": [
+      0,
+      0,
+      0
+    ],
+    "Material": "Plastic",
+    "CastShadow": true,
+    "Size": [
+      34.877,
+      0.001,
+      29.35
+    ]
+  }
+}

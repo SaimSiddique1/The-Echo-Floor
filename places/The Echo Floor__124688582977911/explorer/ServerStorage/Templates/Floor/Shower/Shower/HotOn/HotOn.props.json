@@ -1,0 +1,7 @@
+{
+  "name": "HotOn",
+  "className": "BoolValue",
+  "properties": {
+    "Value": false
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "name": "BayBack",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.6667,
+      0.549,
+      0.3922
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      0,
+      1008,
+      31,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Sand yellow metallic",
+    "Position": [
+      0,
+      1008,
+      31
+    ],
+    "Orientation": [
+      0,
+      0,
+      0
+    ],
+    "Material": "Wood",
+    "CastShadow": true,
+    "Size": [
+      15,
+      14,
+      0.3
+    ]
+  }
+}

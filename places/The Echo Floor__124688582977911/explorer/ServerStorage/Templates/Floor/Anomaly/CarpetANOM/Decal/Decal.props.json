@@ -1,0 +1,7 @@
+{
+  "name": "Decal",
+  "className": "Decal",
+  "properties": {
+    "Transparency": 0.1
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "name": "Part",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.5098,
+      0.4314,
+      0.3804
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      -29.8035,
+      4.5387,
+      -54.5856,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Gun metallic",
+    "Position": [
+      -29.8035,
+      4.5387,
+      -54.5856
+    ],
+    "Orientation": [
+      0,
+      0,
+      0
+    ],
+    "Material": "Wood",
+    "CastShadow": true,
+    "Size": [
+      5.6069,
+      1.0579,
+      0.1058
+    ]
+  }
+}

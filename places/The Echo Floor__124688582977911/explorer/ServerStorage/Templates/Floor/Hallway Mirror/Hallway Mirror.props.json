@@ -1,0 +1,49 @@
+{
+  "name": "Hallway Mirror",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0.85,
+    "CanCollide": true,
+    "Color": [
+      0,
+      0,
+      0
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      -0.082,
+      7.5,
+      -50.4995,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Really black",
+    "Position": [
+      -0.082,
+      7.5,
+      -50.4995
+    ],
+    "Orientation": [
+      0,
+      0,
+      0
+    ],
+    "Material": "Glass",
+    "CastShadow": false,
+    "Size": [
+      12.164,
+      12.0187,
+      0.001
+    ]
+  }
+}

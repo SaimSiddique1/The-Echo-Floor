@@ -1,0 +1,28 @@
+{
+  "name": "Frame",
+  "className": "Frame",
+  "properties": {
+    "Visible": true,
+    "Transparency": 0,
+    "Position": [
+      [
+        0,
+        15
+      ],
+      [
+        0,
+        76
+      ]
+    ],
+    "Size": [
+      [
+        1,
+        -30
+      ],
+      [
+        0,
+        30
+      ]
+    ]
+  }
+}

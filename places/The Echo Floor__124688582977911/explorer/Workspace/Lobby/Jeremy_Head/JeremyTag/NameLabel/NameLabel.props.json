@@ -1,0 +1,29 @@
+{
+  "name": "NameLabel",
+  "className": "TextLabel",
+  "properties": {
+    "Visible": true,
+    "Transparency": 1,
+    "Position": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "Text": "Jeremy ATS",
+    "Size": [
+      [
+        1,
+        0
+      ],
+      [
+        0.5,
+        0
+      ]
+    ]
+  }
+}

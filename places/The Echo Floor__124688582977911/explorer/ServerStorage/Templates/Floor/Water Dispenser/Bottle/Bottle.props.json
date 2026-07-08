@@ -1,0 +1,49 @@
+{
+  "name": "Bottle",
+  "className": "MeshPart",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.3137,
+      0.4706,
+      0.5451
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      16.1196,
+      6.3451,
+      -25.5484,
+      -1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "Locked": false,
+    "Transparency": 0.35,
+    "BrickColor": "Steel blue",
+    "Position": [
+      16.1196,
+      6.3451,
+      -25.5484
+    ],
+    "Orientation": [
+      0,
+      180,
+      0
+    ],
+    "Material": "SmoothPlastic",
+    "CastShadow": false,
+    "Size": [
+      1.5272,
+      2.4041,
+      1.5272
+    ]
+  }
+}

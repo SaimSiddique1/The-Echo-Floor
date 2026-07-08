@@ -1,0 +1,49 @@
+{
+  "name": "Meshes/Recliner+2_Mesh2",
+  "className": "MeshPart",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.0667,
+      0.0667,
+      0.0667
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      18.2154,
+      2.0277,
+      0.5634,
+      0.7071,
+      0,
+      0.7071,
+      0,
+      1,
+      0,
+      -0.7071,
+      0,
+      0.7071
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Really black",
+    "Position": [
+      18.2154,
+      2.0277,
+      0.5634
+    ],
+    "Orientation": [
+      0,
+      45,
+      0
+    ],
+    "Material": "SmoothPlastic",
+    "CastShadow": true,
+    "Size": [
+      1.4402,
+      3.0155,
+      3.0694
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "name": "Apple",
+  "className": "MeshPart",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.3098,
+      0.2588,
+      0.2706
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      26.1167,
+      4.6793,
+      21.8826,
+      0.067,
+      0.25,
+      -0.9659,
+      0.25,
+      0.933,
+      0.2588,
+      0.9659,
+      -0.2588,
+      0
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Medium brown",
+    "Position": [
+      26.1167,
+      4.6793,
+      21.8826
+    ],
+    "Orientation": [
+      -15,
+      -90,
+      15
+    ],
+    "Material": "Slate",
+    "CastShadow": true,
+    "Size": [
+      0.6111,
+      0.6897,
+      0.6324
+    ]
+  }
+}

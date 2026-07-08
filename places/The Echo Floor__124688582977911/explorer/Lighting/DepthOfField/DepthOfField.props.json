@@ -1,0 +1,7 @@
+{
+  "name": "DepthOfField",
+  "className": "DepthOfFieldEffect",
+  "properties": {
+    "Enabled": false
+  }
+}

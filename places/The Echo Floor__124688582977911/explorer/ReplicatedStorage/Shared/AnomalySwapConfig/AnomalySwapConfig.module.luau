@@ -1,0 +1,180 @@
+local swapConfig = {
+	["Lamp"] = {
+		show = CFrame.new(-4.773, 5.093, -54.727, 1, -8.74227766e-08, -8.74227766e-08, -8.74227766e-08, -1, 0, -8.74227766e-08, 7.64274186e-15, -1),
+		hide = CFrame.new(-4.773, -200, -54.727, 1, -8.74227766e-08, -8.74227766e-08, -8.74227766e-08, -1, 0, -8.74227766e-08, 7.64274186e-15, -1),
+		replacementShow = CFrame.new(-3, 5.5, -55.737, -4.37113883e-08, 0, 1, 0, 1, 0, -1, 0, -4.37113883e-08),
+		replacementHide = CFrame.new(-3, -200, -55.737, -4.37113883e-08, 0, 1, 0, 1, 0, -1, 0, -4.37113883e-08),
+	},
+	["Painting"] = {
+		show = CFrame.new(-16.27, 115.677, -80.311, -1, 0, -8.74227766e-08, 0, 1, 0, 8.74227766e-08, 0, -1),
+		hide = CFrame.new(-16.27, -200, -80.311, -1, 0, -8.74227766e-08, 0, 1, 0, 8.74227766e-08, 0, -1),
+		replacementShow = CFrame.new(-16.172, 9, -80.26, 4.37113883e-08, -1, 8.74227766e-08, -1, -4.37113883e-08, -0, 3.82137093e-15, -8.74227766e-08, -1),
+		replacementHide = CFrame.new(-16.172, -200, -80.26, 4.37113883e-08, -1, 8.74227766e-08, -1, -4.37113883e-08, -0, 3.82137093e-15, -8.74227766e-08, -1),
+	},
+	["Bed"] = {
+		show = CFrame.new(-46.68, -198, -76.346, 0, 1, 0, 0, 0, -1, -1, 0, 0),
+		hide = CFrame.new(-46.68, -400, -76.346, 0, 1, 0, 0, 0, -1, -1, 0, 0),
+		replacementShow = CFrame.new(-31.678, 1.5, -74.85, -4.37113883e-08, 0, -1, 0, 1, 0, 1, 0, -4.37113883e-08),
+		replacementHide = CFrame.new(-31.678, -200, -74.85, -4.37113883e-08, 0, -1, 0, 1, 0, 1, 0, -4.37113883e-08),
+	},
+	["Carpet"] = {
+		show = CFrame.new(-18.264, 0, -64.971),
+		hide = CFrame.new(-18.264, -200, -64.971),
+		replacementShow = CFrame.new(-18, 0.55, -65.612, -4.37113883e-08, 0, 1, 0, 1, 0, -1, 0, -4.37113883e-08),
+		replacementHide = CFrame.new(-18, -200, -65.612, -4.37113883e-08, 0, 1, 0, 1, 0, -1, 0, -4.37113883e-08),
+	},
+	["Sofa"] = {
+		show = CFrame.new(30.651, 0.936, -16.53),
+		hide = CFrame.new(30.651, -200, -16.53),
+		replacementShow = CFrame.new(28.976, 3.271, -20.042),
+		replacementHide = CFrame.new(28.976, -200, -20.042),
+	},
+	["Bookshelf"] = {
+		show = CFrame.new(34.4360008, 5, 8, -4.37113883e-08, 0, -1, 0, 1, 0, 1, 0, -4.37113883e-08),
+		hide = CFrame.new(34.436, -200, 8, -4.37113883e-08, 0, -1, 0, 1, 0, 1, 0, -4.37113883e-08),
+		replacementShow = CFrame.new(34.325, 5.093, 7.571) * CFrame.Angles(0, math.rad(270), 0),
+		replacementHide = CFrame.new(34.325, -200, 7.571) * CFrame.Angles(0, math.rad(270), 0),
+	},
+	["Recliner Chair"] = {
+		show = CFrame.new(19.6037598, 2.97066092, -1.05041122, 0.707104445, 0, 0.707104445, 0, 1, 0, -0.707104445, 0, 0.707104445),
+		hide = CFrame.new(19.6037598, -200, -1.05041122, 0.707104445, 0, 0.707104445, 0, 1, 0, -0.707104445, 0, 0.707104445),
+		replacementShow = CFrame.new(8.61778259, 3.97400737, -0.0941367149, -0.70710659, 0, -0.70710659, 0, 1, 0, 0.70710659, 0, -0.70710659),
+		replacementHide = CFrame.new(8.61778259, -200, -0.0941367149, -0.70710659, 0, -0.70710659, 0, 1, 0, 0.70710659, 0, -0.70710659),
+	},
+	["Toilet"] = {
+		show = CFrame.new(9.34001064, 3.67990351, -72.0088959, 0, 0, 1, 0, 1, -0, -1, 0, 0),
+		hide = CFrame.new(9.34001064, -200, -72.0088959, 0, 0, 1, 0, 1, -0, -1, 0, 0),
+		replacementShow = CFrame.new(9.17745495, 3.94229126, -71.4890137, -1, 0, 0, 0, 1, 0, 0, 0, -1),
+		replacementHide = CFrame.new(9.17745495, -200, -71.4890137, -1, 0, 0, 0, 1, 0, 0, 0, -1),
+	},
+	["Microwave"] = {
+		show = CFrame.new(8.11566448, 4.9966445, 77.5855026),
+		hide = CFrame.new(8.11566448, -200, 77.5855026),
+		replacementShow = CFrame.new(8.08561611, 5.32972002, 79.0703506),
+		replacementHide = CFrame.new(8.08561611, -200, 79.0703506),
+	},
+	["Safety"] = {
+		show = CFrame.new(27.4760895, 6.62680054, -50.3997192, -1, 0, 0, 0, 1, 0, 0, 0, -1),
+		hide = CFrame.new(27.4760895, -200, -50.3997192, -1, 0, 0, 0, 1, 0, 0, 0, -1),
+		replacementShow = CFrame.new(27.1882362, 6.906003, -50.2999992, 0, 1.49011612e-08, 1, 0, 1, 1.49011612e-08, -1, 0, 0),
+		replacementHide = CFrame.new(27.1882362, -200, -50.2999992, 0, 1.49011612e-08, 1, 0, 1, 1.49011612e-08, -1, 0, 0),
+	},
+	["Vase"] = {
+		show = CFrame.new(23.102, 5.105, 22.119),
+		hide = CFrame.new(23.102, -200, 22.119),
+		replacementShow = CFrame.new(23.102, 5.105, 22.119),
+		replacementHide = CFrame.new(23.102, -200, 22.119),
+	},
+	["TV"] = {
+		show = CFrame.new(-1.8732, 4.1874, -14.0505),
+		hide = CFrame.new(-1.8732, -200, -14.0505),
+		replacementShow = CFrame.new(-2.0017, 4.1874, -10.5214),
+		replacementHide = CFrame.new(-2.0017, -200, -10.5214),
+	},
+	["Bathtub"] = {
+		show = CFrame.new(32.5974, 2.1326, -54.2716),
+		hide = CFrame.new(32.5974, -200, -54.2716),
+		replacementShow = CFrame.new(32.5974, 2.1326, -54.2716),
+		replacementHide = CFrame.new(32.5974, -200, -54.2716),
+	},
+	["Dresser"] = {
+		show = CFrame.new(-29.8035, 4.4506, -53.3337),
+		hide = CFrame.new(-29.8035, -200, -53.3337),
+		replacementShow = CFrame.new(-29.8035, 4.4506, -53.3337),
+		replacementHide = CFrame.new(-29.8035, -200, -53.3337),
+	},
+	["Hallway Table"] = {
+		show = CFrame.new(-30, 2.3, -48.5),
+		hide = CFrame.new(-30, -200, -48.5),
+		replacementShow = CFrame.new(-30, 2.3, -48.5),
+		replacementHide = CFrame.new(-30, -200, -48.5),
+	},
+	["Plate1"] = {
+		show = CFrame.new(19, 3.7685, 22),
+		hide = CFrame.new(19, -200, 22),
+		replacementShow = CFrame.new(19, 3.7685, 22),
+		replacementHide = CFrame.new(19, -200, 22),
+	},
+	["Plate2"] = {
+		show = CFrame.new(22.2478, 3.7685, 24.4623),
+		hide = CFrame.new(22.2478, -200, 24.4623),
+		replacementShow = CFrame.new(22.2478, 3.7685, 24.4623),
+		replacementHide = CFrame.new(22.2478, -200, 24.4623),
+	},
+	["Plate3"] = {
+		show = CFrame.new(26.2697, 3.7685, 24.443),
+		hide = CFrame.new(26.2697, -200, 24.443),
+		replacementShow = CFrame.new(26.2697, 3.7685, 24.443),
+		replacementHide = CFrame.new(26.2697, -200, 24.443),
+	},
+	["Plate4"] = {
+		show = CFrame.new(29.0251, 3.7685, 22.1702),
+		hide = CFrame.new(29.0251, -200, 22.1702),
+		replacementShow = CFrame.new(29.0251, 3.7685, 22.1702),
+		replacementHide = CFrame.new(29.0251, -200, 22.1702),
+	},
+	["Plate5"] = {
+		show = CFrame.new(26.2531, 3.7685, 19.9101),
+		hide = CFrame.new(26.2531, -200, 19.9101),
+		replacementShow = CFrame.new(26.2531, 3.7685, 19.9101),
+		replacementHide = CFrame.new(26.2531, -200, 19.9101),
+	},
+	["Plate6"] = {
+		show = CFrame.new(22.2596, 3.7685, 19.9576),
+		hide = CFrame.new(22.2596, -200, 19.9576),
+		replacementShow = CFrame.new(22.2596, 3.7685, 19.9576),
+		replacementHide = CFrame.new(22.2596, -200, 19.9576),
+	},
+}
+
+local catalog = {
+	["Lamp"] = { region = "Bedroom", type = "Object" },
+	["Painting"] = { region = "Bedroom", type = "Object" },
+	["Bed"] = { region = "Bedroom", type = "Object" },
+	["Carpet"] = { region = "Bedroom", type = "Object" },
+	["Sofa"] = { region = "LivingRoom", type = "Object" },
+	["Bookshelf"] = { region = "LivingRoom", type = "Object" },
+	["Recliner Chair"] = { region = "LivingRoom", type = "Object" },
+	["Toilet"] = { region = "Bathroom", type = "Object" },
+	["Microwave"] = { region = "Kitchen", type = "Object" },
+	["Safety"] = { region = "Hallway", type = "Object" },
+	["Vase"] = { region = "LivingRoom", type = "Object", difficulty = "hard", note = "Subtle: only color/glow changes, shape stays same" },
+	["TV"] = { region = "LivingRoom", type = "Object", difficulty = "hard", note = "TV flipped 180° to face wall" },
+	["Bathtub"] = { region = "Bathroom", type = "Object", difficulty = "easy", note = "Large object, magenta neon glow" },
+	["Dresser"] = { region = "Bedroom", type = "Object", difficulty = "easy", note = "Large object, lime green neon glow" },
+	["Hallway Table"] = { region = "Hallway", type = "Object", difficulty = "easy", note = "Large object, orange neon glow" },
+	["AllPlates"] = { region = "LivingRoom", type = "Object", difficulty = "easy", note = "Dinner replaces 6 plates on dining table" },
+	-- Behavior anomalies
+	["KitchenLights"] = { region = "Kitchen", type = "Lighting" },
+	["HallwayFlicker"] = { region = "Hallway", type = "Lighting" },
+	["BedroomDim"] = { region = "Bedroom", type = "Lighting" },
+	["LivingRoomPulse"] = { region = "LivingRoom", type = "Lighting" },
+	["BathroomGlow"] = { region = "Bathroom", type = "Lighting" },
+	["HallwayFootsteps"] = { region = "Hallway", type = "Audio" },
+	["LivingRoomStatic"] = { region = "LivingRoom", type = "Audio" },
+	["KitchenDrip"] = { region = "Kitchen", type = "Audio" },
+	["BedroomWhispers"] = { region = "Bedroom", type = "Audio" },
+	["BathroomEcho"] = { region = "Bathroom", type = "Audio" },
+	["HallwayWallShift"] = { region = "Hallway", type = "Architecture" },
+	["LivingRoomWallOpen"] = { region = "LivingRoom", type = "Architecture" },
+	["BedroomCeilingOpen"] = { region = "Bedroom", type = "Architecture" },
+	["LivingRoomFloat"] = { region = "LivingRoom", type = "Paranormal" },
+}
+
+local roomBounds = {
+	Hallway = { xMin = -36, xMax = 36, zMin = -51, zMax = -27 },
+	ElevatorLobby = { xMin = -36, xMax = -6, zMin = -27, zMax = 9 },
+	LivingRoom = { xMin = -6, xMax = 36, zMin = -27, zMax = 33 },
+	Kitchen = { xMin = -6, xMax = 30, zMin = 33, zMax = 81 },
+	Bedroom = { xMin = -36, xMax = 0, zMin = -81, zMax = -51 },
+	Bathroom = { xMin = 6, xMax = 36, zMin = -75, zMax = -51 },
+}
+
+local categories = { "Object", "Lighting", "Architecture", "Audio", "Paranormal" }
+
+return {
+	swapConfig = swapConfig,
+	catalog = catalog,
+	roomBounds = roomBounds,
+	categories = categories,
+}

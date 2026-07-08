@@ -1,0 +1,49 @@
+{
+  "name": "Ceiling",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.9412,
+      0.9412,
+      0.9216
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      -46.1,
+      15,
+      -9,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Transparent",
+    "Position": [
+      -46.1,
+      15,
+      -9
+    ],
+    "Orientation": [
+      0,
+      0,
+      0
+    ],
+    "Material": "Plastic",
+    "CastShadow": true,
+    "Size": [
+      18,
+      0.3,
+      22
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "TimerHUD",
+  "className": "LocalScript",
+  "properties": {
+    "Enabled": true
+  }
+}

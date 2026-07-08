@@ -1,0 +1,49 @@
+{
+  "name": "Lights",
+  "className": "UnionOperation",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.8078,
+      0,
+      0
+    ],
+    "Anchored": false,
+    "Massless": false,
+    "CFrame": [
+      -1.8089,
+      3.1341,
+      -15.8151,
+      -1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Really red",
+    "Position": [
+      -1.8089,
+      3.1341,
+      -15.8151
+    ],
+    "Orientation": [
+      0,
+      180,
+      0
+    ],
+    "Material": "Neon",
+    "CastShadow": true,
+    "Size": [
+      0.1239,
+      0.1242,
+      0.619
+    ]
+  }
+}

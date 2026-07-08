@@ -1,0 +1,9 @@
+{
+  "name": "Beam",
+  "className": "Beam",
+  "properties": {
+    "Color": "0 1 1 1 0 1 1 1 1 0 ",
+    "Transparency": "0 0.875 0 1 1 0 ",
+    "Enabled": true
+  }
+}

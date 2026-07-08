@@ -1,0 +1,29 @@
+{
+  "name": "TextLabel",
+  "className": "TextLabel",
+  "properties": {
+    "Visible": true,
+    "Transparency": 1,
+    "Position": [
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        5
+      ]
+    ],
+    "Text": "THE ECHO FLOOR",
+    "Size": [
+      [
+        1,
+        -10
+      ],
+      [
+        1,
+        -10
+      ]
+    ]
+  }
+}

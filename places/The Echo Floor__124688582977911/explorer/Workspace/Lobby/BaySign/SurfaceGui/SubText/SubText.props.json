@@ -1,0 +1,29 @@
+{
+  "name": "SubText",
+  "className": "TextLabel",
+  "properties": {
+    "Visible": true,
+    "Transparency": 1,
+    "Position": [
+      [
+        0,
+        0
+      ],
+      [
+        0.6,
+        0
+      ]
+    ],
+    "Text": "Max 8 Players",
+    "Size": [
+      [
+        1,
+        0
+      ],
+      [
+        0.4,
+        0
+      ]
+    ]
+  }
+}

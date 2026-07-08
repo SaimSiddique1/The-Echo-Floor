@@ -1,0 +1,7 @@
+{
+  "name": "ShopPrompt",
+  "className": "ProximityPrompt",
+  "properties": {
+    "Enabled": true
+  }
+}

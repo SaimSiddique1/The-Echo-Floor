@@ -1,0 +1,49 @@
+{
+  "name": "Meshes/prisontoilet_Cube.002",
+  "className": "MeshPart",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": false,
+    "Color": [
+      0.6392,
+      0.6353,
+      0.6471
+    ],
+    "Anchored": false,
+    "Massless": false,
+    "CFrame": [
+      9.337,
+      291.0812,
+      -74.2682,
+      -1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Medium stone grey",
+    "Position": [
+      9.337,
+      291.0812,
+      -74.2682
+    ],
+    "Orientation": [
+      0,
+      180,
+      0
+    ],
+    "Material": "Metal",
+    "CastShadow": true,
+    "Size": [
+      0.4897,
+      0.4982,
+      0.0818
+    ]
+  }
+}

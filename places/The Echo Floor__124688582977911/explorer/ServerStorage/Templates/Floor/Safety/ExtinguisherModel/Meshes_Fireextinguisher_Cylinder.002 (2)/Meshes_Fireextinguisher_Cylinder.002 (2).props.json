@@ -1,0 +1,49 @@
+{
+  "name": "Meshes/Fireextinguisher_Cylinder.002 (2)",
+  "className": "MeshPart",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": false,
+    "Color": [
+      0.6392,
+      0.6353,
+      0.6471
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      27.4208,
+      7.181,
+      -49.6566,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Medium stone grey",
+    "Position": [
+      27.4208,
+      7.181,
+      -49.6566
+    ],
+    "Orientation": [
+      0,
+      90,
+      0
+    ],
+    "Material": "Metal",
+    "CastShadow": false,
+    "Size": [
+      0.3446,
+      0.3,
+      0.422
+    ]
+  }
+}

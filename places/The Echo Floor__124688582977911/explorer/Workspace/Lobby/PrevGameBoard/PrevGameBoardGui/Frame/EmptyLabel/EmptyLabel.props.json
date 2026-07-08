@@ -1,0 +1,29 @@
+{
+  "name": "EmptyLabel",
+  "className": "TextLabel",
+  "properties": {
+    "Visible": true,
+    "Transparency": 1,
+    "Position": [
+      [
+        0,
+        30
+      ],
+      [
+        0,
+        250
+      ]
+    ],
+    "Text": "No data",
+    "Size": [
+      [
+        1,
+        -60
+      ],
+      [
+        0,
+        40
+      ]
+    ]
+  }
+}

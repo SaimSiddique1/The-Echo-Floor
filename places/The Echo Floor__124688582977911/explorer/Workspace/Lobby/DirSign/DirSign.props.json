@@ -1,0 +1,49 @@
+{
+  "name": "DirSign",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.1961,
+      0.1961,
+      0.2157
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      0,
+      1010,
+      -22.55,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Black",
+    "Position": [
+      0,
+      1010,
+      -22.55
+    ],
+    "Orientation": [
+      0,
+      0,
+      0
+    ],
+    "Material": "Plastic",
+    "CastShadow": true,
+    "Size": [
+      10,
+      0.8,
+      0.2
+    ]
+  }
+}

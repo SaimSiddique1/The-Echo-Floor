@@ -1,0 +1,7 @@
+{
+  "name": "ToolSetup",
+  "className": "Script",
+  "properties": {
+    "Enabled": true
+  }
+}

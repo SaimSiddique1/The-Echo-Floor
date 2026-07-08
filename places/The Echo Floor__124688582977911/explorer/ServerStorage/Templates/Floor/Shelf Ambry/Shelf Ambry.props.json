@@ -1,0 +1,49 @@
+{
+  "name": "Shelf Ambry",
+  "className": "UnionOperation",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.4235,
+      0.3451,
+      0.2941
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      12.7307,
+      11.0782,
+      79.4135,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Pine Cone",
+    "Position": [
+      12.7307,
+      11.0782,
+      79.4135
+    ],
+    "Orientation": [
+      0,
+      0,
+      0
+    ],
+    "Material": "Wood",
+    "CastShadow": true,
+    "Size": [
+      2.8238,
+      3.9099,
+      2.1722
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "name": "Union",
+  "className": "UnionOperation",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.4235,
+      0.3451,
+      0.2941
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      -2.257,
+      6.5166,
+      78.8708,
+      -1,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Pine Cone",
+    "Position": [
+      -2.257,
+      6.5166,
+      78.8708
+    ],
+    "Orientation": [
+      0,
+      0,
+      180
+    ],
+    "Material": "Wood",
+    "CastShadow": true,
+    "Size": [
+      2.8239,
+      13.0332,
+      3.2583
+    ]
+  }
+}

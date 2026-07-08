@@ -1,0 +1,49 @@
+{
+  "name": "Seat",
+  "className": "Seat",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": false,
+    "Color": [
+      0.1059,
+      0.1647,
+      0.2078
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      21.9516,
+      1.9234,
+      17.4213,
+      -1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "Locked": false,
+    "Transparency": 1,
+    "BrickColor": "Black",
+    "Position": [
+      21.9516,
+      1.9234,
+      17.4213
+    ],
+    "Orientation": [
+      0,
+      180,
+      0
+    ],
+    "Material": "Plastic",
+    "CastShadow": true,
+    "Size": [
+      1.7,
+      0.1,
+      1
+    ]
+  }
+}

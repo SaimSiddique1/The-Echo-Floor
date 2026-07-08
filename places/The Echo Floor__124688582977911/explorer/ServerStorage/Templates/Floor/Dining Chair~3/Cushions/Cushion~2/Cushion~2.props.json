@@ -1,0 +1,49 @@
+{
+  "name": "Cushion",
+  "className": "UnionOperation",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": false,
+    "Color": [
+      1,
+      0.9882,
+      0.9647
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      21.9553,
+      2.4789,
+      17.0338,
+      -1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Institutional white",
+    "Position": [
+      21.9553,
+      2.4789,
+      17.0338
+    ],
+    "Orientation": [
+      0,
+      180,
+      0
+    ],
+    "Material": "SmoothPlastic",
+    "CastShadow": true,
+    "Size": [
+      1.9067,
+      0.1405,
+      1.5249
+    ]
+  }
+}

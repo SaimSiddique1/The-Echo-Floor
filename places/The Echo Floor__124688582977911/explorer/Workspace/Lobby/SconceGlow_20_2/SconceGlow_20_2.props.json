@@ -1,0 +1,49 @@
+{
+  "name": "SconceGlow_20_2",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      1,
+      0.902,
+      0.7843
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      20,
+      1010.1,
+      2,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Wheat",
+    "Position": [
+      20,
+      1010.1,
+      2
+    ],
+    "Orientation": [
+      0,
+      0,
+      0
+    ],
+    "Material": "Plastic",
+    "CastShadow": true,
+    "Size": [
+      0.3,
+      0.3,
+      0.3
+    ]
+  }
+}

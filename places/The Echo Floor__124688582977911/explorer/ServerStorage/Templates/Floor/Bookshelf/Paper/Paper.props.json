@@ -1,0 +1,49 @@
+{
+  "name": "Paper",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.6392,
+      0.6353,
+      0.6471
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      34.2985,
+      1.4542,
+      8.5195,
+      -0.2202,
+      0,
+      -0.9755,
+      0,
+      1,
+      0,
+      0.9755,
+      0,
+      -0.2202
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Medium stone grey",
+    "Position": [
+      34.2985,
+      1.4542,
+      8.5195
+    ],
+    "Orientation": [
+      0,
+      -102.72,
+      0
+    ],
+    "Material": "Sand",
+    "CastShadow": true,
+    "Size": [
+      0.95,
+      0.54,
+      0.95
+    ]
+  }
+}

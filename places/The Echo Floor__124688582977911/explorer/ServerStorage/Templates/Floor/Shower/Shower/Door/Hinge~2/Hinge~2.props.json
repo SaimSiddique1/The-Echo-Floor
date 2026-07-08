@@ -1,0 +1,49 @@
+{
+  "name": "Hinge",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0.1,
+    "CanCollide": true,
+    "Color": [
+      0.6392,
+      0.6353,
+      0.6471
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      28.1381,
+      3.878,
+      -73.9326,
+      0,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Medium stone grey",
+    "Position": [
+      28.1381,
+      3.878,
+      -73.9326
+    ],
+    "Orientation": [
+      0,
+      -90,
+      0
+    ],
+    "Material": "Metal",
+    "CastShadow": true,
+    "Size": [
+      0.3217,
+      0.6434,
+      0.3217
+    ]
+  }
+}

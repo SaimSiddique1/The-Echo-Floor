@@ -1,0 +1,49 @@
+{
+  "name": "ElevatorDoor_L",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.7059,
+      0.6863,
+      0.6471
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      -4,
+      1007.5,
+      30.8,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Light grey metallic",
+    "Position": [
+      -4,
+      1007.5,
+      30.8
+    ],
+    "Orientation": [
+      0,
+      0,
+      0
+    ],
+    "Material": "Metal",
+    "CastShadow": true,
+    "Size": [
+      7.7,
+      12,
+      0.3
+    ]
+  }
+}

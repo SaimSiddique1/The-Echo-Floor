@@ -1,0 +1,11 @@
+{
+  "name": "WarmSteam",
+  "className": "ParticleEmitter",
+  "properties": {
+    "Enabled": false,
+    "Transparency": "0 0.9 0 0.8 0.9 0 1 1 0 ",
+    "Color": "0 1 1 1 0 1 1 1 1 0 ",
+    "Orientation": "FacingCamera",
+    "Size": "0 1.63339 0 1 1.63339 0 "
+  }
+}

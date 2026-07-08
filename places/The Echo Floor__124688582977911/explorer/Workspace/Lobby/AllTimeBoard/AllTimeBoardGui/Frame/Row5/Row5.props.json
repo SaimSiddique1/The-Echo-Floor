@@ -1,0 +1,28 @@
+{
+  "name": "Row5",
+  "className": "Frame",
+  "properties": {
+    "Visible": false,
+    "Transparency": 0,
+    "Position": [
+      [
+        0,
+        15
+      ],
+      [
+        0,
+        294
+      ]
+    ],
+    "Size": [
+      [
+        1,
+        -30
+      ],
+      [
+        0,
+        44
+      ]
+    ]
+  }
+}

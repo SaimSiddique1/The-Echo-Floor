@@ -1,0 +1,49 @@
+{
+  "name": "Meshes/prisontoilet_Cylinder.001",
+  "className": "MeshPart",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.6392,
+      0.6353,
+      0.6471
+    ],
+    "Anchored": false,
+    "Massless": false,
+    "CFrame": [
+      8.1343,
+      289.387,
+      -72.2766,
+      -1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Medium stone grey",
+    "Position": [
+      8.1343,
+      289.387,
+      -72.2766
+    ],
+    "Orientation": [
+      0,
+      180,
+      0
+    ],
+    "Material": "Metal",
+    "CastShadow": true,
+    "Size": [
+      0.9047,
+      1.0779,
+      0.741
+    ]
+  }
+}

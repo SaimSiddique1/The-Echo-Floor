@@ -1,0 +1,7 @@
+{
+  "name": "ShopUI",
+  "className": "LocalScript",
+  "properties": {
+    "Enabled": true
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "name": "Terrain",
+  "className": "Terrain",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.6392,
+      0.6353,
+      0.6471
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Locked": true,
+    "Transparency": 0,
+    "BrickColor": "Medium stone grey",
+    "Position": [
+      0,
+      0,
+      0
+    ],
+    "Orientation": [
+      0,
+      0,
+      0
+    ],
+    "Material": "Plastic",
+    "CastShadow": true,
+    "Size": [
+      2044,
+      252,
+      2044
+    ]
+  }
+}

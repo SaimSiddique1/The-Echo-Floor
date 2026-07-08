@@ -1,0 +1,49 @@
+{
+  "name": "HollowerCylinder",
+  "className": "MeshPart",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.0667,
+      0.0667,
+      0.0667
+    ],
+    "Anchored": false,
+    "Massless": false,
+    "CFrame": [
+      -28.1454,
+      2.5641,
+      -48.8447,
+      0,
+      0,
+      1,
+      -1,
+      0,
+      0,
+      0,
+      -1,
+      0
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Really black",
+    "Position": [
+      -28.1454,
+      2.5641,
+      -48.8447
+    ],
+    "Orientation": [
+      0,
+      90,
+      -90
+    ],
+    "Material": "Plastic",
+    "CastShadow": true,
+    "Size": [
+      0.2291,
+      0.0255,
+      0.2291
+    ]
+  }
+}

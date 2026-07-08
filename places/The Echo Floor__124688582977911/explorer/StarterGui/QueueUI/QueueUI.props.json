@@ -1,0 +1,7 @@
+{
+  "name": "QueueUI",
+  "className": "LocalScript",
+  "properties": {
+    "Enabled": true
+  }
+}

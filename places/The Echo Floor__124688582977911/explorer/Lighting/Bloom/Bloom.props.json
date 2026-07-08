@@ -1,0 +1,8 @@
+{
+  "name": "Bloom",
+  "className": "BloomEffect",
+  "properties": {
+    "Enabled": true,
+    "Size": 24
+  }
+}

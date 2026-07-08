@@ -1,0 +1,7 @@
+{
+  "name": "ToolManager",
+  "className": "LocalScript",
+  "properties": {
+    "Enabled": true
+  }
+}

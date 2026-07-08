@@ -1,0 +1,49 @@
+{
+  "name": "Bedroom_W_xMax_-30",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.9216,
+      0.902,
+      0.8824
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      0,
+      7.5,
+      -66,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Phosph. White",
+    "Position": [
+      0,
+      7.5,
+      -66
+    ],
+    "Orientation": [
+      0,
+      0,
+      0
+    ],
+    "Material": "SmoothPlastic",
+    "CastShadow": true,
+    "Size": [
+      1,
+      15,
+      30
+    ]
+  }
+}

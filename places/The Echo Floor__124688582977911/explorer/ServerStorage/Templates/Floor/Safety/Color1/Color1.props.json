@@ -1,0 +1,49 @@
+{
+  "name": "Color1",
+  "className": "MeshPart",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": false,
+    "Color": [
+      0.6235,
+      0.6314,
+      0.6745
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      27.4946,
+      6.627,
+      -48.9315,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Fossil",
+    "Position": [
+      27.4946,
+      6.627,
+      -48.9315
+    ],
+    "Orientation": [
+      0,
+      90,
+      0
+    ],
+    "Material": "SmoothPlastic",
+    "CastShadow": false,
+    "Size": [
+      0.1108,
+      3.2536,
+      1.3362
+    ]
+  }
+}

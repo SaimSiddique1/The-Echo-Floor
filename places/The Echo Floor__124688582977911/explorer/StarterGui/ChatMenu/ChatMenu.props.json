@@ -1,0 +1,7 @@
+{
+  "name": "ChatMenu",
+  "className": "LocalScript",
+  "properties": {
+    "Enabled": true
+  }
+}

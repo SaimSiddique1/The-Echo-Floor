@@ -1,0 +1,29 @@
+{
+  "name": "Title",
+  "className": "TextLabel",
+  "properties": {
+    "Visible": true,
+    "Transparency": 1,
+    "Position": [
+      [
+        0,
+        15
+      ],
+      [
+        0,
+        10
+      ]
+    ],
+    "Text": "ALL TIME",
+    "Size": [
+      [
+        1,
+        -30
+      ],
+      [
+        0,
+        60
+      ]
+    ]
+  }
+}

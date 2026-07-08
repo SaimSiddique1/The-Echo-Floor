@@ -1,0 +1,49 @@
+{
+  "name": "L",
+  "className": "UnionOperation",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.7804,
+      0.6745,
+      0.4706
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      24.1928,
+      11.3887,
+      20.3634,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      -1,
+      1,
+      0,
+      0
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Burlap",
+    "Position": [
+      24.1928,
+      11.3887,
+      20.3634
+    ],
+    "Orientation": [
+      90,
+      -90,
+      0
+    ],
+    "Material": "Neon",
+    "CastShadow": true,
+    "Size": [
+      0.3871,
+      0.3872,
+      0.5026
+    ]
+  }
+}

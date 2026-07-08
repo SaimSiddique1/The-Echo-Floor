@@ -1,0 +1,7 @@
+{
+  "name": "Texture",
+  "className": "Texture",
+  "properties": {
+    "Transparency": 0.5
+  }
+}

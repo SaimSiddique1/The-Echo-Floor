@@ -1,0 +1,49 @@
+{
+  "name": "Steam",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": false,
+    "Color": [
+      0.9725,
+      0.9725,
+      0.9725
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      31.5823,
+      1.7115,
+      -70.4019,
+      0,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "Locked": false,
+    "Transparency": 1,
+    "BrickColor": "Institutional white",
+    "Position": [
+      31.5823,
+      1.7115,
+      -70.4019
+    ],
+    "Orientation": [
+      0,
+      -90,
+      0
+    ],
+    "Material": "Ice",
+    "CastShadow": true,
+    "Size": [
+      6.7459,
+      1.9601,
+      6.4029
+    ]
+  }
+}

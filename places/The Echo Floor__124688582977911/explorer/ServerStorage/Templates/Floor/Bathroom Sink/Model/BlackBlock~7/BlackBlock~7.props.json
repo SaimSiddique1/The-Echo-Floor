@@ -1,0 +1,49 @@
+{
+  "name": "BlackBlock",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.8745,
+      0.8745,
+      0.8706
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      11.3333,
+      2.3125,
+      -61.3167,
+      0,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Quill grey",
+    "Position": [
+      11.3333,
+      2.3125,
+      -61.3167
+    ],
+    "Orientation": [
+      0,
+      -90,
+      0
+    ],
+    "Material": "Marble",
+    "CastShadow": true,
+    "Size": [
+      3.0208,
+      2.4167,
+      0.2417
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Attachment0",
+  "className": "Attachment",
+  "properties": {
+    "Orientation": [
+      0,
+      -90,
+      0
+    ],
+    "CFrame": [
+      0.03,
+      1.31,
+      0.4,
+      0,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "Visible": false,
+    "Position": [
+      0.03,
+      1.31,
+      0.4
+    ]
+  }
+}

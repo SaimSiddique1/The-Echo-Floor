@@ -1,0 +1,49 @@
+{
+  "name": "Part",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": false,
+    "Color": [
+      1,
+      0,
+      1
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      33.21,
+      3.015,
+      -53.0683,
+      0,
+      0.7075,
+      0.7067,
+      -1,
+      0,
+      0,
+      0,
+      -0.7067,
+      0.7075
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Hot pink",
+    "Position": [
+      33.21,
+      3.015,
+      -53.0683
+    ],
+    "Orientation": [
+      0,
+      44.968,
+      -90
+    ],
+    "Material": "Neon",
+    "CastShadow": true,
+    "Size": [
+      0.0359,
+      0.0359,
+      0.0359
+    ]
+  }
+}

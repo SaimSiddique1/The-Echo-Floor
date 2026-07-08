@@ -1,0 +1,49 @@
+{
+  "name": "Interactive",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": false,
+    "Color": [
+      0.9725,
+      0.9725,
+      0.9725
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      31.1901,
+      8.5278,
+      -73.5763,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Institutional white",
+    "Position": [
+      31.1901,
+      8.5278,
+      -73.5763
+    ],
+    "Orientation": [
+      0,
+      90,
+      0
+    ],
+    "Material": "Metal",
+    "CastShadow": true,
+    "Size": [
+      0.6534,
+      0.49,
+      0.8167
+    ]
+  }
+}

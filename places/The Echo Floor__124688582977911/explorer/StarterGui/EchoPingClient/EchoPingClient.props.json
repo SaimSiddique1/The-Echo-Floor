@@ -1,0 +1,7 @@
+{
+  "name": "EchoPingClient",
+  "className": "LocalScript",
+  "properties": {
+    "Enabled": true
+  }
+}

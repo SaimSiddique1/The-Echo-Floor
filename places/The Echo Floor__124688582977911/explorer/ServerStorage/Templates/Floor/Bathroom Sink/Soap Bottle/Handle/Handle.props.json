@@ -1,0 +1,49 @@
+{
+  "name": "Handle",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0.3,
+    "CanCollide": false,
+    "Color": [
+      0.9725,
+      0.9725,
+      0.9725
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      7.7128,
+      5.9189,
+      -62.4025,
+      1,
+      -0.0001,
+      0,
+      0.0001,
+      1,
+      -0.0001,
+      0,
+      0.0001,
+      1
+    ],
+    "Locked": false,
+    "Transparency": 0.5,
+    "BrickColor": "Institutional white",
+    "Position": [
+      7.7128,
+      5.9189,
+      -62.4025
+    ],
+    "Orientation": [
+      0.004,
+      0.002,
+      0.003
+    ],
+    "Material": "Ice",
+    "CastShadow": true,
+    "Size": [
+      0.677,
+      1.1212,
+      0.825
+    ]
+  }
+}

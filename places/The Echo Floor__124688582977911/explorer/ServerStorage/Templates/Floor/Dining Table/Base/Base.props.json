@@ -1,0 +1,49 @@
+{
+  "name": "Base",
+  "className": "MeshPart",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.2118,
+      0.1765,
+      0.1529
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      24,
+      2.1056,
+      22,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Black",
+    "Position": [
+      24,
+      2.1056,
+      22
+    ],
+    "Orientation": [
+      0,
+      90,
+      0
+    ],
+    "Material": "Wood",
+    "CastShadow": true,
+    "Size": [
+      7.7499,
+      3.2113,
+      13.5692
+    ]
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "name": "TheEchoFloor",
+  "globIgnorePaths": [
+    "**/*.md",
+    "game-docs/**"
+  ],
+  "tree": {
+    "$className": "DataModel",
+
+    "ServerScriptService": {
+      "$className": "ServerScriptService",
+      "Core": {
+        "$path": "src/server"
+      }
+    },
+
+    "ReplicatedStorage": {
+      "$className": "ReplicatedStorage",
+      "Shared": {
+        "$path": "src/shared"
+      },
+      "Remotes": {
+        "$className": "Folder",
+        "LogGuess": { "$className": "RemoteEvent" },
+        "RoundTimerTick": { "$className": "RemoteEvent" },
+        "RoundStart": { "$className": "RemoteEvent" },
+        "RoundEnd": { "$className": "RemoteEvent" },
+        "RevealResults": { "$className": "RemoteEvent" },
+        "FloorReset": { "$className": "RemoteEvent" },
+        "RoundChatStart": { "$className": "RemoteEvent" },
+        "LockInGuess": { "$className": "RemoteEvent" },
+        "QueueUpdate": { "$className": "RemoteEvent" },
+        "QueueExit": { "$className": "RemoteEvent" },
+        "SpectateInfo": { "$className": "RemoteEvent" },
+        "BuyCosmetic": { "$className": "RemoteEvent" },
+        "EquipCosmetic": { "$className": "RemoteEvent" },
+        "GetShopData": { "$className": "RemoteFunction" },
+        "BuyEchoPing": { "$className": "RemoteEvent" },
+        "UseEchoPing": { "$className": "RemoteFunction" },
+        "DevGrantCoins": { "$className": "RemoteEvent" }
+      },
+      "Tools": {
+        "$path": "src/tools"
+      }
+    },
+
+    "ServerStorage": {
+      "$className": "ServerStorage",
+      "Templates": {
+        "$className": "Folder",
+        "Floor": { "$className": "Folder" }
+      }
+    },
+
+    "StarterGui": {
+      "$className": "StarterGui",
+      "$path": "src/gui"
+    },
+
+    "Lighting": {
+      "$className": "Lighting"
+    },
+
+    "SoundService": {
+      "$className": "SoundService"
+    }
+  }
+}

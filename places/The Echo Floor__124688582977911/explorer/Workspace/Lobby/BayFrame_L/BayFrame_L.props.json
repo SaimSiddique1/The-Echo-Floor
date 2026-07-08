@@ -1,0 +1,49 @@
+{
+  "name": "BayFrame_L",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.2745,
+      0.2549,
+      0.2353
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      -8,
+      1007.5,
+      23,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Medium brown",
+    "Position": [
+      -8,
+      1007.5,
+      23
+    ],
+    "Orientation": [
+      0,
+      0,
+      0
+    ],
+    "Material": "Metal",
+    "CastShadow": true,
+    "Size": [
+      0.8,
+      14,
+      0.8
+    ]
+  }
+}

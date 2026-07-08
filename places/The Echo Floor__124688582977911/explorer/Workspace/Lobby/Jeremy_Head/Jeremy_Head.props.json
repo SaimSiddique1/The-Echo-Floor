@@ -1,0 +1,49 @@
+{
+  "name": "Jeremy_Head",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.902,
+      0.7843,
+      0.6667
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      0,
+      1004.6,
+      -20,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Light red",
+    "Position": [
+      0,
+      1004.6,
+      -20
+    ],
+    "Orientation": [
+      0,
+      0,
+      0
+    ],
+    "Material": "Plastic",
+    "CastShadow": true,
+    "Size": [
+      1.2,
+      1.2,
+      1.2
+    ]
+  }
+}

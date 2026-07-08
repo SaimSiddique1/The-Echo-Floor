@@ -1,0 +1,49 @@
+{
+  "name": "Corner sofa _PILLOW_002",
+  "className": "MeshPart",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.2863,
+      0.3216,
+      0.3647
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      32.1775,
+      4.9441,
+      -9.4211,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Dark grey metallic",
+    "Position": [
+      32.1775,
+      4.9441,
+      -9.4211
+    ],
+    "Orientation": [
+      0,
+      90,
+      0
+    ],
+    "Material": "Fabric",
+    "CastShadow": true,
+    "Size": [
+      3.246,
+      2.715,
+      2.1012
+    ]
+  }
+}

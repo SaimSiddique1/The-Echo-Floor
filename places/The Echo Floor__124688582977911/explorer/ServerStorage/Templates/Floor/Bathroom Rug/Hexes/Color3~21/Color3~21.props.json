@@ -1,0 +1,49 @@
+{
+  "name": "Color3",
+  "className": "WedgePart",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.1059,
+      0.1647,
+      0.2078
+    ],
+    "Anchored": false,
+    "Massless": false,
+    "CFrame": [
+      13.5001,
+      0.5451,
+      -55.1003,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Black",
+    "Position": [
+      13.5001,
+      0.5451,
+      -55.1003
+    ],
+    "Orientation": [
+      0,
+      0,
+      -90
+    ],
+    "Material": "Grass",
+    "CastShadow": false,
+    "Size": [
+      0.05,
+      0.6,
+      0.4
+    ]
+  }
+}

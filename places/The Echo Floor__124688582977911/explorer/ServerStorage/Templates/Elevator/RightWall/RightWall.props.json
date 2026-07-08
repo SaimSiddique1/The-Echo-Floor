@@ -1,0 +1,49 @@
+{
+  "name": "RightWall",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.6667,
+      0.549,
+      0.3922
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      -46.1,
+      7.5,
+      2,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Sand yellow metallic",
+    "Position": [
+      -46.1,
+      7.5,
+      2
+    ],
+    "Orientation": [
+      0,
+      0,
+      0
+    ],
+    "Material": "Wood",
+    "CastShadow": true,
+    "Size": [
+      18,
+      15,
+      0.5
+    ]
+  }
+}

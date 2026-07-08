@@ -1,0 +1,49 @@
+{
+  "name": "Living Room Rug",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.0667,
+      0.0667,
+      0.0667
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      13.26,
+      0.6,
+      -13.61,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Really black",
+    "Position": [
+      13.26,
+      0.6,
+      -13.61
+    ],
+    "Orientation": [
+      0,
+      0,
+      0
+    ],
+    "Material": "Grass",
+    "CastShadow": true,
+    "Size": [
+      15.48,
+      0.2,
+      16.78
+    ]
+  }
+}

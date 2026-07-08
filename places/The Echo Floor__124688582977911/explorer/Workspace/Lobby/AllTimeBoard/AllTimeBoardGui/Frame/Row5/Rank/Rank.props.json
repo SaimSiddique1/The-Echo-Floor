@@ -1,0 +1,29 @@
+{
+  "name": "Rank",
+  "className": "TextLabel",
+  "properties": {
+    "Visible": true,
+    "Transparency": 1,
+    "Position": [
+      [
+        0,
+        10
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "Text": "5",
+    "Size": [
+      [
+        0,
+        80
+      ],
+      [
+        1,
+        0
+      ]
+    ]
+  }
+}

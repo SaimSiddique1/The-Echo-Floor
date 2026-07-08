@@ -1,0 +1,17 @@
+{
+  "name": "JeremyTag",
+  "className": "BillboardGui",
+  "properties": {
+    "Enabled": true,
+    "Size": [
+      [
+        0,
+        200
+      ],
+      [
+        0,
+        60
+      ]
+    ]
+  }
+}

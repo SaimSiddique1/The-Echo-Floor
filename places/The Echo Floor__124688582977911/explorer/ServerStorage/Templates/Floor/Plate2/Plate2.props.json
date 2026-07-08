@@ -1,0 +1,49 @@
+{
+  "name": "Plate2",
+  "className": "MeshPart",
+  "properties": {
+    "Reflectance": 0.1,
+    "CanCollide": true,
+    "Color": [
+      0.8353,
+      0.8353,
+      0.8353
+    ],
+    "Anchored": true,
+    "Massless": false,
+    "CFrame": [
+      22.2478,
+      3.7685,
+      24.4623,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Mid gray",
+    "Position": [
+      22.2478,
+      3.7685,
+      24.4623
+    ],
+    "Orientation": [
+      0,
+      0,
+      0
+    ],
+    "Material": "SmoothPlastic",
+    "CastShadow": true,
+    "Size": [
+      1.5749,
+      0.1145,
+      1.5784
+    ]
+  }
+}

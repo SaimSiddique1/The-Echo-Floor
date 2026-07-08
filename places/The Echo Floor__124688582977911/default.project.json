@@ -1,0 +1,35 @@
+{
+  "name": "The Echo Floor\t",
+  "tree": {
+    "$className": "DataModel",
+    "Workspace": {
+      "$path": "explorer/Workspace"
+    },
+    "ReplicatedStorage": {
+      "$path": "explorer/ReplicatedStorage"
+    },
+    "ReplicatedFirst": {
+      "$path": "explorer/ReplicatedFirst"
+    },
+    "ServerScriptService": {
+      "$path": "explorer/ServerScriptService"
+    },
+    "ServerStorage": {
+      "$path": "explorer/ServerStorage"
+    },
+    "StarterGui": {
+      "$path": "explorer/StarterGui"
+    },
+    "Lighting": {
+      "$path": "explorer/Lighting"
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "$path": "explorer/StarterPlayer/StarterPlayerScripts"
+      },
+      "StarterCharacterScripts": {
+        "$path": "explorer/StarterPlayer/StarterCharacterScripts"
+      }
+    }
+  }
+}
