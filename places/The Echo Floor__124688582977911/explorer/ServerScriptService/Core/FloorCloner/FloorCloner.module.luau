@@ -12,7 +12,6 @@ local function destroyScripts(inst)
 			child:Destroy()
 		end
 	end
-	-- Also catch anything named "PoseTexture" or "Package"
 	for _, child in inst:GetDescendants() do
 		if child.Name == "PoseTexture" or child.Name == "Package" then
 			child:Destroy()

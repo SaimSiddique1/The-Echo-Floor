@@ -191,32 +191,6 @@ local function equipCosmetic(player, cosmeticId)
 	return true, "Equipped"
 end
 
-local function init()
-	Players.PlayerAdded:Connect(function(player)
-		local data = loadStats(player.UserId)
-		data.coins = 1000
-		data.echoPings = 5
-		createLeaderstats(player, data)
-		saveStats(player.UserId, data)
-	end)
-
-	Players.PlayerRemoving:Connect(function(player)
-		local data = loadStats(player.UserId)
-		local ls = player:FindFirstChild("leaderstats")
-		if ls then
-			local p = ls:FindFirstChild("Points")
-			if p then data.points = p.Value end
-			local c = ls:FindFirstChild("Correct")
-			if c then data.correct = c.Value end
-			local r = ls:FindFirstChild("Rounds")
-			if r then data.gamesPlayed = r.Value end
-			local coins = ls:FindFirstChild("Coins")
-			if coins then data.coins = coins.Value end
-		end
-		saveStats(player.UserId, data)
-	end)
-end
-
 local function getTopPlayers(callback)
 	local ok, pages = pcall(function()
 		return leaderStore:GetSortedAsync(false, 10)
@@ -247,6 +221,32 @@ local function getTopPlayers(callback)
 		})
 	end
 	callback(results)
+end
+
+local function init()
+	Players.PlayerAdded:Connect(function(player)
+		local data = loadStats(player.UserId)
+		data.coins = 1000
+		data.echoPings = 5
+		createLeaderstats(player, data)
+		saveStats(player.UserId, data)
+	end)
+
+	Players.PlayerRemoving:Connect(function(player)
+		local data = loadStats(player.UserId)
+		local ls = player:FindFirstChild("leaderstats")
+		if ls then
+			local p = ls:FindFirstChild("Points")
+			if p then data.points = p.Value end
+			local c = ls:FindFirstChild("Correct")
+			if c then data.correct = c.Value end
+			local r = ls:FindFirstChild("Rounds")
+			if r then data.gamesPlayed = r.Value end
+			local coins = ls:FindFirstChild("Coins")
+			if coins then data.coins = coins.Value end
+		end
+		saveStats(player.UserId, data)
+	end)
 end
 
 return {

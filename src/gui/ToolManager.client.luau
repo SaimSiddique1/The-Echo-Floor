@@ -368,6 +368,22 @@ RunService.Heartbeat:Connect(function()
 	end
 end)
 
+-- No Anomaly tool handler
+local function handleNoAnomalyTool(tool)
+	if tool.Name ~= "No Anomaly" then return end
+	local con
+	con = tool.Activated:Connect(function()
+		Remotes.LogGuess:FireServer(nil)
+	end)
+	table.insert(toolConnections, con)
+end
+player.Backpack.ChildAdded:Connect(function(tool)
+	if tool.Name == "No Anomaly" then handleNoAnomalyTool(tool) end
+end)
+for _, v in player.Backpack:GetChildren() do
+	if v:IsA("Tool") and v.Name == "No Anomaly" then handleNoAnomalyTool(v) end
+end
+
 -- Build persistent selection labels (separate from barGui)
 local function buildSelectionLabels()
 	if selGui then selGui:Destroy() end

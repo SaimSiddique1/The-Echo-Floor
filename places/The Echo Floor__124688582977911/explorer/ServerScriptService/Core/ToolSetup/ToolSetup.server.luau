@@ -1,6 +1,3 @@
--- ToolSetup.server.luau
--- Creates anomaly tools in StarterPack so they appear in the hotbar on mobile
-
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local StarterPack = game:GetService("StarterPack")
 
@@ -83,7 +80,6 @@ noAnomaly.RequiresHandle = false
 noAnomaly.ToolTip = "Nothing seems wrong"
 noAnomaly.Parent = StarterPack
 
--- Echo Ping tool
 local function buildEchoPingTool()
 	local tool = Instance.new("Tool")
 	tool.Name = "Echo Ping"

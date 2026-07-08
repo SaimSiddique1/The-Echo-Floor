@@ -1,30 +1,24 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Remotes = ReplicatedStorage.Remotes
 local UserInputService = game:GetService("UserInputService")
-local StarterGui = game:GetService("StarterGui")
 local player = game:GetService("Players").LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
-local RunService = game:GetService("RunService")
 local isMobile = UserInputService.TouchEnabled and not UserInputService.MouseEnabled
 local currentPhase = ""
+local searchResetDone = false
 
 local ROOMS = { "Panic", "Hallway", "LivingRoom", "Kitchen", "Bedroom", "Bathroom" }
 local CATEGORIES = { "Object", "Lighting", "Architecture", "Audio", "Paranormal" }
 
-local guessGui
-local selectionGui
-local typeLabel
-local roomSelectLabel
+local barGui
+local selGui
 local hasGuessed = false
-local currentGuess = ""
+local selectedRoom = nil
+local selectedCategory = nil
 local toolConnections = {}
-local selectionEnabled = false
 
-local function addUIScale(gui)
-	local uiscale = Instance.new("UIScale")
-	uiscale.Name = "UIScale"
-	uiscale.Parent = gui
-end
+local roomSelectionLabel
+local typeSelectionLabel
 
 local function detectRegion(target, hitPoint)
 	local floor = workspace:FindFirstChild("Floor")
@@ -32,15 +26,9 @@ local function detectRegion(target, hitPoint)
 	local regions = floor:FindFirstChild("Regions")
 	if regions then
 		for _, v in regions:GetChildren() do
-			if v:IsA("BasePart") and v.CFrame:PointToObjectSpace(hitPoint or target.Position).Y >= 0 then
-				local inside = false
-				if v.Size.X > 0 and v.Size.Z > 0 then
-					local rel = v.CFrame:PointToObjectSpace(hitPoint or target.Position)
-					if math.abs(rel.X) <= v.Size.X / 2 and math.abs(rel.Z) <= v.Size.Z / 2 then
-						inside = true
-					end
-				end
-				if inside then
+			if v:IsA("BasePart") then
+				local rel = v.CFrame:PointToObjectSpace(hitPoint or target.Position)
+				if math.abs(rel.X) <= v.Size.X / 2 and math.abs(rel.Z) <= v.Size.Z / 2 then
 					return v.Name
 				end
 			end
@@ -56,65 +44,54 @@ local function detectRegion(target, hitPoint)
 	return nil
 end
 
-local function resetCategorySelection()
-	selectedCategory = nil
-	if lockInBtn then lockInBtn.Visible = false end
-	if panicLabel then panicLabel.Visible = false end
-	if categoryButtons then
-		for _, ob in ipairs(categoryButtons) do
-			ob.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
-			ob.BorderSizePixel = 0
-			ob:SetAttribute("Selected", false)
-			ob.Visible = true
+local function updateSelectionLabels()
+	if roomSelectionLabel then
+		roomSelectionLabel.Text = selectedRoom and ("Room: " .. selectedRoom) or "Room: None"
+	end
+	if typeSelectionLabel then
+		typeSelectionLabel.Text = selectedCategory and ("Type: " .. selectedCategory) or "Type: None"
+	end
+	if barGui then
+		local combo = barGui:FindFirstChild("SelectionCombo")
+		if combo then
+			local room = selectedRoom
+			local cat = selectedCategory
+			if not room and not cat then
+				combo.Text = ""
+			elseif room == "Panic" then
+				combo.Text = "Panic  —  All is Wrong"
+			else
+				combo.Text = (room or "—") .. "  |  " .. (cat or "—")
+			end
 		end
 	end
 end
 
-local function closeSelection()
-	selectionGui.Enabled = false
+local function closeBar()
+	if barGui then barGui.Enabled = false end
 	selectedRoom = nil
 	selectedCategory = nil
-	if lockInBtn then lockInBtn.Visible = false end
-	if panicLabel then panicLabel.Visible = false end
-	if roomButtons then
-		for _, ob in ipairs(roomButtons) do
-			ob.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
-			ob.BorderSizePixel = 0
-			ob:SetAttribute("Selected", false)
-		end
-	end
-	if categoryButtons then
-		for _, ob in ipairs(categoryButtons) do
-			ob.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
-			ob.BorderSizePixel = 0
-			ob:SetAttribute("Selected", false)
-			ob.Visible = true
-		end
-	end
+	updateSelectionLabels()
 end
 
 local function submitGuess()
 	if not selectedRoom or not selectedCategory then return end
 	hasGuessed = true
-	currentGuess = selectedRoom .. " · " .. selectedCategory
 	Remotes.LogGuess:FireServer({ region = selectedRoom, category = selectedCategory })
-	closeSelection()
-	clickSound:Play()
+	closeBar()
 end
 
-local function buildGuessUI()
-	if guessGui then
-		guessGui:Destroy()
-	end
-	guessGui = Instance.new("ScreenGui")
-	guessGui.Name = "GuessGUI"
-	guessGui.ResetOnSpawn = false
-	guessGui.Enabled = false
-	guessGui.Parent = playerGui
-	if isMobile then
-		guessGui.IgnoreGuiInset = true
-	end
-	addUIScale(guessGui)
+local function buildBars()
+	if barGui then barGui:Destroy() end
+
+	barGui = Instance.new("ScreenGui")
+	barGui.Name = "AnomalyBar"
+	barGui.ResetOnSpawn = false
+	barGui.Enabled = false
+	barGui.Parent = playerGui
+	if isMobile then barGui.IgnoreGuiInset = true end
+
+	-- click sound removed
 
 	local bottomInset = 0
 	if isMobile then
@@ -122,82 +99,34 @@ local function buildGuessUI()
 		bottomInset = safe.Bottom
 	end
 
-	local clickSound = Instance.new("Sound")
-	clickSound.SoundId = "rbxasset://sounds/UI/click-forward.wav"
-	clickSound.Volume = 0.5
-	clickSound.Parent = guessGui
-
-	-- Top label: detected region
-	roomSelectLabel = Instance.new("TextLabel")
-	roomSelectLabel.Name = "RoomSelectLabel"
-	roomSelectLabel.Size = UDim2.new(0, 200, 0, 36)
-	roomSelectLabel.Position = UDim2.new(0, 15, 1, -55)
-	roomSelectLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	roomSelectLabel.BackgroundTransparency = 0.4
-	roomSelectLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
-	roomSelectLabel.TextScaled = true
-	roomSelectLabel.TextXAlignment = Enum.TextXAlignment.Center
-	roomSelectLabel.Font = Enum.Font.Gotham
-	roomSelectLabel.Text = "Room: None"
-	roomSelectLabel.Parent = guessGui
-
-	typeLabel = Instance.new("TextLabel")
-	typeLabel.Name = "TypeLabel"
-	typeLabel.Size = UDim2.new(0, 200, 0, 36)
-	typeLabel.Position = UDim2.new(0, 15, 1, -90)
-	typeLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	typeLabel.BackgroundTransparency = 0.4
-	typeLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
-	typeLabel.TextScaled = true
-	typeLabel.TextXAlignment = Enum.TextXAlignment.Center
-	typeLabel.Font = Enum.Font.Gotham
-	typeLabel.Text = "Type: None"
-	typeLabel.Parent = guessGui
-
-	-- Selection HUD (horizontal bars left+right of hotbar)
-	selectionGui = Instance.new("ScreenGui")
-	selectionGui.Name = "SelectionHUD"
-	selectionGui.ResetOnSpawn = false
-	selectionGui.Enabled = false
-	selectionGui.Parent = playerGui
-	if isMobile then
-		selectionGui.IgnoreGuiInset = true
-	end
-	addUIScale(selectionGui)
-
-	local BAR_H = isMobile and 50 or 40
 	local BTN_W = isMobile and 120 or 88
 	local BTN_H = isMobile and 44 or 34
 	local LABEL_W = 44
-	local GAP = isMobile and 6 or 4
-	local Y_OFFSET = BAR_H + 18
-
-	selectedRoom = nil
-	selectedCategory = nil
+	local GAP = 4
+	local BAR_PAD = 8
+	local BAR_H = isMobile and 50 or 40
 
 	local roomButtons = {}
 	local categoryButtons = {}
 	local lockInBtn
-	local roomStartX = 8 + LABEL_W + GAP
+	local panicLabel
 
-	-- Left bar (rooms)
 	local leftBar = Instance.new("Frame")
 	leftBar.Name = "LeftBar"
-	leftBar.Size = UDim2.new(0, 10, 0, BAR_H)
-	leftBar.Position = UDim2.new(0, 8, 1, -(bottomInset + BAR_H + Y_OFFSET))
+	leftBar.Size = UDim2.new(0, LABEL_W + GAP + #ROOMS * (BTN_W + GAP), 0, BAR_H)
+	leftBar.Position = UDim2.new(0, 8, 1, -(bottomInset + BAR_H + 30))
 	leftBar.BackgroundColor3 = Color3.fromRGB(10, 10, 14)
 	leftBar.BackgroundTransparency = 0.08
 	leftBar.BorderSizePixel = 0
-	leftBar.Parent = selectionGui
+	leftBar.Parent = barGui
 
-	local barCorner = Instance.new("UICorner")
-	barCorner.CornerRadius = UDim.new(0, 8)
-	barCorner.Parent = leftBar
+	local leftBarCorner = Instance.new("UICorner")
+	leftBarCorner.CornerRadius = UDim.new(0, 8)
+	leftBarCorner.Parent = leftBar
 
 	local roomLabel = Instance.new("TextLabel")
-	roomLabel.Name = "RoomLabel"
 	roomLabel.Size = UDim2.new(0, LABEL_W, 0, BTN_H)
-	roomLabel.Position = UDim2.new(0, 8, 0.5, -BTN_H / 2)
+	roomLabel.Position = UDim2.new(0, BAR_PAD, 0.5, -BTN_H / 2)
 	roomLabel.BackgroundTransparency = 1
 	roomLabel.TextColor3 = Color3.fromRGB(255, 220, 100)
 	roomLabel.TextScaled = true
@@ -206,6 +135,7 @@ local function buildGuessUI()
 	roomLabel.Text = "ROOM"
 	roomLabel.Parent = leftBar
 
+	local roomStartX = BAR_PAD + LABEL_W + GAP
 	for i, r in ipairs(ROOMS) do
 		local pb = Instance.new("TextButton")
 		pb.Name = "RoomBtn_" .. r
@@ -217,10 +147,8 @@ local function buildGuessUI()
 		pb.TextColor3 = Color3.fromRGB(200, 200, 200)
 		pb.TextScaled = true
 		pb.Font = Enum.Font.Gotham
-		pb.TextXAlignment = Enum.TextXAlignment.Center
 		pb.Text = r
 		pb.Parent = leftBar
-		pb:SetAttribute("Selected", false)
 
 		local btnCorner = Instance.new("UICorner")
 		btnCorner.CornerRadius = UDim.new(0, 6)
@@ -231,51 +159,52 @@ local function buildGuessUI()
 			for _, ob in ipairs(roomButtons) do
 				ob.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
 				ob.BorderSizePixel = 0
-				ob:SetAttribute("Selected", false)
 			end
 			pb.BackgroundColor3 = Color3.fromRGB(50, 80, 160)
 			pb.BorderSizePixel = 1
 			pb.BorderColor3 = Color3.fromRGB(80, 140, 255)
-			pb:SetAttribute("Selected", true)
 			selectedRoom = r
-			roomSelectLabel.Text = "Room: " .. r
+
 			if r == "Panic" then
 				selectedCategory = "Panic"
-				typeLabel.Text = "Type: All is Wrong"
 				lockInBtn.Visible = true
-				if panicLabel then
-					panicLabel.Visible = true
-				end
-				if categoryButtons then
-					for _, ob in ipairs(categoryButtons) do
-						ob.Visible = false
-					end
+				panicLabel.Visible = true
+				for _, ob in ipairs(categoryButtons) do
+					ob.Visible = false
 				end
 			else
-				resetCategorySelection()
+				selectedCategory = nil
+				lockInBtn.Visible = false
+				panicLabel.Visible = false
+				for _, ob in ipairs(categoryButtons) do
+					ob.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
+					ob.BorderSizePixel = 0
+					ob.Visible = true
+				end
 			end
+			updateSelectionLabels()
 		end)
 		table.insert(roomButtons, pb)
 	end
 
-	-- Right bar (categories + cancel)
+	local totalCatW = LABEL_W + GAP + #CATEGORIES * (BTN_W + GAP)
+
 	local rightBar = Instance.new("Frame")
 	rightBar.Name = "RightBar"
-	rightBar.Size = UDim2.new(0, 10, 0, BAR_H)
-	rightBar.Position = UDim2.new(1, -18, 1, -(bottomInset + BAR_H + Y_OFFSET))
+	rightBar.Size = UDim2.new(0, totalCatW, 0, BAR_H)
+	rightBar.Position = UDim2.new(1, -(8 + totalCatW), 1, -(bottomInset + BAR_H + 30))
 	rightBar.BackgroundColor3 = Color3.fromRGB(10, 10, 14)
 	rightBar.BackgroundTransparency = 0.08
 	rightBar.BorderSizePixel = 0
-	rightBar.Parent = selectionGui
+	rightBar.Parent = barGui
 
-	local barCorner2 = Instance.new("UICorner")
-	barCorner2.CornerRadius = UDim.new(0, 8)
-	barCorner2.Parent = rightBar
+	local rightBarCorner = Instance.new("UICorner")
+	rightBarCorner.CornerRadius = UDim.new(0, 8)
+	rightBarCorner.Parent = rightBar
 
 	local catLabel = Instance.new("TextLabel")
-	catLabel.Name = "CatLabel"
 	catLabel.Size = UDim2.new(0, LABEL_W, 0, BTN_H)
-	catLabel.Position = UDim2.new(0, 8, 0.5, -BTN_H / 2)
+	catLabel.Position = UDim2.new(0, BAR_PAD, 0.5, -BTN_H / 2)
 	catLabel.BackgroundTransparency = 1
 	catLabel.TextColor3 = Color3.fromRGB(255, 220, 100)
 	catLabel.TextScaled = true
@@ -284,37 +213,33 @@ local function buildGuessUI()
 	catLabel.Text = "TYPE"
 	catLabel.Parent = rightBar
 
-	local panicLabel = Instance.new("TextLabel")
+	local typeStartX = BAR_PAD + LABEL_W + GAP
+
+	panicLabel = Instance.new("TextLabel")
 	panicLabel.Name = "PanicLabel"
-	panicLabel.Size = UDim2.new(0, 160, 0, BTN_H)
-	panicLabel.Position = UDim2.new(0, 8 + LABEL_W + GAP, 0.5, -BTN_H / 2)
+	panicLabel.Size = UDim2.new(0, totalCatW - LABEL_W - GAP - BAR_PAD, 0, BTN_H)
+	panicLabel.Position = UDim2.new(0, typeStartX, 0.5, -BTN_H / 2)
 	panicLabel.BackgroundTransparency = 1
 	panicLabel.TextColor3 = Color3.fromRGB(255, 80, 80)
 	panicLabel.TextScaled = true
 	panicLabel.Font = Enum.Font.GothamBold
-	panicLabel.TextXAlignment = Enum.TextXAlignment.Center
 	panicLabel.Text = "All is Wrong"
 	panicLabel.Visible = false
 	panicLabel.Parent = rightBar
-
-	categoryButtons = {}
-	local catStartX = 8 + LABEL_W + GAP
 
 	for i, c in ipairs(CATEGORIES) do
 		local pb = Instance.new("TextButton")
 		pb.Name = "CatBtn_" .. c
 		pb.Size = UDim2.new(0, BTN_W, 0, BTN_H)
-		pb.Position = UDim2.new(0, catStartX + (i - 1) * (BTN_W + GAP), 0.5, -BTN_H / 2)
+		pb.Position = UDim2.new(0, typeStartX + (i - 1) * (BTN_W + GAP), 0.5, -BTN_H / 2)
 		pb.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
 		pb.BackgroundTransparency = 0.3
 		pb.BorderSizePixel = 0
 		pb.TextColor3 = Color3.fromRGB(200, 200, 200)
 		pb.TextScaled = true
 		pb.Font = Enum.Font.Gotham
-		pb.TextXAlignment = Enum.TextXAlignment.Center
 		pb.Text = c
 		pb.Parent = rightBar
-		pb:SetAttribute("Selected", false)
 
 		local btnCorner = Instance.new("UICorner")
 		btnCorner.CornerRadius = UDim.new(0, 6)
@@ -325,34 +250,31 @@ local function buildGuessUI()
 			for _, ob in ipairs(categoryButtons) do
 				ob.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
 				ob.BorderSizePixel = 0
-				ob:SetAttribute("Selected", false)
 			end
 			pb.BackgroundColor3 = Color3.fromRGB(50, 130, 50)
 			pb.BorderSizePixel = 1
 			pb.BorderColor3 = Color3.fromRGB(80, 255, 80)
-			pb:SetAttribute("Selected", true)
 			selectedCategory = c
-			typeLabel.Text = "Type: " .. c
 			lockInBtn.Visible = selectedRoom ~= nil
+			updateSelectionLabels()
 		end)
 		table.insert(categoryButtons, pb)
 	end
 
-	-- Lock In button (below the left bar)
 	local LOCK_W = isMobile and 140 or 100
 	local LOCK_H = isMobile and 44 or 34
 	lockInBtn = Instance.new("TextButton")
 	lockInBtn.Name = "LockInBtn"
 	lockInBtn.Size = UDim2.new(0, LOCK_W, 0, LOCK_H)
+	lockInBtn.Position = UDim2.new(0.5, -LOCK_W / 2, 1, -(bottomInset + BAR_H + 60 + 8 + LOCK_H))
 	lockInBtn.BackgroundColor3 = Color3.fromRGB(60, 160, 60)
 	lockInBtn.BorderSizePixel = 0
 	lockInBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
 	lockInBtn.TextScaled = true
 	lockInBtn.Font = Enum.Font.GothamBold
-	lockInBtn.TextXAlignment = Enum.TextXAlignment.Center
 	lockInBtn.Text = "Lock In"
 	lockInBtn.Visible = false
-	lockInBtn.Parent = selectionGui
+	lockInBtn.Parent = barGui
 
 	local lockCorner = Instance.new("UICorner")
 	lockCorner.CornerRadius = UDim.new(0, 6)
@@ -360,116 +282,200 @@ local function buildGuessUI()
 
 	lockInBtn.MouseButton1Click:Connect(submitGuess)
 
-	return guessGui, selectionGui
+	local combo = Instance.new("TextLabel")
+	combo.Name = "SelectionCombo"
+	combo.Size = UDim2.new(0, 300, 0, isMobile and 22 or 16)
+	combo.Position = UDim2.new(0.5, -150, 1, -(bottomInset + BAR_H + 30 + 8 + LOCK_H + 4 + (isMobile and 22 or 16)))
+	combo.BackgroundTransparency = 1
+	combo.TextColor3 = Color3.fromRGB(200, 200, 200)
+	combo.TextScaled = true
+	combo.Font = Enum.Font.GothamBold
+	combo.TextXAlignment = Enum.TextXAlignment.Center
+	combo.Text = ""
+	combo.Parent = barGui
+
 end
 
-local function enableSelection()
-	if not guessGui then return end
-	selectionGui.Enabled = true
-	selectionEnabled = true
-	hasGuessed = false
+local function showBars()
+	if not barGui then buildBars() end
+	barGui.Enabled = true
 	selectedRoom = nil
 	selectedCategory = nil
-	roomSelectLabel.Text = "Room: None"
-	typeLabel.Text = "Type: None"
-	closeSelection()
-	selectionGui.Enabled = true
-end
-
-local function disableSelection()
-	if not guessGui then return end
-	selectionGui.Enabled = false
-	selectionEnabled = false
+	hasGuessed = false
+	if barGui.LeftBar then
+		for _, ob in ipairs(barGui.LeftBar:GetChildren()) do
+			if ob:IsA("TextButton") then
+				ob.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
+				ob.BorderSizePixel = 0
+			end
+		end
+	end
+	if barGui.RightBar then
+		for _, ob in ipairs(barGui.RightBar:GetChildren()) do
+			if ob:IsA("TextButton") then
+				ob.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
+				ob.BorderSizePixel = 0
+			end
+		end
+		local pl = barGui.RightBar:FindFirstChild("PanicLabel")
+		if pl then pl.Visible = false end
+	end
+	updateSelectionLabels()
 end
 
 local function handleTool(tool)
 	if not tool then return end
-	if tool.Name ~= "Anomaly Scanner" then return end
+	if tool.Name ~= "Anomaly Tool" then return end
 
 	local con
-	con = tool.Activated:Connect(function()
-		if not selectionEnabled then return end
-		if hasGuessed then return end
+	con = tool.Equipped:Connect(function()
 		if currentPhase ~= "search" then return end
-
-		local target, hitPoint
-		if isMobile then
-			local camera = workspace.CurrentCamera
-			local ray = camera:ScreenPointToRay(camera.ViewportSize.X / 2, camera.ViewportSize.Y / 2)
-			local params = RaycastParams.new()
-			params.FilterType = Enum.RaycastFilterType.Blacklist
-			params.FilterDescendantsInstances = { player.Character }
-			local result = workspace:Raycast(ray.Origin, ray.Direction * 200, params)
-			if result then
-				target = result.Instance
-				hitPoint = result.Position
-			end
-		else
-			local mouse = player:GetMouse()
-			target = mouse.Target
-			hitPoint = mouse.Hit.Position
-		end
-
-		local regionName = detectRegion(target, hitPoint)
-		if regionName then
-			roomSelectLabel.Text = "Room: " .. regionName
-		else
-			roomSelectLabel.Text = "Unknown room"
-		end
-
-		if not selectionGui.Enabled then
-			enableSelection()
-		else
-			selectionGui.Enabled = true
-		end
+		if hasGuessed then return end
+		showBars()
 	end)
 	table.insert(toolConnections, con)
+
+	local decon
+	decon = tool.Deactivated:Connect(function()
+		if barGui then barGui.Enabled = false end
+	end)
+	table.insert(toolConnections, decon)
 end
 
-local function onToolAdded(tool)
+player.Backpack.ChildAdded:Connect(function(tool)
 	task.spawn(handleTool, tool)
-end
-
-player.Backpack.ChildAdded:Connect(onToolAdded)
+end)
 for _, v in player.Backpack:GetChildren() do
 	if v:IsA("Tool") then
 		task.spawn(handleTool, v)
 	end
 end
 
+local RunService = game:GetService("RunService")
+RunService.Heartbeat:Connect(function()
+	if barGui and barGui.Enabled then
+		local char = player.Character
+		local hasTool = false
+		if char then
+			local tool = char:FindFirstChildOfClass("Tool")
+			if tool and tool.Name == "Anomaly Tool" then
+				hasTool = true
+			end
+		end
+		if not hasTool then
+			barGui.Enabled = false
+		end
+	end
+end)
+
+-- No Anomaly tool handler
+local function handleNoAnomalyTool(tool)
+	if tool.Name ~= "No Anomaly" then return end
+	local con
+	con = tool.Activated:Connect(function()
+		Remotes.LogGuess:FireServer(nil)
+	end)
+	table.insert(toolConnections, con)
+end
+player.Backpack.ChildAdded:Connect(function(tool)
+	if tool.Name == "No Anomaly" then handleNoAnomalyTool(tool) end
+end)
+for _, v in player.Backpack:GetChildren() do
+	if v:IsA("Tool") and v.Name == "No Anomaly" then handleNoAnomalyTool(v) end
+end
+
+-- Build persistent selection labels (separate from barGui)
+local function buildSelectionLabels()
+	if selGui then selGui:Destroy() end
+
+	selGui = Instance.new("ScreenGui")
+	selGui.Name = "SelectionLabels"
+	selGui.ResetOnSpawn = false
+	selGui.Enabled = false
+	selGui.Parent = playerGui
+	if isMobile then selGui.IgnoreGuiInset = true end
+
+	local SEL_H = isMobile and 32 or 28
+	local PAD = 2
+	local BW = 180
+
+	local leftBox = Instance.new("Frame")
+	leftBox.Name = "LeftBox"
+	leftBox.Size = UDim2.new(0, BW + PAD * 2, 0, SEL_H + PAD * 2)
+	leftBox.Position = UDim2.new(0, 8, 1, -(SEL_H + PAD * 2 + 4))
+	leftBox.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	leftBox.BackgroundTransparency = 0.5
+	leftBox.BorderSizePixel = 0
+	leftBox.Parent = selGui
+
+	local leftBoxCorner = Instance.new("UICorner")
+	leftBoxCorner.CornerRadius = UDim.new(0, 4)
+	leftBoxCorner.Parent = leftBox
+
+	roomSelectionLabel = Instance.new("TextLabel")
+	roomSelectionLabel.Name = "RoomSelectionLabel"
+	roomSelectionLabel.Size = UDim2.new(0, BW + PAD, 0, SEL_H)
+	roomSelectionLabel.Position = UDim2.new(0, PAD, 0, PAD)
+	roomSelectionLabel.BackgroundTransparency = 1
+	roomSelectionLabel.TextColor3 = Color3.fromRGB(255, 220, 100)
+	roomSelectionLabel.TextScaled = true
+	roomSelectionLabel.Font = Enum.Font.GothamBold
+	roomSelectionLabel.TextXAlignment = Enum.TextXAlignment.Left
+	roomSelectionLabel.Text = "Room: None"
+	roomSelectionLabel.Parent = leftBox
+
+	local rightBox = Instance.new("Frame")
+	rightBox.Name = "RightBox"
+	rightBox.Size = UDim2.new(0, BW + PAD * 2, 0, SEL_H + PAD * 2)
+	rightBox.Position = UDim2.new(1, -(8 + BW + PAD * 2), 1, -(SEL_H + PAD * 2 + 4))
+	rightBox.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	rightBox.BackgroundTransparency = 0.5
+	rightBox.BorderSizePixel = 0
+	rightBox.Parent = selGui
+
+	local rightBoxCorner = Instance.new("UICorner")
+	rightBoxCorner.CornerRadius = UDim.new(0, 4)
+	rightBoxCorner.Parent = rightBox
+
+	typeSelectionLabel = Instance.new("TextLabel")
+	typeSelectionLabel.Name = "TypeSelectionLabel"
+	typeSelectionLabel.Size = UDim2.new(0, BW + PAD, 0, SEL_H)
+	typeSelectionLabel.Position = UDim2.new(0, 0, 0, PAD)
+	typeSelectionLabel.BackgroundTransparency = 1
+	typeSelectionLabel.TextColor3 = Color3.fromRGB(100, 255, 100)
+	typeSelectionLabel.TextScaled = true
+	typeSelectionLabel.Font = Enum.Font.GothamBold
+	typeSelectionLabel.TextXAlignment = Enum.TextXAlignment.Right
+	typeSelectionLabel.Text = "Type: None"
+	typeSelectionLabel.Parent = rightBox
+end
+
+buildSelectionLabels()
+
 Remotes.RoundTimerTick.OnClientEvent:Connect(function(seconds, phase)
 	currentPhase = phase
 	if phase == "search" then
-		if not guessGui then
-			buildGuessUI()
-			enableSelection()
-		else
-			enableSelection()
+		if selGui then
+			selGui.Enabled = true
+			if not searchResetDone then
+				selectedRoom = nil
+				selectedCategory = nil
+				updateSelectionLabels()
+				searchResetDone = true
+			end
 		end
-	elseif phase == "intermission" then
-		disableSelection()
-	elseif phase == "reveal" then
-		disableSelection()
 	else
-		disableSelection()
+		if selGui then selGui.Enabled = false end
+		if barGui then barGui.Enabled = false end
+		searchResetDone = false
 	end
-end)
-
-Remotes.RoundStart.OnClientEvent:Connect(function()
-	if not guessGui then
-		buildGuessUI()
-	end
-	hasGuessed = false
-	closeSelection()
-end)
-
-Remotes.RoundEnd.OnClientEvent:Connect(function()
-	disableSelection()
-	closeSelection()
 end)
 
 Remotes.FloorReset.OnClientEvent:Connect(function()
-	disableSelection()
-	closeSelection()
+	if barGui then barGui.Enabled = false end
+	if selGui then selGui.Enabled = false end
 	hasGuessed = false
+	selectedRoom = nil
+	selectedCategory = nil
+	searchResetDone = false
 end)

@@ -14,16 +14,17 @@ local GameState = require(script.Parent.GameState)
 local AnomalyConfig = require(ReplicatedStorage.Shared.AnomalySwapConfig)
 local Remotes = ReplicatedStorage.Remotes
 
-local GOING_UP_TIME = 3
-local EXPLORE_TIME = 1
-local INTERMISSION_TIME = 3
-local REVEAL_TIME = 4
-local BOARDING_TIME = 3
+local GOING_UP_TIME = 5
+local EXPLORE_TIME = 60
+local INTERMISSION_TIME = 5
+local REVEAL_TIME = 8
+local BOARDING_TIME = 5
 
 local scores = {}
 local allOriginalPlayers = {}
 local currentAnomalyName = nil
 local isSearchPhase = false
+local isPanicFloor = false
 
 local function findElevator()
 	return Workspace:FindFirstChild("Elevator")
@@ -240,7 +241,7 @@ local function showPhase(screen, title, subtitle, body, timerSeconds)
 	if rb then rb.Visible = false end
 end
 
-local function showResultsOnScreen(screen, results, anomalyName)
+local function showResultsOnScreen(screen, results, anomalyName, panicLabel)
 	local sg = screen:FindFirstChild("ResultsGui")
 	if not sg then return end
 
@@ -249,7 +250,11 @@ local function showResultsOnScreen(screen, results, anomalyName)
 	local oldPodium = sg:FindFirstChild("PodiumFrame")
 	if oldPodium then oldPodium:Destroy() end
 
-	sg:FindFirstChild("Title").Text = "ROUND RESULTS"
+	if panicLabel then
+		sg:FindFirstChild("Title").Text = "⚠ " .. panicLabel .. " ⚠"
+	else
+		sg:FindFirstChild("Title").Text = "ROUND RESULTS"
+	end
 	sg:FindFirstChild("Subtitle").Visible = false
 	sg:FindFirstChild("Body").Visible = false
 	sg:FindFirstChild("Timer").Visible = false
@@ -342,7 +347,9 @@ local function showResultsOnScreen(screen, results, anomalyName)
 	end
 	local anomalyMeta = anomalyName and AnomalyConfig.catalog[anomalyName]
 	anomalyLabel.Visible = true
-	if anomalyMeta then
+	if panicLabel then
+		anomalyLabel.Text = "⚠ " .. panicLabel .. " ⚠"
+	elseif anomalyMeta then
 		anomalyLabel.Text = "ANOMALY: " .. anomalyName .. "  —  " .. anomalyMeta.region .. " · " .. anomalyMeta.type
 	else
 		anomalyLabel.Text = "ANOMALY: " .. (anomalyName or "None")
@@ -503,7 +510,11 @@ local function returnAllPlayers()
 end
 
 local function getSearchTime(floorNum)
-	return 15
+	if floorNum == 1 then return 60 end
+	if floorNum <= 3 then return 55 end
+	if floorNum <= 6 then return 50 end
+	if floorNum <= 9 then return 40 end
+	return 35
 end
 
 local function runIntermissionPhase(players, screen, floorNum)
@@ -540,7 +551,7 @@ local function runIntermissionPhase(players, screen, floorNum)
 	end
 end
 
-local function runSearchPhase(players, screen, floorNum, anomalyName)
+local function runSearchPhase(players, screen, floorNum, anomalyName, panicLabel)
 	local guesses = {}
 	local guessNames = {}
 	local guessTimes = {}
@@ -573,7 +584,10 @@ local function runSearchPhase(players, screen, floorNum, anomalyName)
 
 		if type(data) ~= "table" or not data.region or not data.category then return end
 
-		if anomalyName then
+		if panicLabel then
+			-- Panic floor: every room and every category is affected
+			guesses[player.UserId] = { region = data.region, category = data.category, regionCorrect = true, categoryCorrect = true }
+		elseif anomalyName then
 			local meta = AnomalyConfig.catalog[anomalyName]
 			local regionCorrect = meta and (data.region == meta.region) or false
 			local categoryCorrect = meta and (data.category == meta.type) or false
@@ -589,10 +603,17 @@ local function runSearchPhase(players, screen, floorNum, anomalyName)
 
 	while remaining > 0 and guessCount < totalPlayers do
 		Remotes.RoundTimerTick:FireAllClients(remaining, "search")
-		showPhase(screen, "FLOOR " .. floorNum,
-			"FIND THE ANOMALY",
-			"Use your anomaly scanner to investigate.\nPick a room and type, then press Lock In.",
-			remaining)
+		if panicLabel then
+			showPhase(screen, "⚠ " .. panicLabel .. " ⚠",
+				"EVERYTHING IS WRONG",
+				"Every room has an anomaly!\nPick any room and type — or trust your gut with Panic.",
+				remaining)
+		else
+			showPhase(screen, "FLOOR " .. floorNum,
+				"FIND THE ANOMALY",
+				"Use your anomaly scanner to investigate.\nPick a room and type, then press Lock In.",
+				remaining)
+		end
 		task.wait(1)
 		remaining -= 1
 	end
@@ -603,7 +624,7 @@ local function runSearchPhase(players, screen, floorNum, anomalyName)
 	return guesses, guessNames, guessTimes
 end
 
-local function scoreAndReveal(players, guesses, guessNames, guessTimes, anomalyName, floorNum, screen)
+local function scoreAndReveal(players, guesses, guessNames, guessTimes, anomalyName, floorNum, screen, panicLabel)
 	local correctEntries = {}
 	for _, player in ipairs(players) do
 		local guess = guesses[player.UserId]
@@ -631,7 +652,7 @@ local function scoreAndReveal(players, guesses, guessNames, guessTimes, anomalyN
 		local categoryCorrect = type(guess) == "table" and guess.categoryCorrect or false
 		local correct = regionCorrect and categoryCorrect
 		local abstained = (guess == nil)
-		local noAnomaly = (type(guess) == "table" and guess.isNoAnomaly) and (anomalyName == nil)
+		local noAnomaly = (type(guess) == "table" and guess.isNoAnomaly) and (anomalyName == nil) and not panicLabel
 		local time = guessTimes[player.UserId]
 		local bonus = bonusMap[player.UserId] or 0
 
@@ -690,7 +711,7 @@ local function scoreAndReveal(players, guesses, guessNames, guessTimes, anomalyN
 		end
 	end
 
-	showResultsOnScreen(screen, results, anomalyName)
+	showResultsOnScreen(screen, results, anomalyName, panicLabel)
 	Remotes.RevealResults:FireAllClients(results)
 
 	if anomalyName then
@@ -753,15 +774,20 @@ local function runExplorePhase(players, screen)
 	end
 end
 
-local function goingUpSequence(floorNum, doAnomalySwap, screen)
+local function goingUpSequence(floorNum, doAnomalySwap, screen, panicLabel)
 	local anomalyName = nil
 	currentAnomalyName = nil
 	setDoors(false)
 	updateDisplay("▲\nto Floor " .. floorNum)
+	local phaseLabel = panicLabel and "PANIC: " .. panicLabel or "GOING UP"
 	for i = GOING_UP_TIME, 1, -1 do
 		Remotes.RoundTimerTick:FireAllClients(i, "goingUp")
 		if screen then
-			showPhase(screen, "GOING UP", nil, "Something changed while you weren't looking...", i)
+			if panicLabel then
+				showPhase(screen, "⚠ " .. panicLabel .. " ⚠", nil, "Every anomaly is active!\nSomething is wrong in every room.", i)
+			else
+				showPhase(screen, phaseLabel, nil, "Something changed while you weren't looking...", i)
+			end
 		end
 		if i == GOING_UP_TIME and doAnomalySwap then
 			anomalyName = AnomalySwapper.swapAnomaly()
@@ -793,6 +819,7 @@ local function Start(players)
 	Remotes.UseEchoPing.OnServerInvoke = function(player)
 		if not player then return nil end
 		if not isSearchPhase then return nil end
+		if isPanicFloor then return { room = "any", type = "any" } end
 		if not currentAnomalyName then return nil end
 		local meta = AnomalyConfig.catalog[currentAnomalyName]
 		if not meta then return nil end
@@ -854,19 +881,31 @@ local function Start(players)
 	while #survivingPlayers > 0 do
 		floorNum += 1
 
+		-- Roll for panic floor
+		isPanicFloor = math.random() < AnomalySwapper.PANIC_CHANCE
+		local panicType = isPanicFloor and AnomalySwapper.rollPanicType() or nil
+		local panicLabel = panicType and AnomalySwapper.panicFloors[panicType] and AnomalySwapper.panicFloors[panicType].label or nil
+
 		floor = FloorCloner.spawnFloor()
 		AnomalySwapper.hideAllReplacements()
 		screen = addResultsScreen(floor)
 
-		local anomalyName = goingUpSequence(floorNum, true, screen)
-		setDoors(true)
-		updateDisplay(tostring(floorNum))
+		local anomalyName = goingUpSequence(floorNum, not isPanicFloor, screen, panicLabel)
 
-		local guesses, guessNames, guessTimes = runSearchPhase(survivingPlayers, screen, floorNum, anomalyName)
+		-- Apply panic floor after going up (replaces single anomaly)
+		if isPanicFloor and panicType then
+			AnomalySwapper.applyPanic(panicType, floor)
+			anomalyName = nil
+		end
+
+		setDoors(true)
+		updateDisplay(isPanicFloor and "⚠" or tostring(floorNum))
+
+		local guesses, guessNames, guessTimes = runSearchPhase(survivingPlayers, screen, floorNum, anomalyName, panicLabel)
 
 		runIntermissionPhase(survivingPlayers, screen, floorNum)
 
-		survivingPlayers, eliminated = scoreAndReveal(survivingPlayers, guesses, guessNames, guessTimes, anomalyName, floorNum, screen)
+		survivingPlayers, eliminated = scoreAndReveal(survivingPlayers, guesses, guessNames, guessTimes, anomalyName, floorNum, screen, panicLabel)
 
 		if #survivingPlayers == 0 then
 			AnomalySwapper.revertAll()

@@ -158,7 +158,7 @@ local catalog = {
 	["HallwayWallShift"] = { region = "Hallway", type = "Architecture" },
 	["LivingRoomWallOpen"] = { region = "LivingRoom", type = "Architecture" },
 	["BedroomCeilingOpen"] = { region = "Bedroom", type = "Architecture" },
-	["LivingRoomFloat"] = { region = "LivingRoom", type = "Paranormal" },
+	["LivingRoomFloat"] = { region = "LivingRoom", type = "Paranormal", difficulty = "easy", note = "All LivingRoom furniture flipped upside-down on ceiling" },
 }
 
 local roomBounds = {

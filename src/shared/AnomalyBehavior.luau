@@ -35,6 +35,8 @@ local function removeSpatialSound(floor, roomName)
 	if part then part:Destroy() end
 end
 
+local flipState = {}
+
 local behaviors = {
 	-- ========= LIGHTING =========
 	KitchenLights = {
@@ -356,39 +358,38 @@ local behaviors = {
 		region = "LivingRoom",
 		type = "Paranormal",
 		apply = function(floor)
-			local floatParts = {}
+			local bounds = AnomalyConfig.roomBounds["LivingRoom"]
+			local ceilingY = 15
+			local parts = {}
 			for _, v in floor:GetDescendants() do
-				if v:IsA("BasePart") and v.Anchored and v.Name:find("LivingRoom") then
-					local n = v.Name
-					if n:find("_Floor") or n:find("_W_") or n:find("_Ceiling") or n:find("_Base") or n:find("_Crown") or n:find("_Light") then
-						-- structural, skip
-					elseif v:IsA("BasePart") then
-						table.insert(floatParts, v)
+				if v:IsA("BasePart") and v.Transparency < 0.8 then
+					local pos = v.Position
+					if pos.X >= bounds.xMin and pos.X <= bounds.xMax and pos.Z >= bounds.zMin and pos.Z <= bounds.zMax then
+						local n = v.Name
+						if not (n:find("_Floor") or n:find("_W_") or n:find("_Ceiling") or n:find("_Base") or n:find("_Crown") or n:find("_Light")) then
+							table.insert(parts, { part = v, origin = v.CFrame })
+							local cf = v.CFrame
+							local halfHeight = v.Size.Y / 2
+							v.Anchored = true
+							v.CFrame = CFrame.new(cf.X, ceilingY - halfHeight, cf.Z) * CFrame.Angles(math.rad(180), 0, 0)
+						end
 					end
 				end
 			end
-			local connections = {}
-			for _, p in ipairs(floatParts) do
-				local origin = p.CFrame
-				local conn
-				conn = RunService.Heartbeat:Connect(function()
-					if not p.Parent then conn:Disconnect() return end
-					local offset = Vector3.new(0, math.sin(os.clock() * 1.5 + p:GetHashCode() or 0) * 0.3, 0)
-					p.CFrame = origin * CFrame.new(offset)
-				end)
-				table.insert(connections, conn)
-			end
-			floatParts._connections = connections
-			floor:SetAttribute("FloatAnomalyActive", true)
-			task.spawn(function() -- store ref to cleanup
-				repeat task.wait(1) until not floor:GetAttribute("FloatAnomalyActive")
-				for _, conn in ipairs(connections) do
-					conn:Disconnect()
-				end
-			end)
+			if #parts == 0 then warn("LivingRoomFloat: no parts found") return end
+			flipState[floor] = parts
 		end,
 		revert = function(floor)
-			floor:SetAttribute("FloatAnomalyActive", false)
+			local parts = flipState[floor]
+			if parts then
+				for _, entry in ipairs(parts) do
+					if entry.part and entry.part.Parent then
+						entry.part.Anchored = false
+						entry.part.CFrame = entry.origin
+					end
+				end
+				flipState[floor] = nil
+			end
 		end,
 	},
 
