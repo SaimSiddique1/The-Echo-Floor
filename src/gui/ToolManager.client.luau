@@ -254,7 +254,7 @@ local function buildBars()
 		lockInBtn = Instance.new("TextButton")
 		lockInBtn.Name = "LockInBtn"
 		lockInBtn.Size = UDim2.new(0, LOCK_W, 0, LOCK_H)
-		lockInBtn.Position = UDim2.new(0.5, -LOCK_W / 2, 1, -(bottomInset + 50))
+		lockInBtn.Position = UDim2.new(0.5, -LOCK_W / 2, 1, -(bottomInset + 20))
 		lockInBtn.BackgroundColor3 = Color3.fromRGB(60, 160, 60)
 		lockInBtn.BorderSizePixel = 0
 		lockInBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -268,11 +268,10 @@ local function buildBars()
 		lk.Parent = lockInBtn
 		lockInBtn.MouseButton1Click:Connect(submitGuess)
 
-		-- Combo label above lockin
 		local combo = Instance.new("TextLabel")
 		combo.Name = "SelectionCombo"
 		combo.Size = UDim2.new(0, 200, 0, 18)
-		combo.Position = UDim2.new(0.5, -100, 1, -(LOCK_H + 8 + 4))
+		combo.Position = UDim2.new(0.5, -100, 1, -(bottomInset + 56))
 		combo.BackgroundTransparency = 1
 		combo.TextColor3 = Color3.fromRGB(200, 200, 200)
 		combo.TextScaled = true
