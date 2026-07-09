@@ -97,12 +97,8 @@ local function buildBars()
 
 	local bottomInset = 0
 	if isMobile then
-		local ok, safe = pcall(function()
-			return GuiService:GetSafeAreaInsets()
-		end)
-		if ok and safe then
-			bottomInset = safe.Bottom
-		end
+		local _, br = GuiService:GetGuiInset()
+		bottomInset = br.Y
 	end
 
 	local BTN_W = isMobile and 70 or 88
