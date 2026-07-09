@@ -205,6 +205,7 @@ local function swapAnomaly()
 
 	local behaviorPool = {}
 	for bName, _ in pairs(Behaviors) do
+		if bName == "HallwayWallShift" then continue end
 		if not usedAnomalies[bName] then
 			table.insert(behaviorPool, { name = bName, type = "behavior" })
 		end
@@ -239,7 +240,7 @@ local function swapAnomaly()
 		end
 	end
 
-	local chosenName = "HallwayWallShift"
+	local chosenName = combined[math.random(1, #combined)].name
 	usedAnomalies[chosenName] = true
 	print("Anomaly activated: " .. chosenName)
 

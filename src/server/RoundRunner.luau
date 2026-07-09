@@ -14,8 +14,8 @@ local GameState = require(script.Parent.GameState)
 local AnomalyConfig = require(ReplicatedStorage.Shared.AnomalySwapConfig)
 local Remotes = ReplicatedStorage.Remotes
 
-local GOING_UP_TIME = 3
-local EXPLORE_TIME = 3
+local GOING_UP_TIME = 5
+local EXPLORE_TIME = 10
 local INTERMISSION_TIME = 3
 local REVEAL_TIME = 4
 local BOARDING_TIME = 3
@@ -597,25 +597,30 @@ local function runSearchPhase(players, screen, floorNum, anomalyName, panicLabel
 		Remotes.LogGuess:FireClient(player, "logged")
 	end)
 
-	while remaining > 0 and guessCount < totalPlayers do
-		Remotes.RoundTimerTick:FireAllClients(remaining, "search")
-		if panicLabel then
-			showPhase(screen, "⚠ " .. panicLabel .. " ⚠",
-				"EVERYTHING IS WRONG",
-				"Every room has an anomaly!\nPick any room and type — or trust your gut with Panic.",
-				remaining)
-		else
-			showPhase(screen, "FLOOR " .. floorNum,
-				"FIND THE ANOMALY",
-				"Use your anomaly scanner to investigate.\nPick a room and type, then press Lock In.",
-				remaining)
+	local success, err = pcall(function()
+		while remaining > 0 and guessCount < totalPlayers do
+			Remotes.RoundTimerTick:FireAllClients(remaining, "search")
+			if panicLabel then
+				showPhase(screen, "⚠ " .. panicLabel .. " ⚠",
+					"EVERYTHING IS WRONG",
+					"Every room has an anomaly!\nPick any room and type — or trust your gut with Panic.",
+					remaining)
+			else
+				showPhase(screen, "FLOOR " .. floorNum,
+					"FIND THE ANOMALY",
+					"Use your anomaly scanner to investigate.\nPick a room and type, then press Lock In.",
+					remaining)
+			end
+			task.wait(1)
+			remaining -= 1
 		end
-		task.wait(1)
-		remaining -= 1
-	end
+	end)
 
 	isSearchPhase = false
 	connection:Disconnect()
+	if not success then
+		warn("Search phase error:", err)
+	end
 
 	return guesses, guessNames, guessTimes
 end

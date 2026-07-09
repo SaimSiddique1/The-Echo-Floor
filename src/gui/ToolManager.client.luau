@@ -602,6 +602,7 @@ local function handleNoAnomalyTool(tool)
 	if tool.Name ~= "No Anomaly" then return end
 	local con
 	con = tool.Activated:Connect(function()
+		if hasGuessed then return end
 		Remotes.LogGuess:FireServer(nil)
 	end)
 	table.insert(toolConnections, con)
@@ -615,6 +616,7 @@ end
 
 -- Build persistent selection labels (separate from barGui)
 local function buildSelectionLabels()
+	if isMobile then return end
 	if selGui then selGui:Destroy() end
 
 	selGui = Instance.new("ScreenGui")
@@ -625,7 +627,7 @@ local function buildSelectionLabels()
 	selGui.IgnoreGuiInset = not isMobile
 	selGui.Parent = playerGui
 
-	local SEL_H = isMobile and 32 or 28
+	local SEL_H = 28
 	local PAD = 2
 	local BW = 180
 
@@ -685,14 +687,15 @@ buildSelectionLabels()
 Remotes.RoundTimerTick.OnClientEvent:Connect(function(seconds, phase)
 	currentPhase = phase
 	if phase == "search" then
-		if not isMobile and selGui then
+		if selGui then
 			selGui.Enabled = true
-			if not searchResetDone then
-				selectedRoom = nil
-				selectedCategory = nil
-				updateSelectionLabels()
-				searchResetDone = true
-			end
+		end
+		if not searchResetDone then
+			selectedRoom = nil
+			selectedCategory = nil
+			hasGuessed = false
+			updateSelectionLabels()
+			searchResetDone = true
 		end
 	else
 		if selGui then selGui.Enabled = false end

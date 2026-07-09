@@ -110,6 +110,7 @@ local function createGUI()
 			useBtn.BackgroundColor3 = Color3.fromRGB(30, 180, 30)
 			useBtn.Text = "HIT!"
 			task.delay(1, function()
+				if not useBtn or not useBtn.Parent then return end
 				useBtn.BackgroundColor3 = Color3.fromRGB(180, 35, 35)
 				useBtn.Text = "USE"
 			end)
@@ -124,6 +125,7 @@ local function createGUI()
 			useBtn.BackgroundColor3 = Color3.fromRGB(180, 35, 35)
 			useBtn.Text = "FAIL"
 			task.delay(1, function()
+				if not useBtn or not useBtn.Parent then return end
 				useBtn.Text = "USE"
 			end)
 		end
