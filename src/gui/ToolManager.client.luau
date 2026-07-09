@@ -112,6 +112,7 @@ local function buildBars()
 	local BAR_H = isMobile and 0 or 40
 
 	local roomButtons = {}
+	local roomButtons = {}
 	local categoryButtons = {}
 	local lockInBtn
 	local panicLabel
