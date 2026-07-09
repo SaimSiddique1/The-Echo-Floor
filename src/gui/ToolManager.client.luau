@@ -477,9 +477,6 @@ local function showBars()
 	if not barGui then buildBars() end
 	if not barGui then return end
 	barGui.Enabled = true
-	selectedRoom = nil
-	selectedCategory = nil
-	hasGuessed = false
 	if isMobile then
 		-- Mobile: buttons are in LeftBox and RightBox
 		local leftBox = barGui:FindFirstChild("LeftBox")
@@ -524,6 +521,34 @@ local function showBars()
 			if pl then pl.Visible = false end
 		end
 	end
+
+	-- Re-highlight previously selected buttons
+	if selectedRoom and selectedRoom ~= "Panic" then
+		local roomBtn = barGui:FindFirstChild("RoomBtn_" .. selectedRoom, true)
+		if roomBtn and roomBtn:IsA("TextButton") then
+			roomBtn.BackgroundColor3 = Color3.fromRGB(50, 80, 160)
+			roomBtn.BorderSizePixel = 1
+			roomBtn.BorderColor3 = Color3.fromRGB(80, 140, 255)
+		end
+	end
+	if selectedCategory then
+		local catBtn = barGui:FindFirstChild("CatBtn_" .. selectedCategory, true)
+		if catBtn and catBtn:IsA("TextButton") then
+			catBtn.BackgroundColor3 = Color3.fromRGB(50, 130, 50)
+			catBtn.BorderSizePixel = 1
+			catBtn.BorderColor3 = Color3.fromRGB(80, 255, 80)
+		end
+	end
+
+	if selectedRoom and selectedCategory then
+		local lockIn = barGui:FindFirstChild("LockInBtn")
+		if lockIn then lockIn.Visible = true end
+	end
+	if selectedRoom == "Panic" then
+		local panicLabel = barGui:FindFirstChild("PanicLabel", true)
+		if panicLabel then panicLabel.Visible = true end
+	end
+
 	updateSelectionLabels()
 end
 
