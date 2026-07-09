@@ -254,7 +254,7 @@ local function buildBars()
 		lockInBtn = Instance.new("TextButton")
 		lockInBtn.Name = "LockInBtn"
 		lockInBtn.Size = UDim2.new(0, LOCK_W, 0, LOCK_H)
-		lockInBtn.Position = UDim2.new(0.5, -LOCK_W / 2, 1, -(bottomInset + 30))
+		lockInBtn.Position = UDim2.new(0.5, -LOCK_W / 2, 1, -(bottomInset + 45))
 		lockInBtn.BackgroundColor3 = Color3.fromRGB(60, 160, 60)
 		lockInBtn.BorderSizePixel = 0
 		lockInBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
