@@ -106,11 +106,6 @@ local function buildBars()
 	local LABEL_W = isMobile and 0 or 44
 	local GAP = isMobile and 3 or 4
 	local BAR_PAD = isMobile and 4 or 8
-	local BTN_W = isMobile and 70 or 88
-	local BTN_H = isMobile and 28 or 34
-	local LABEL_W = isMobile and 0 or 44
-	local GAP = isMobile and 3 or 4
-	local BAR_PAD = isMobile and 4 or 8
 	local BAR_H = isMobile and 0 or 40
 
 	local roomButtons = {}
