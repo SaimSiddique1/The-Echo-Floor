@@ -105,229 +105,428 @@ local function buildBars()
 		end
 	end
 
-	local BTN_W = isMobile and 120 or 88
-	local BTN_H = isMobile and 44 or 34
-	local LABEL_W = 44
-	local GAP = 4
-	local BAR_PAD = 8
-	local BAR_H = isMobile and 50 or 40
+	local BTN_W = isMobile and 70 or 88
+	local BTN_H = isMobile and 28 or 34
+	local LABEL_W = isMobile and 0 or 44
+	local GAP = isMobile and 3 or 4
+	local BAR_PAD = isMobile and 4 or 8
+	local BAR_H = isMobile and 0 or 40
 
 	local roomButtons = {}
 	local categoryButtons = {}
 	local lockInBtn
 	local panicLabel
 
-	local leftBar = Instance.new("Frame")
-	leftBar.Name = "LeftBar"
-	leftBar.Size = UDim2.new(0, LABEL_W + GAP + #ROOMS * (BTN_W + GAP), 0, BAR_H)
-	leftBar.Position = UDim2.new(0, 8, 1, -(bottomInset + BAR_H + 30))
-	leftBar.BackgroundColor3 = Color3.fromRGB(10, 10, 14)
-	leftBar.BackgroundTransparency = 0.08
-	leftBar.BorderSizePixel = 0
-	leftBar.Parent = barGui
+	if isMobile then
+		-- Mobile: compact boxes at bottom corners
+		local leftBox = Instance.new("Frame")
+		leftBox.Name = "LeftBox"
+		leftBox.Size = UDim2.new(0, 220, 0, 100)
+		leftBox.Position = UDim2.new(0, 8, 1, -(bottomInset + 100 + 8))
+		leftBox.BackgroundColor3 = Color3.fromRGB(10, 10, 14)
+		leftBox.BackgroundTransparency = 0.08
+		leftBox.BorderSizePixel = 0
+		leftBox.Parent = barGui
+		local lc = Instance.new("UICorner")
+		lc.CornerRadius = UDim.new(0, 8)
+		lc.Parent = leftBox
 
-	local leftBarCorner = Instance.new("UICorner")
-	leftBarCorner.CornerRadius = UDim.new(0, 8)
-	leftBarCorner.Parent = leftBar
+		local roomLabel = Instance.new("TextLabel")
+		roomLabel.Size = UDim2.new(1, -8, 0, 18)
+		roomLabel.Position = UDim2.new(0, BAR_PAD, 0, 2)
+		roomLabel.BackgroundTransparency = 1
+		roomLabel.TextColor3 = Color3.fromRGB(255, 220, 100)
+		roomLabel.TextScaled = true
+		roomLabel.Font = Enum.Font.GothamBold
+		roomLabel.TextXAlignment = Enum.TextXAlignment.Left
+		roomLabel.Text = "ROOM"
+		roomLabel.Parent = leftBox
 
-	local roomLabel = Instance.new("TextLabel")
-	roomLabel.Size = UDim2.new(0, LABEL_W, 0, BTN_H)
-	roomLabel.Position = UDim2.new(0, BAR_PAD, 0.5, -BTN_H / 2)
-	roomLabel.BackgroundTransparency = 1
-	roomLabel.TextColor3 = Color3.fromRGB(255, 220, 100)
-	roomLabel.TextScaled = true
-	roomLabel.Font = Enum.Font.GothamBold
-	roomLabel.TextXAlignment = Enum.TextXAlignment.Center
-	roomLabel.Text = "ROOM"
-	roomLabel.Parent = leftBar
-
-	local roomStartX = BAR_PAD + LABEL_W + GAP
-	for i, r in ipairs(ROOMS) do
-		local pb = Instance.new("TextButton")
-		pb.Name = "RoomBtn_" .. r
-		pb.Size = UDim2.new(0, BTN_W, 0, BTN_H)
-		pb.Position = UDim2.new(0, roomStartX + (i - 1) * (BTN_W + GAP), 0.5, -BTN_H / 2)
-		pb.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
-		pb.BackgroundTransparency = 0.3
-		pb.BorderSizePixel = 0
-		pb.TextColor3 = Color3.fromRGB(200, 200, 200)
-		pb.TextScaled = true
-		pb.Font = Enum.Font.Gotham
-		pb.Text = r
-		pb.Parent = leftBar
-
-		local btnCorner = Instance.new("UICorner")
-		btnCorner.CornerRadius = UDim.new(0, 6)
-		btnCorner.Parent = pb
-
-		pb.MouseButton1Click:Connect(function()
-			if selectedRoom == r then return end
-			for _, ob in ipairs(roomButtons) do
-				ob.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
-				ob.BorderSizePixel = 0
-			end
-			pb.BackgroundColor3 = Color3.fromRGB(50, 80, 160)
-			pb.BorderSizePixel = 1
-			pb.BorderColor3 = Color3.fromRGB(80, 140, 255)
-			selectedRoom = r
-
-			if r == "Panic" then
-				selectedCategory = "Panic"
-				lockInBtn.Visible = true
-				panicLabel.Visible = true
-				for _, ob in ipairs(categoryButtons) do
-					ob.Visible = false
+		-- 2 columns × 3 rows
+		local cols = 3
+		local startY = 22
+		for i, r in ipairs(ROOMS) do
+			local col = (i - 1) % cols
+			local row = math.floor((i - 1) / cols)
+			local pb = Instance.new("TextButton")
+			pb.Name = "RoomBtn_" .. r
+			pb.Size = UDim2.new(0, 70, 0, BTN_H)
+			pb.Position = UDim2.new(0, BAR_PAD + col * (70 + GAP), 0, startY + row * (BTN_H + GAP))
+			pb.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
+			pb.BackgroundTransparency = 0.3
+			pb.BorderSizePixel = 0
+			pb.TextColor3 = Color3.fromRGB(200, 200, 200)
+			pb.TextScaled = true
+			pb.Font = Enum.Font.Gotham
+			pb.Text = r
+			pb.Parent = leftBox
+			local bc = Instance.new("UICorner")
+			bc.CornerRadius = UDim.new(0, 6)
+			bc.Parent = pb
+			pb.MouseButton1Click:Connect(function()
+				if selectedRoom == r then return end
+				for _, ob in ipairs(roomButtons) do
+					ob.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
+					ob.BorderSizePixel = 0
 				end
-			else
-				selectedCategory = nil
-				lockInBtn.Visible = false
-				panicLabel.Visible = false
+				pb.BackgroundColor3 = Color3.fromRGB(50, 80, 160)
+				pb.BorderSizePixel = 1
+				pb.BorderColor3 = Color3.fromRGB(80, 140, 255)
+				selectedRoom = r
+				if r == "Panic" then
+					selectedCategory = "Panic"
+					for _, ob in ipairs(categoryButtons) do ob.Visible = false end
+				else
+					selectedCategory = nil
+					for _, ob in ipairs(categoryButtons) do ob.Visible = true end
+				end
+				lockInBtn.Visible = true
+				updateSelectionLabels()
+			end)
+			table.insert(roomButtons, pb)
+		end
+
+		panicLabel = Instance.new("TextLabel")
+		panicLabel.Name = "PanicLabel"
+		panicLabel.Size = UDim2.new(0, 140, 0, BTN_H)
+		panicLabel.Position = UDim2.new(0, BAR_PAD, 0, startY + GAP)
+		panicLabel.BackgroundTransparency = 1
+		panicLabel.TextColor3 = Color3.fromRGB(255, 80, 80)
+		panicLabel.TextScaled = true
+		panicLabel.Font = Enum.Font.GothamBold
+		panicLabel.Text = "All is Wrong"
+		panicLabel.Visible = false
+		panicLabel.Parent = leftBox
+
+		-- Right box (types)
+		local rightBox = Instance.new("Frame")
+		rightBox.Name = "RightBox"
+		rightBox.Size = UDim2.new(0, 190, 0, 100)
+		rightBox.Position = UDim2.new(1, -(8 + 190), 1, -(bottomInset + 100 + 8))
+		rightBox.BackgroundColor3 = Color3.fromRGB(10, 10, 14)
+		rightBox.BackgroundTransparency = 0.08
+		rightBox.BorderSizePixel = 0
+		rightBox.Parent = barGui
+		local rc = Instance.new("UICorner")
+		rc.CornerRadius = UDim.new(0, 8)
+		rc.Parent = rightBox
+
+		local catLabel = Instance.new("TextLabel")
+		catLabel.Size = UDim2.new(1, -8, 0, 18)
+		catLabel.Position = UDim2.new(0, BAR_PAD, 0, 2)
+		catLabel.BackgroundTransparency = 1
+		catLabel.TextColor3 = Color3.fromRGB(255, 220, 100)
+		catLabel.TextScaled = true
+		catLabel.Font = Enum.Font.GothamBold
+		catLabel.TextXAlignment = Enum.TextXAlignment.Left
+		catLabel.Text = "TYPE"
+		catLabel.Parent = rightBox
+
+		local catCols = 2
+		for i, c in ipairs(CATEGORIES) do
+			local col = (i - 1) % catCols
+			local row = math.floor((i - 1) / catCols)
+			local pb = Instance.new("TextButton")
+			pb.Name = "CatBtn_" .. c
+			pb.Size = UDim2.new(0, 87, 0, BTN_H)
+			pb.Position = UDim2.new(0, BAR_PAD + col * (87 + GAP), 0, startY + row * (BTN_H + GAP))
+			pb.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
+			pb.BackgroundTransparency = 0.3
+			pb.BorderSizePixel = 0
+			pb.TextColor3 = Color3.fromRGB(200, 200, 200)
+			pb.TextScaled = true
+			pb.Font = Enum.Font.Gotham
+			pb.Text = c
+			pb.Parent = rightBox
+			local bc = Instance.new("UICorner")
+			bc.CornerRadius = UDim.new(0, 6)
+			bc.Parent = pb
+			pb.MouseButton1Click:Connect(function()
+				if selectedCategory == c then return end
 				for _, ob in ipairs(categoryButtons) do
 					ob.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
 					ob.BorderSizePixel = 0
-					ob.Visible = true
 				end
-			end
-			updateSelectionLabels()
-		end)
-		table.insert(roomButtons, pb)
+				pb.BackgroundColor3 = Color3.fromRGB(50, 130, 50)
+				pb.BorderSizePixel = 1
+				pb.BorderColor3 = Color3.fromRGB(80, 255, 80)
+				selectedCategory = c
+				lockInBtn.Visible = selectedRoom ~= nil
+				updateSelectionLabels()
+			end)
+			table.insert(categoryButtons, pb)
+		end
+
+		-- Lock In centered below boxes
+		local LOCK_W = 120
+		local LOCK_H = 36
+		lockInBtn = Instance.new("TextButton")
+		lockInBtn.Name = "LockInBtn"
+		lockInBtn.Size = UDim2.new(0, LOCK_W, 0, LOCK_H)
+		lockInBtn.Position = UDim2.new(0.5, -LOCK_W / 2, 1, -(bottomInset + 8))
+		lockInBtn.BackgroundColor3 = Color3.fromRGB(60, 160, 60)
+		lockInBtn.BorderSizePixel = 0
+		lockInBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+		lockInBtn.TextScaled = true
+		lockInBtn.Font = Enum.Font.GothamBold
+		lockInBtn.Text = "Lock In"
+		lockInBtn.Visible = false
+		lockInBtn.Parent = barGui
+		local lk = Instance.new("UICorner")
+		lk.CornerRadius = UDim.new(0, 6)
+		lk.Parent = lockInBtn
+		lockInBtn.MouseButton1Click:Connect(submitGuess)
+
+		-- Combo label above lockin
+		local combo = Instance.new("TextLabel")
+		combo.Name = "SelectionCombo"
+		combo.Size = UDim2.new(0, 200, 0, 18)
+		combo.Position = UDim2.new(0.5, -100, 1, -(LOCK_H + 8 + 4))
+		combo.BackgroundTransparency = 1
+		combo.TextColor3 = Color3.fromRGB(200, 200, 200)
+		combo.TextScaled = true
+		combo.Font = Enum.Font.GothamBold
+		combo.TextXAlignment = Enum.TextXAlignment.Center
+		combo.Text = ""
+		combo.Parent = barGui
+	else
+		-- DESKTOP: original two-bar layout
+		local leftBar = Instance.new("Frame")
+		leftBar.Name = "LeftBar"
+		leftBar.Size = UDim2.new(0, LABEL_W + GAP + #ROOMS * (BTN_W + GAP), 0, BAR_H)
+		leftBar.Position = UDim2.new(0, 8, 1, -(bottomInset + BAR_H + 30))
+		leftBar.BackgroundColor3 = Color3.fromRGB(10, 10, 14)
+		leftBar.BackgroundTransparency = 0.08
+		leftBar.BorderSizePixel = 0
+		leftBar.Parent = barGui
+
+		local leftBarCorner = Instance.new("UICorner")
+		leftBarCorner.CornerRadius = UDim.new(0, 8)
+		leftBarCorner.Parent = leftBar
+
+		local roomLabel = Instance.new("TextLabel")
+		roomLabel.Size = UDim2.new(0, LABEL_W, 0, BTN_H)
+		roomLabel.Position = UDim2.new(0, BAR_PAD, 0.5, -BTN_H / 2)
+		roomLabel.BackgroundTransparency = 1
+		roomLabel.TextColor3 = Color3.fromRGB(255, 220, 100)
+		roomLabel.TextScaled = true
+		roomLabel.Font = Enum.Font.GothamBold
+		roomLabel.TextXAlignment = Enum.TextXAlignment.Center
+		roomLabel.Text = "ROOM"
+		roomLabel.Parent = leftBar
+
+		local roomStartX = BAR_PAD + LABEL_W + GAP
+		for i, r in ipairs(ROOMS) do
+			local pb = Instance.new("TextButton")
+			pb.Name = "RoomBtn_" .. r
+			pb.Size = UDim2.new(0, BTN_W, 0, BTN_H)
+			pb.Position = UDim2.new(0, roomStartX + (i - 1) * (BTN_W + GAP), 0.5, -BTN_H / 2)
+			pb.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
+			pb.BackgroundTransparency = 0.3
+			pb.BorderSizePixel = 0
+			pb.TextColor3 = Color3.fromRGB(200, 200, 200)
+			pb.TextScaled = true
+			pb.Font = Enum.Font.Gotham
+			pb.Text = r
+			pb.Parent = leftBar
+
+			local btnCorner = Instance.new("UICorner")
+			btnCorner.CornerRadius = UDim.new(0, 6)
+			btnCorner.Parent = pb
+
+			pb.MouseButton1Click:Connect(function()
+				if selectedRoom == r then return end
+				for _, ob in ipairs(roomButtons) do
+					ob.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
+					ob.BorderSizePixel = 0
+				end
+				pb.BackgroundColor3 = Color3.fromRGB(50, 80, 160)
+				pb.BorderSizePixel = 1
+				pb.BorderColor3 = Color3.fromRGB(80, 140, 255)
+				selectedRoom = r
+
+				if r == "Panic" then
+					selectedCategory = "Panic"
+					lockInBtn.Visible = true
+					panicLabel.Visible = true
+					for _, ob in ipairs(categoryButtons) do
+						ob.Visible = false
+					end
+				else
+					selectedCategory = nil
+					lockInBtn.Visible = false
+					panicLabel.Visible = false
+					for _, ob in ipairs(categoryButtons) do
+						ob.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
+						ob.BorderSizePixel = 0
+						ob.Visible = true
+					end
+				end
+				updateSelectionLabels()
+			end)
+			table.insert(roomButtons, pb)
+		end
+
+		local totalCatW = LABEL_W + GAP + #CATEGORIES * (BTN_W + GAP)
+
+		local rightBar = Instance.new("Frame")
+		rightBar.Name = "RightBar"
+		rightBar.Size = UDim2.new(0, totalCatW, 0, BAR_H)
+		rightBar.Position = UDim2.new(1, -(8 + totalCatW), 1, -(bottomInset + BAR_H + 30))
+		rightBar.BackgroundColor3 = Color3.fromRGB(10, 10, 14)
+		rightBar.BackgroundTransparency = 0.08
+		rightBar.BorderSizePixel = 0
+		rightBar.Parent = barGui
+
+		local rightBarCorner = Instance.new("UICorner")
+		rightBarCorner.CornerRadius = UDim.new(0, 8)
+		rightBarCorner.Parent = rightBar
+
+		local catLabel = Instance.new("TextLabel")
+		catLabel.Size = UDim2.new(0, LABEL_W, 0, BTN_H)
+		catLabel.Position = UDim2.new(0, BAR_PAD, 0.5, -BTN_H / 2)
+		catLabel.BackgroundTransparency = 1
+		catLabel.TextColor3 = Color3.fromRGB(255, 220, 100)
+		catLabel.TextScaled = true
+		catLabel.Font = Enum.Font.GothamBold
+		catLabel.TextXAlignment = Enum.TextXAlignment.Center
+		catLabel.Text = "TYPE"
+		catLabel.Parent = rightBar
+
+		local typeStartX = BAR_PAD + LABEL_W + GAP
+
+		panicLabel = Instance.new("TextLabel")
+		panicLabel.Name = "PanicLabel"
+		panicLabel.Size = UDim2.new(0, totalCatW - LABEL_W - GAP - BAR_PAD, 0, BTN_H)
+		panicLabel.Position = UDim2.new(0, typeStartX, 0.5, -BTN_H / 2)
+		panicLabel.BackgroundTransparency = 1
+		panicLabel.TextColor3 = Color3.fromRGB(255, 80, 80)
+		panicLabel.TextScaled = true
+		panicLabel.Font = Enum.Font.GothamBold
+		panicLabel.Text = "All is Wrong"
+		panicLabel.Visible = false
+		panicLabel.Parent = rightBar
+
+		for i, c in ipairs(CATEGORIES) do
+			local pb = Instance.new("TextButton")
+			pb.Name = "CatBtn_" .. c
+			pb.Size = UDim2.new(0, BTN_W, 0, BTN_H)
+			pb.Position = UDim2.new(0, typeStartX + (i - 1) * (BTN_W + GAP), 0.5, -BTN_H / 2)
+			pb.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
+			pb.BackgroundTransparency = 0.3
+			pb.BorderSizePixel = 0
+			pb.TextColor3 = Color3.fromRGB(200, 200, 200)
+			pb.TextScaled = true
+			pb.Font = Enum.Font.Gotham
+			pb.Text = c
+			pb.Parent = rightBar
+
+			local btnCorner = Instance.new("UICorner")
+			btnCorner.CornerRadius = UDim.new(0, 6)
+			btnCorner.Parent = pb
+
+			pb.MouseButton1Click:Connect(function()
+				if selectedCategory == c then return end
+				for _, ob in ipairs(categoryButtons) do
+					ob.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
+					ob.BorderSizePixel = 0
+				end
+				pb.BackgroundColor3 = Color3.fromRGB(50, 130, 50)
+				pb.BorderSizePixel = 1
+				pb.BorderColor3 = Color3.fromRGB(80, 255, 80)
+				selectedCategory = c
+				lockInBtn.Visible = selectedRoom ~= nil
+				updateSelectionLabels()
+			end)
+			table.insert(categoryButtons, pb)
+		end
+
+		local LOCK_W = 100
+		local LOCK_H = 34
+		lockInBtn = Instance.new("TextButton")
+		lockInBtn.Name = "LockInBtn"
+		lockInBtn.Size = UDim2.new(0, LOCK_W, 0, LOCK_H)
+		lockInBtn.Position = UDim2.new(0.5, -LOCK_W / 2, 1, -(bottomInset + BAR_H + 60 + 8 + LOCK_H))
+		lockInBtn.BackgroundColor3 = Color3.fromRGB(60, 160, 60)
+		lockInBtn.BorderSizePixel = 0
+		lockInBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+		lockInBtn.TextScaled = true
+		lockInBtn.Font = Enum.Font.GothamBold
+		lockInBtn.Text = "Lock In"
+		lockInBtn.Visible = false
+		lockInBtn.Parent = barGui
+
+		local lockCorner = Instance.new("UICorner")
+		lockCorner.CornerRadius = UDim.new(0, 6)
+		lockCorner.Parent = lockInBtn
+
+		lockInBtn.MouseButton1Click:Connect(submitGuess)
+
+		local combo = Instance.new("TextLabel")
+		combo.Name = "SelectionCombo"
+		combo.Size = UDim2.new(0, 300, 0, 16)
+		combo.Position = UDim2.new(0.5, -150, 1, -(BAR_H + 30 + 8 + LOCK_H + 4 + 16))
+		combo.BackgroundTransparency = 1
+		combo.TextColor3 = Color3.fromRGB(200, 200, 200)
+		combo.TextScaled = true
+		combo.Font = Enum.Font.GothamBold
+		combo.TextXAlignment = Enum.TextXAlignment.Center
+		combo.Text = ""
+		combo.Parent = barGui
 	end
-
-	local totalCatW = LABEL_W + GAP + #CATEGORIES * (BTN_W + GAP)
-
-	local rightBar = Instance.new("Frame")
-	rightBar.Name = "RightBar"
-	rightBar.Size = UDim2.new(0, totalCatW, 0, BAR_H)
-	rightBar.Position = UDim2.new(1, -(8 + totalCatW), 1, -(bottomInset + BAR_H + 30))
-	rightBar.BackgroundColor3 = Color3.fromRGB(10, 10, 14)
-	rightBar.BackgroundTransparency = 0.08
-	rightBar.BorderSizePixel = 0
-	rightBar.Parent = barGui
-
-	local rightBarCorner = Instance.new("UICorner")
-	rightBarCorner.CornerRadius = UDim.new(0, 8)
-	rightBarCorner.Parent = rightBar
-
-	local catLabel = Instance.new("TextLabel")
-	catLabel.Size = UDim2.new(0, LABEL_W, 0, BTN_H)
-	catLabel.Position = UDim2.new(0, BAR_PAD, 0.5, -BTN_H / 2)
-	catLabel.BackgroundTransparency = 1
-	catLabel.TextColor3 = Color3.fromRGB(255, 220, 100)
-	catLabel.TextScaled = true
-	catLabel.Font = Enum.Font.GothamBold
-	catLabel.TextXAlignment = Enum.TextXAlignment.Center
-	catLabel.Text = "TYPE"
-	catLabel.Parent = rightBar
-
-	local typeStartX = BAR_PAD + LABEL_W + GAP
-
-	panicLabel = Instance.new("TextLabel")
-	panicLabel.Name = "PanicLabel"
-	panicLabel.Size = UDim2.new(0, totalCatW - LABEL_W - GAP - BAR_PAD, 0, BTN_H)
-	panicLabel.Position = UDim2.new(0, typeStartX, 0.5, -BTN_H / 2)
-	panicLabel.BackgroundTransparency = 1
-	panicLabel.TextColor3 = Color3.fromRGB(255, 80, 80)
-	panicLabel.TextScaled = true
-	panicLabel.Font = Enum.Font.GothamBold
-	panicLabel.Text = "All is Wrong"
-	panicLabel.Visible = false
-	panicLabel.Parent = rightBar
-
-	for i, c in ipairs(CATEGORIES) do
-		local pb = Instance.new("TextButton")
-		pb.Name = "CatBtn_" .. c
-		pb.Size = UDim2.new(0, BTN_W, 0, BTN_H)
-		pb.Position = UDim2.new(0, typeStartX + (i - 1) * (BTN_W + GAP), 0.5, -BTN_H / 2)
-		pb.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
-		pb.BackgroundTransparency = 0.3
-		pb.BorderSizePixel = 0
-		pb.TextColor3 = Color3.fromRGB(200, 200, 200)
-		pb.TextScaled = true
-		pb.Font = Enum.Font.Gotham
-		pb.Text = c
-		pb.Parent = rightBar
-
-		local btnCorner = Instance.new("UICorner")
-		btnCorner.CornerRadius = UDim.new(0, 6)
-		btnCorner.Parent = pb
-
-		pb.MouseButton1Click:Connect(function()
-			if selectedCategory == c then return end
-			for _, ob in ipairs(categoryButtons) do
-				ob.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
-				ob.BorderSizePixel = 0
-			end
-			pb.BackgroundColor3 = Color3.fromRGB(50, 130, 50)
-			pb.BorderSizePixel = 1
-			pb.BorderColor3 = Color3.fromRGB(80, 255, 80)
-			selectedCategory = c
-			lockInBtn.Visible = selectedRoom ~= nil
-			updateSelectionLabels()
-		end)
-		table.insert(categoryButtons, pb)
-	end
-
-	local LOCK_W = isMobile and 140 or 100
-	local LOCK_H = isMobile and 44 or 34
-	lockInBtn = Instance.new("TextButton")
-	lockInBtn.Name = "LockInBtn"
-	lockInBtn.Size = UDim2.new(0, LOCK_W, 0, LOCK_H)
-	lockInBtn.Position = UDim2.new(0.5, -LOCK_W / 2, 1, -(bottomInset + BAR_H + 60 + 8 + LOCK_H))
-	lockInBtn.BackgroundColor3 = Color3.fromRGB(60, 160, 60)
-	lockInBtn.BorderSizePixel = 0
-	lockInBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-	lockInBtn.TextScaled = true
-	lockInBtn.Font = Enum.Font.GothamBold
-	lockInBtn.Text = "Lock In"
-	lockInBtn.Visible = false
-	lockInBtn.Parent = barGui
-
-	local lockCorner = Instance.new("UICorner")
-	lockCorner.CornerRadius = UDim.new(0, 6)
-	lockCorner.Parent = lockInBtn
-
-	lockInBtn.MouseButton1Click:Connect(submitGuess)
-
-	local combo = Instance.new("TextLabel")
-	combo.Name = "SelectionCombo"
-	combo.Size = UDim2.new(0, 300, 0, isMobile and 22 or 16)
-	combo.Position = UDim2.new(0.5, -150, 1, -(bottomInset + BAR_H + 30 + 8 + LOCK_H + 4 + (isMobile and 22 or 16)))
-	combo.BackgroundTransparency = 1
-	combo.TextColor3 = Color3.fromRGB(200, 200, 200)
-	combo.TextScaled = true
-	combo.Font = Enum.Font.GothamBold
-	combo.TextXAlignment = Enum.TextXAlignment.Center
-	combo.Text = ""
-	combo.Parent = barGui
 
 end
 
 local function showBars()
 	if not barGui then buildBars() end
-	if not barGui or not barGui:FindFirstChild("LeftBar") then return end
+	if not barGui then return end
 	barGui.Enabled = true
 	selectedRoom = nil
 	selectedCategory = nil
 	hasGuessed = false
-	local leftBar = barGui:FindFirstChild("LeftBar")
-	if leftBar then
-		for _, ob in ipairs(leftBar:GetChildren()) do
-			if ob:IsA("TextButton") then
-				ob.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
-				ob.BorderSizePixel = 0
+	if isMobile then
+		-- Mobile: buttons are in LeftBox and RightBox
+		local leftBox = barGui:FindFirstChild("LeftBox")
+		if leftBox then
+			for _, ob in ipairs(leftBox:GetChildren()) do
+				if ob:IsA("TextButton") then
+					ob.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
+					ob.BorderSizePixel = 0
+				end
 			end
 		end
-	end
-	local rightBar = barGui:FindFirstChild("RightBar")
-	if rightBar then
-		for _, ob in ipairs(rightBar:GetChildren()) do
-			if ob:IsA("TextButton") then
-				ob.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
-				ob.BorderSizePixel = 0
+		local rightBox = barGui:FindFirstChild("RightBox")
+		if rightBox then
+			for _, ob in ipairs(rightBox:GetChildren()) do
+				if ob:IsA("TextButton") then
+					ob.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
+					ob.BorderSizePixel = 0
+				end
+			end
+			local pl = rightBox:FindFirstChild("PanicLabel")
+			if pl then pl.Visible = false end
+		end
+	else
+		local leftBar = barGui:FindFirstChild("LeftBar")
+		if leftBar then
+			for _, ob in ipairs(leftBar:GetChildren()) do
+				if ob:IsA("TextButton") then
+					ob.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
+					ob.BorderSizePixel = 0
+				end
 			end
 		end
-		local pl = rightBar:FindFirstChild("PanicLabel")
-		if pl then pl.Visible = false end
+		local rightBar = barGui:FindFirstChild("RightBar")
+		if rightBar then
+			for _, ob in ipairs(rightBar:GetChildren()) do
+				if ob:IsA("TextButton") then
+					ob.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
+					ob.BorderSizePixel = 0
+				end
+			end
+			local pl = rightBar:FindFirstChild("PanicLabel")
+			if pl then pl.Visible = false end
+		end
 	end
 	updateSelectionLabels()
 end

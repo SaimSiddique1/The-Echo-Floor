@@ -8,7 +8,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 	local Remotes = ReplicatedStorage.Remotes
 local GameState = require(script.Parent.GameState)
 
-local BAY_TIMER = 15
+local BAY_TIMER = 1
 local MAX_PLAYERS = 8
 local LOBBY_NAME = "Lobby"
 local BAY_DETECTOR_NAME = "BayDetector"

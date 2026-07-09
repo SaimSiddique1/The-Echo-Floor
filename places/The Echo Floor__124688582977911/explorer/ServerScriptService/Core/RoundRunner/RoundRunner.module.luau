@@ -14,11 +14,11 @@ local GameState = require(script.Parent.GameState)
 local AnomalyConfig = require(ReplicatedStorage.Shared.AnomalySwapConfig)
 local Remotes = ReplicatedStorage.Remotes
 
-local GOING_UP_TIME = 5
-local EXPLORE_TIME = 5
-local INTERMISSION_TIME = 5
-local REVEAL_TIME = 8
-local BOARDING_TIME = 5
+local GOING_UP_TIME = 3
+local EXPLORE_TIME = 3
+local INTERMISSION_TIME = 3
+local REVEAL_TIME = 4
+local BOARDING_TIME = 3
 
 local scores = {}
 local allOriginalPlayers = {}
@@ -510,11 +510,7 @@ local function returnAllPlayers()
 end
 
 local function getSearchTime(floorNum)
-	if floorNum == 1 then return 60 end
-	if floorNum <= 3 then return 55 end
-	if floorNum <= 6 then return 50 end
-	if floorNum <= 9 then return 40 end
-	return 35
+	return 50
 end
 
 local function runIntermissionPhase(players, screen, floorNum)

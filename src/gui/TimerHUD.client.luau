@@ -59,9 +59,9 @@ timerLabel.Text = ""
 timerLabel.Parent = timerBox
 
 -- Fixed minimap — stationary rooms, player dot moves around
-local MAP_SCALE = isMobile and 2.2 or 1.2
-local MAP_W = isMobile and 380 or 205
-local MAP_H = isMobile and 220 or 115
+local MAP_SCALE = isMobile and 2.6 or 1.2
+local MAP_W = isMobile and 440 or 205
+local MAP_H = isMobile and 260 or 115
 local MAP_RX = MAP_W / 2
 local MAP_RY = MAP_H / 2
 
@@ -378,7 +378,7 @@ if isMobile then
 		if ok and s then
 			topOffset = s.Top + 10
 			timerBox.Position = UDim2.new(0, 10, 0, topOffset)
-			minimap.Position = UDim2.new(0, 10, 0, topOffset + 44)
+			minimap.Position = UDim2.new(0, 10, 0, topOffset + (isMobile and 120 or 44))
 		end
 
 		phaseBox.Position = UDim2.new(0.5, -150, 0, topOffset)
