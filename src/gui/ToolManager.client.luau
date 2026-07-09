@@ -60,9 +60,9 @@ local function updateSelectionLabels()
 			if not room and not cat then
 				combo.Text = ""
 			elseif room == "Panic" then
-				combo.Text = "Panic  —  All is Wrong"
+				combo.Text = "Panic  --  All is Wrong"
 			else
-				combo.Text = (room or "—") .. "  |  " .. (cat or "—")
+				combo.Text = (room or "--") .. "  |  " .. (cat or "--")
 			end
 		end
 	end
@@ -90,7 +90,7 @@ local function buildBars()
 	barGui.ResetOnSpawn = false
 	barGui.Enabled = false
 	barGui.DisplayOrder = 15
-	barGui.IgnoreGuiInset = true
+	barGui.IgnoreGuiInset = not isMobile
 	barGui.Parent = playerGui
 
 	-- click sound removed
@@ -118,11 +118,11 @@ local function buildBars()
 	local panicLabel
 
 	if isMobile then
-		-- Mobile: compact boxes at bottom corners
+		-- Mobile vertical stacks
 		local leftBox = Instance.new("Frame")
 		leftBox.Name = "LeftBox"
-		leftBox.Size = UDim2.new(0, 220, 0, 100)
-		leftBox.Position = UDim2.new(0, 8, 1, -(bottomInset + 100 + 8))
+		leftBox.Size = UDim2.new(0, 150, 0, 195)
+		leftBox.Position = UDim2.new(0, 8, 1, -(bottomInset + 195 + 80))
 		leftBox.BackgroundColor3 = Color3.fromRGB(10, 10, 14)
 		leftBox.BackgroundTransparency = 0.08
 		leftBox.BorderSizePixel = 0
@@ -143,15 +143,12 @@ local function buildBars()
 		roomLabel.Parent = leftBox
 
 		-- 2 columns × 3 rows
-		local cols = 3
 		local startY = 22
 		for i, r in ipairs(ROOMS) do
-			local col = (i - 1) % cols
-			local row = math.floor((i - 1) / cols)
 			local pb = Instance.new("TextButton")
 			pb.Name = "RoomBtn_" .. r
-			pb.Size = UDim2.new(0, 70, 0, BTN_H)
-			pb.Position = UDim2.new(0, BAR_PAD + col * (70 + GAP), 0, startY + row * (BTN_H + GAP))
+			pb.Size = UDim2.new(0, 130, 0, BTN_H)
+			pb.Position = UDim2.new(0, BAR_PAD, 0, startY + (i - 1) * (BTN_H + GAP))
 			pb.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
 			pb.BackgroundTransparency = 0.3
 			pb.BorderSizePixel = 0
@@ -188,7 +185,7 @@ local function buildBars()
 
 		panicLabel = Instance.new("TextLabel")
 		panicLabel.Name = "PanicLabel"
-		panicLabel.Size = UDim2.new(0, 140, 0, BTN_H)
+		panicLabel.Size = UDim2.new(0, 130, 0, BTN_H)
 		panicLabel.Position = UDim2.new(0, BAR_PAD, 0, startY + GAP)
 		panicLabel.BackgroundTransparency = 1
 		panicLabel.TextColor3 = Color3.fromRGB(255, 80, 80)
@@ -201,8 +198,8 @@ local function buildBars()
 		-- Right box (types)
 		local rightBox = Instance.new("Frame")
 		rightBox.Name = "RightBox"
-		rightBox.Size = UDim2.new(0, 190, 0, 100)
-		rightBox.Position = UDim2.new(1, -(8 + 190), 1, -(bottomInset + 100 + 8))
+		rightBox.Size = UDim2.new(0, 150, 0, 195)
+		rightBox.Position = UDim2.new(1, -(8 + 150), 1, -(bottomInset + 195 + 80))
 		rightBox.BackgroundColor3 = Color3.fromRGB(10, 10, 14)
 		rightBox.BackgroundTransparency = 0.08
 		rightBox.BorderSizePixel = 0
@@ -222,14 +219,11 @@ local function buildBars()
 		catLabel.Text = "TYPE"
 		catLabel.Parent = rightBox
 
-		local catCols = 2
 		for i, c in ipairs(CATEGORIES) do
-			local col = (i - 1) % catCols
-			local row = math.floor((i - 1) / catCols)
 			local pb = Instance.new("TextButton")
 			pb.Name = "CatBtn_" .. c
-			pb.Size = UDim2.new(0, 87, 0, BTN_H)
-			pb.Position = UDim2.new(0, BAR_PAD + col * (87 + GAP), 0, startY + row * (BTN_H + GAP))
+			pb.Size = UDim2.new(0, 130, 0, BTN_H)
+			pb.Position = UDim2.new(0, BAR_PAD, 0, startY + (i - 1) * (BTN_H + GAP))
 			pb.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
 			pb.BackgroundTransparency = 0.3
 			pb.BorderSizePixel = 0
@@ -263,7 +257,7 @@ local function buildBars()
 		lockInBtn = Instance.new("TextButton")
 		lockInBtn.Name = "LockInBtn"
 		lockInBtn.Size = UDim2.new(0, LOCK_W, 0, LOCK_H)
-		lockInBtn.Position = UDim2.new(0.5, -LOCK_W / 2, 1, -(bottomInset + 8))
+		lockInBtn.Position = UDim2.new(0.5, -LOCK_W / 2, 1, -(bottomInset + 50))
 		lockInBtn.BackgroundColor3 = Color3.fromRGB(60, 160, 60)
 		lockInBtn.BorderSizePixel = 0
 		lockInBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -601,7 +595,7 @@ local function buildSelectionLabels()
 	selGui.ResetOnSpawn = false
 	selGui.Enabled = false
 	selGui.DisplayOrder = 14
-	selGui.IgnoreGuiInset = true
+	selGui.IgnoreGuiInset = not isMobile
 	selGui.Parent = playerGui
 
 	local SEL_H = isMobile and 32 or 28
@@ -664,7 +658,7 @@ buildSelectionLabels()
 Remotes.RoundTimerTick.OnClientEvent:Connect(function(seconds, phase)
 	currentPhase = phase
 	if phase == "search" then
-		if selGui then
+		if not isMobile and selGui then
 			selGui.Enabled = true
 			if not searchResetDone then
 				selectedRoom = nil

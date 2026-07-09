@@ -17,7 +17,7 @@ screenGui.Name = "TimerHUD"
 screenGui.ResetOnSpawn = false
 screenGui.Enabled = false
 screenGui.DisplayOrder = 10
-screenGui.IgnoreGuiInset = true
+screenGui.IgnoreGuiInset = not isMobile
 screenGui.Parent = playerGui
 
 local topOffset = 10

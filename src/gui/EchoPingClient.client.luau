@@ -40,7 +40,7 @@ local function createGUI()
 	local screenGui = Instance.new("ScreenGui")
 	screenGui.Name = "EchoPingUI"
 	screenGui.ResetOnSpawn = false
-	screenGui.IgnoreGuiInset = true
+	screenGui.IgnoreGuiInset = not isMobile
 	screenGui.DisplayOrder = 15
 	screenGui.Parent = player:WaitForChild("PlayerGui")
 
