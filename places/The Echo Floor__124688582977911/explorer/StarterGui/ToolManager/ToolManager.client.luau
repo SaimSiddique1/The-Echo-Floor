@@ -104,6 +104,8 @@ local function buildBars()
 
 	local BTN_W = isMobile and 70 or 88
 	local BTN_H = isMobile and 28 or 34
+	local BTN_W = isMobile and 70 or 88
+	local BTN_H = isMobile and 28 or 34
 	local LABEL_W = isMobile and 0 or 44
 	local GAP = isMobile and 3 or 4
 	local BAR_PAD = isMobile and 4 or 8
@@ -121,7 +123,7 @@ local function buildBars()
 		leftBox.Size = UDim2.new(0, 150, 0, 195)
 		leftBox.Position = UDim2.new(0, 8, 1, -(bottomInset + 195))
 		leftBox.BackgroundColor3 = Color3.fromRGB(10, 10, 14)
-		leftBox.BackgroundTransparency = 0.08
+		leftBox.BackgroundTransparency = 0
 		leftBox.BorderSizePixel = 0
 		leftBox.Parent = barGui
 		local lc = Instance.new("UICorner")
@@ -198,7 +200,7 @@ local function buildBars()
 		rightBox.Size = UDim2.new(0, 150, 0, 195)
 		rightBox.Position = UDim2.new(1, -(8 + 150), 1, -(bottomInset + 195 + 80))
 		rightBox.BackgroundColor3 = Color3.fromRGB(10, 10, 14)
-		rightBox.BackgroundTransparency = 0.08
+		rightBox.BackgroundTransparency = 0
 		rightBox.BorderSizePixel = 0
 		rightBox.Parent = barGui
 		local rc = Instance.new("UICorner")
