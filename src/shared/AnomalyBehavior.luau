@@ -36,6 +36,7 @@ local function removeSpatialSound(floor, roomName)
 end
 
 local flipState = {}
+local flickerState = {}
 
 local behaviors = {
 	-- ========= LIGHTING =========
@@ -74,18 +75,19 @@ local behaviors = {
 					table.insert(fixtures, { part = v, pointLight = v:FindFirstChildOfClass("PointLight") })
 				end
 			end
-			local origColors = {}
-			for _, f in ipairs(fixtures) do
-				origColors[f.part] = f.part.Color
-			end
+
+			local state = { running = true }
+			flickerState[floor] = state
+
 			task.spawn(function()
 				local pattern = {
 					{ false, 0.08 }, { true, 0.15 }, { false, 0.06 }, { true, 0.1 },
 					{ false, 0.12 }, { true, 0.2 }, { false, 0.04 }, { true, 0.08 },
 					{ false, 0.1 }, { true, 0.25 }, { false, 0.15 }, { true, 0.3 },
 				}
-				for i = 1, 3 do
+				while state.running do
 					for _, step in ipairs(pattern) do
+						if not state.running then break end
 						local on = step[1]
 						local color = on and Color3.fromRGB(255, 245, 230) or Color3.fromRGB(30, 25, 20)
 						for _, f in ipairs(fixtures) do
@@ -96,17 +98,26 @@ local behaviors = {
 						end
 						task.wait(step[2])
 					end
-					task.wait(0.5)
+					if state.running then
+						task.wait(0.5)
+					end
 				end
+
 				for _, f in ipairs(fixtures) do
-					f.part.Color = origColors[f.part]
-					if f.pointLight then
-						f.pointLight.Enabled = true
+					if f.part and f.part.Parent then
+						if f.pointLight then
+							f.pointLight.Enabled = true
+						end
 					end
 				end
 			end)
 		end,
 		revert = function(floor)
+			local state = flickerState[floor]
+			if state then
+				state.running = false
+				flickerState[floor] = nil
+			end
 			for _, v in floor:GetDescendants() do
 				if v:IsA("BasePart") and v.Name:find("_Light") then
 					v.Color = Color3.fromRGB(255, 245, 230)

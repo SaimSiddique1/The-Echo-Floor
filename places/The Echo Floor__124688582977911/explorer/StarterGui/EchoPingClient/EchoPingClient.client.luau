@@ -117,6 +117,9 @@ local function createGUI()
 			if rs.EchoPingEvent then
 				rs.EchoPingEvent:Fire(result.room, 5)
 			end
+			if _G.setAnomalyPing then
+				_G.setAnomalyPing(result.room, 5)
+			end
 			updateCount()
 		else
 			useBtn.BackgroundColor3 = Color3.fromRGB(180, 35, 35)
