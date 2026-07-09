@@ -18,6 +18,7 @@ local selectedRoom = nil
 local selectedCategory = nil
 local toolConnections = {}
 
+local toolConnections = {}
 local roomSelectionLabel
 local typeSelectionLabel
 
