@@ -1,0 +1,7 @@
+{
+  "name": "DistortionSoundEffect",
+  "className": "DistortionSoundEffect",
+  "properties": {
+    "Enabled": true
+  }
+}

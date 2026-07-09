@@ -1,0 +1,49 @@
+{
+  "name": "Torso",
+  "className": "Part",
+  "properties": {
+    "Reflectance": 0,
+    "CanCollide": true,
+    "Color": [
+      0.0667,
+      0.0667,
+      0.0667
+    ],
+    "Anchored": false,
+    "Massless": false,
+    "CFrame": [
+      6.1384,
+      9.3528,
+      -30.3275,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "Locked": false,
+    "Transparency": 0,
+    "BrickColor": "Really black",
+    "Position": [
+      6.1384,
+      9.3528,
+      -30.3275
+    ],
+    "Orientation": [
+      0,
+      90,
+      0
+    ],
+    "Material": "SmoothPlastic",
+    "CastShadow": true,
+    "Size": [
+      4.325,
+      4.325,
+      2.1625
+    ]
+  }
+}

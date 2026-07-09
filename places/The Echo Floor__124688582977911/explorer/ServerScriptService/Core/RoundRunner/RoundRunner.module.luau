@@ -15,7 +15,7 @@ local AnomalyConfig = require(ReplicatedStorage.Shared.AnomalySwapConfig)
 local Remotes = ReplicatedStorage.Remotes
 
 local GOING_UP_TIME = 5
-local EXPLORE_TIME = 60
+local EXPLORE_TIME = 5
 local INTERMISSION_TIME = 5
 local REVEAL_TIME = 8
 local BOARDING_TIME = 5

@@ -1,0 +1,7 @@
+{
+  "name": "ChorusSoundEffect",
+  "className": "ChorusSoundEffect",
+  "properties": {
+    "Enabled": true
+  }
+}

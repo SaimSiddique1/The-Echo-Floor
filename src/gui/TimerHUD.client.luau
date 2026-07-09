@@ -5,6 +5,8 @@ local RunService = game:GetService("RunService")
 local Remotes = ReplicatedStorage.Remotes
 local AnomalyConfig = require(ReplicatedStorage.Shared.AnomalySwapConfig)
 
+local GuiService = game:GetService("GuiService")
+
 local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
@@ -21,9 +23,13 @@ screenGui.Parent = playerGui
 local topOffset = 10
 local safeAreaTop = 0
 if isMobile then
-	local safe = UserInputService:GetSafeAreaInsets()
-	safeAreaTop = safe.Top
-	topOffset = safeAreaTop + 10
+	local ok, safe = pcall(function()
+		return GuiService:GetSafeAreaInsets()
+	end)
+	if ok and safe then
+		safeAreaTop = safe.Top
+		topOffset = safeAreaTop + 10
+	end
 end
 
 if isMobile then
@@ -366,10 +372,14 @@ if isMobile then
 	end)
 
 	local function updateSafeArea()
-		local s = UserInputService:GetSafeAreaInsets()
-		topOffset = s.Top + 10
-		timerBox.Position = UDim2.new(0, 10, 0, topOffset)
-		minimap.Position = UDim2.new(0, 10, 0, topOffset + 44)
+		local ok, s = pcall(function()
+			return GuiService:GetSafeAreaInsets()
+		end)
+		if ok and s then
+			topOffset = s.Top + 10
+			timerBox.Position = UDim2.new(0, 10, 0, topOffset)
+			minimap.Position = UDim2.new(0, 10, 0, topOffset + 44)
+		end
 
 		phaseBox.Position = UDim2.new(0.5, -150, 0, topOffset)
 		coinHUD.Position = UDim2.new(1, -160, 0, topOffset)

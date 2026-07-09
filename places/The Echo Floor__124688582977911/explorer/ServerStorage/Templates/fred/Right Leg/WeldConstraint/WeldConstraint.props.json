@@ -1,0 +1,7 @@
+{
+  "name": "WeldConstraint",
+  "className": "WeldConstraint",
+  "properties": {
+    "Enabled": true
+  }
+}

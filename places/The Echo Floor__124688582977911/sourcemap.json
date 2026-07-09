@@ -13262,6 +13262,94 @@
                   ]
                 }
               ]
+            },
+            {
+              "name": "fred",
+              "className": "Model",
+              "children": [
+                {
+                  "name": "Head",
+                  "className": "Part",
+                  "children": [
+                    {
+                      "name": "Mesh",
+                      "className": "SpecialMesh"
+                    },
+                    {
+                      "name": "scary eye demon",
+                      "className": "Decal"
+                    },
+                    {
+                      "name": "SurfaceLight",
+                      "className": "SurfaceLight"
+                    }
+                  ]
+                },
+                {
+                  "name": "Humanoid",
+                  "className": "Humanoid",
+                  "children": [
+                    {
+                      "name": "Animator",
+                      "className": "Animator"
+                    }
+                  ]
+                },
+                {
+                  "name": "Left Leg",
+                  "className": "Part"
+                },
+                {
+                  "name": "Right Leg",
+                  "className": "Part",
+                  "children": [
+                    {
+                      "name": "WeldConstraint",
+                      "className": "WeldConstraint"
+                    }
+                  ]
+                },
+                {
+                  "name": "Torso",
+                  "className": "Part",
+                  "children": [
+                    {
+                      "name": "Granny Nightmare Mode Chase Theme",
+                      "className": "Sound"
+                    },
+                    {
+                      "name": "Idle",
+                      "className": "Sound",
+                      "children": [
+                        {
+                          "name": "ChorusSoundEffect",
+                          "className": "ChorusSoundEffect"
+                        },
+                        {
+                          "name": "DistortionSoundEffect",
+                          "className": "DistortionSoundEffect"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Left Hip",
+                      "className": "Motor6D"
+                    },
+                    {
+                      "name": "Neck",
+                      "className": "Motor6D"
+                    },
+                    {
+                      "name": "Right Hip",
+                      "className": "Motor6D"
+                    },
+                    {
+                      "name": "Spooky scary face",
+                      "className": "Decal"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }

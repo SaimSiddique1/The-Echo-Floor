@@ -1,0 +1,7 @@
+{
+  "name": "Neck",
+  "className": "Motor6D",
+  "properties": {
+    "Enabled": true
+  }
+}

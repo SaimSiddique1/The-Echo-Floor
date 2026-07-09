@@ -1,6 +1,7 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Remotes = ReplicatedStorage.Remotes
 local UserInputService = game:GetService("UserInputService")
+local GuiService = game:GetService("GuiService")
 local player = game:GetService("Players").LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 local isMobile = UserInputService.TouchEnabled
@@ -96,8 +97,12 @@ local function buildBars()
 
 	local bottomInset = 0
 	if isMobile then
-		local safe = UserInputService:GetSafeAreaInsets()
-		bottomInset = safe.Bottom
+		local ok, safe = pcall(function()
+			return GuiService:GetSafeAreaInsets()
+		end)
+		if ok and safe then
+			bottomInset = safe.Bottom
+		end
 	end
 
 	local BTN_W = isMobile and 120 or 88
@@ -299,26 +304,29 @@ end
 
 local function showBars()
 	if not barGui then buildBars() end
+	if not barGui or not barGui:FindFirstChild("LeftBar") then return end
 	barGui.Enabled = true
 	selectedRoom = nil
 	selectedCategory = nil
 	hasGuessed = false
-	if barGui.LeftBar then
-		for _, ob in ipairs(barGui.LeftBar:GetChildren()) do
+	local leftBar = barGui:FindFirstChild("LeftBar")
+	if leftBar then
+		for _, ob in ipairs(leftBar:GetChildren()) do
 			if ob:IsA("TextButton") then
 				ob.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
 				ob.BorderSizePixel = 0
 			end
 		end
 	end
-	if barGui.RightBar then
-		for _, ob in ipairs(barGui.RightBar:GetChildren()) do
+	local rightBar = barGui:FindFirstChild("RightBar")
+	if rightBar then
+		for _, ob in ipairs(rightBar:GetChildren()) do
 			if ob:IsA("TextButton") then
 				ob.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
 				ob.BorderSizePixel = 0
 			end
 		end
-		local pl = barGui.RightBar:FindFirstChild("PanicLabel")
+		local pl = rightBar:FindFirstChild("PanicLabel")
 		if pl then pl.Visible = false end
 	end
 	updateSelectionLabels()
