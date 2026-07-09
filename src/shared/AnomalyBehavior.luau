@@ -299,21 +299,30 @@ local behaviors = {
 		region = "Hallway",
 		type = "Architecture",
 		apply = function(floor)
+			local bounds = AnomalyConfig.roomBounds["Hallway"]
+			local saved = {}
 			for _, v in floor:GetDescendants() do
-				if v:IsA("BasePart") and v.Name:find("Hallway") and v.Name:find("_W_") then
-					if math.random() > 0.7 then
-						v.Transparency = 0.75
-						v.Color = Color3.fromRGB(180, 160, 140)
+				if v:IsA("BasePart") and v.Transparency < 0.9 then
+					local pos = v.Position
+					if pos.X >= bounds.xMin and pos.X <= bounds.xMax and pos.Z >= bounds.zMin and pos.Z <= bounds.zMax then
+						saved[v] = { color = v.Color, trans = v.Transparency }
+						v.Transparency = 0.7
+						v.Color = Color3.fromRGB(180, 100, 80)
 					end
 				end
 			end
+			flipState[floor] = saved
 		end,
 		revert = function(floor)
-			for _, v in floor:GetDescendants() do
-				if v:IsA("BasePart") and v.Name:find("Hallway") and v.Name:find("_W_") then
-					v.Transparency = 0
-					v.Color = Color3.fromRGB(240, 235, 225)
+			local saved = flipState[floor]
+			if saved then
+				for v, data in pairs(saved) do
+					if v and v.Parent then
+						v.Color = data.color
+						v.Transparency = data.trans
+					end
 				end
+				flipState[floor] = nil
 			end
 		end,
 	},

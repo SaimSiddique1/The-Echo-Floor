@@ -239,7 +239,7 @@ local function swapAnomaly()
 		end
 	end
 
-	local chosenName = combined[math.random(1, #combined)].name
+	local chosenName = "HallwayWallShift"
 	usedAnomalies[chosenName] = true
 	print("Anomaly activated: " .. chosenName)
 
