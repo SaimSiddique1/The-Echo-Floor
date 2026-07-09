@@ -383,8 +383,8 @@ if isMobile then
 		end)
 		if ok and s then
 			topOffset = s.Top + 10
-			timerBox.Position = UDim2.new(0, 10, 0, topOffset)
-			minimap.Position = UDim2.new(0, 10, 0, topOffset + (isMobile and 80 or 44))
+timerBox.Position = UDim2.new(0, 10, 0, topOffset + (isMobile and 0 or 49))
+minimap.Position = UDim2.new(0, 10, 0, topOffset + (isMobile and 80 or 92))
 		end
 
 		phaseBox.Position = UDim2.new(0.5, -150, 0, topOffset)
