@@ -289,3 +289,29 @@ All defined in `default.project.json` under ReplicatedStorage.Remotes:
 - ReturnToLobby remote does not exist in Remotes folder (moved to MatchmakingService logic)
 - `rojo serve` must be restarted when adding new instances in default.project.json
 - Dev timings active via `ROUNDING_TIME=true` environment variable — revert to production before release
+
+# MCP Workflow Rules
+
+## Editing Studio vs src files
+- **Studio is the source of truth** — changes must be made via `roblox-studio_manage_scripts` (not the file `edit` tool)
+- The `src/gui/*.client.luau` files on disk are for Rojo builds only — they are NOT synced to Studio
+- `places/The Echo Floor__124688582977911/explorer/...` are the sync mirror files
+- To edit: use `roblox-studio_manage_scripts` → `edit_replace` or `set_source`
+- To check first: use `roblox-studio_manage_scripts` → `get_source`
+- NEVER use the file `edit` tool on `src/` files thinking it will affect Studio — IT WON'T
+
+## ToolManager Lock In Button positions
+- Mobile Lock In: `-(bottomInset + 70)` (line ~238 in Studio)
+- PC Lock In (changed): `-(bottomInset + BAR_H + 50 + 8 + LOCK_H)` (line ~402 in Studio)
+  - BAR_H = 40, LOCK_H = 34 → evaluates to -(bottomInset + 132)
+
+## PC Lock In button note (March 5)
+- User wanted PC Lock In lowered 10px
+- Changed `60` → `50` in the PC position expression: `BAR_H + 50 + 8 + LOCK_H`
+- Value was previously `BAR_H + 60 + 8 + LOCK_H` = -(bottomInset + 142)
+- Now `BAR_H + 50 + 8 + LOCK_H` = -(bottomInset + 132)
+
+## Communication
+- Do NOT push to GitHub unless explicitly told to
+- Only change what the user asks — nothing else
+- When the user says "no code changes", don't touch any files or Studio
