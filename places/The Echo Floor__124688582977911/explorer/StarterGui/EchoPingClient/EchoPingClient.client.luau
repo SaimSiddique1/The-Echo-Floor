@@ -3,6 +3,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local UserInputService = game:GetService("UserInputService")
 local player = Players.LocalPlayer
 local Remotes = ReplicatedStorage.Remotes
+local rs = ReplicatedStorage
 local isMobile = UserInputService.TouchEnabled
 
 local gui = nil
@@ -46,7 +47,7 @@ local function createGUI()
 
 	local frame = Instance.new("Frame")
 	frame.Size = UDim2.new(0, 200, 0, 50)
-	frame.Position = UDim2.new(0.5, -100, 1, isMobile and -80 or -140)
+	frame.Position = UDim2.new(0.5, -100, 1, isMobile and -130 or -140)
 	frame.BackgroundColor3 = Color3.fromRGB(13, 13, 18)
 	frame.BackgroundTransparency = 0.15
 	frame.BorderSizePixel = 0
@@ -95,23 +96,39 @@ local function createGUI()
 
 	updateCount()
 
-	useBtn.MouseButton1Click:Connect(function()
+	local function onUse()
 		if cooldown then return end
 		cooldown = true
 		task.delay(8, function() cooldown = false end)
 
 		useBtn.Text = "SCANING"
+		useBtn.BackgroundColor3 = Color3.fromRGB(100, 100, 30)
 		local ok, result = pcall(function()
 			return Remotes.UseEchoPing:InvokeServer()
 		end)
 		if ok and result and result.room then
-			if _G.setAnomalyPing then
-				_G.setAnomalyPing(result.room, 5)
+			useBtn.BackgroundColor3 = Color3.fromRGB(30, 180, 30)
+			useBtn.Text = "HIT!"
+			task.delay(1, function()
+				useBtn.BackgroundColor3 = Color3.fromRGB(180, 35, 35)
+				useBtn.Text = "USE"
+			end)
+			if rs.EchoPingEvent then
+				rs.EchoPingEvent:Fire(result.room, 5)
 			end
 			updateCount()
+		else
+			useBtn.BackgroundColor3 = Color3.fromRGB(180, 35, 35)
+			useBtn.Text = "FAIL"
+			task.delay(1, function()
+				useBtn.Text = "USE"
+			end)
 		end
-		useBtn.Text = "USE"
-	end)
+	end
+	useBtn.MouseButton1Click:Connect(onUse)
+	if isMobile then
+		useBtn.TouchTap:Connect(onUse)
+	end
 
 	gui = screenGui
 end

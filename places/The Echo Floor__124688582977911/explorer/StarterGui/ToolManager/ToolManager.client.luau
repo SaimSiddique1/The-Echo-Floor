@@ -108,7 +108,7 @@ local function buildBars()
 	local BTN_H = isMobile and 28 or 34
 	local LABEL_W = isMobile and 0 or 44
 	local GAP = isMobile and 3 or 4
-	local BAR_PAD = isMobile and 4 or 8
+	local BAR_PAD = isMobile and 10 or 8
 	local BAR_H = isMobile and 0 or 40
 
 	local roomButtons = {}
@@ -121,9 +121,9 @@ local function buildBars()
 		-- Mobile vertical stacks
 		local leftBox = Instance.new("Frame")
 		leftBox.Name = "LeftBox"
-		leftBox.Size = UDim2.new(0, 150, 0, 195)
-		leftBox.Position = UDim2.new(0, 8, 1, -(bottomInset + 195))
-		leftBox.BackgroundColor3 = Color3.fromRGB(10, 10, 14)
+		leftBox.Size = UDim2.new(0, 150, 0, 210)
+		leftBox.Position = UDim2.new(0, 8, 1, -(bottomInset + 210))
+		leftBox.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 		leftBox.BackgroundTransparency = 0
 		leftBox.BorderSizePixel = 0
 		leftBox.Parent = barGui
@@ -173,9 +173,11 @@ local function buildBars()
 				if r == "Panic" then
 					selectedCategory = "Panic"
 					for _, ob in ipairs(categoryButtons) do ob.Visible = false end
+				panicLabel.Visible = true
 				else
 					selectedCategory = nil
 					for _, ob in ipairs(categoryButtons) do ob.Visible = true end
+				panicLabel.Visible = false
 				end
 				lockInBtn.Visible = true
 				updateSelectionLabels()
@@ -183,24 +185,11 @@ local function buildBars()
 			table.insert(roomButtons, pb)
 		end
 
-		panicLabel = Instance.new("TextLabel")
-		panicLabel.Name = "PanicLabel"
-		panicLabel.Size = UDim2.new(0, 130, 0, BTN_H)
-		panicLabel.Position = UDim2.new(0, BAR_PAD, 0, startY + GAP)
-		panicLabel.BackgroundTransparency = 1
-		panicLabel.TextColor3 = Color3.fromRGB(255, 80, 80)
-		panicLabel.TextScaled = true
-		panicLabel.Font = Enum.Font.GothamBold
-		panicLabel.Text = "All is Wrong"
-		panicLabel.Visible = false
-		panicLabel.Parent = leftBox
-
-		-- Right box (types)
 		local rightBox = Instance.new("Frame")
 		rightBox.Name = "RightBox"
-		rightBox.Size = UDim2.new(0, 150, 0, 195)
-		rightBox.Position = UDim2.new(1, -(8 + 150), 1, -(bottomInset + 195 + 80))
-		rightBox.BackgroundColor3 = Color3.fromRGB(10, 10, 14)
+		rightBox.Size = UDim2.new(0, 150, 0, 210)
+		rightBox.Position = UDim2.new(1, -(8 + 150), 1, -(bottomInset + 210))
+		rightBox.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 		rightBox.BackgroundTransparency = 0
 		rightBox.BorderSizePixel = 0
 		rightBox.Parent = barGui
@@ -218,6 +207,20 @@ local function buildBars()
 		catLabel.TextXAlignment = Enum.TextXAlignment.Left
 		catLabel.Text = "TYPE"
 		catLabel.Parent = rightBox
+
+		panicLabel = Instance.new("TextLabel")
+		panicLabel.Name = "PanicLabel"
+		panicLabel.Size = UDim2.new(1, -BAR_PAD * 2, 1, -22)
+		panicLabel.Position = UDim2.new(0, BAR_PAD, 0, 22)
+		panicLabel.BackgroundTransparency = 1
+		panicLabel.TextColor3 = Color3.fromRGB(255, 30, 30)
+		panicLabel.TextScaled = true
+		panicLabel.Font = Enum.Font.GothamBlack
+		panicLabel.TextXAlignment = Enum.TextXAlignment.Center
+		panicLabel.TextYAlignment = Enum.TextYAlignment.Center
+		panicLabel.Text = "ALL IS WRONG"
+		panicLabel.Visible = false
+		panicLabel.Parent = rightBox
 
 		for i, c in ipairs(CATEGORIES) do
 			local pb = Instance.new("TextButton")

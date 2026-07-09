@@ -2,6 +2,7 @@ local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local UserInputService = game:GetService("UserInputService")
 local RunService = game:GetService("RunService")
+local rs = ReplicatedStorage
 local Remotes = ReplicatedStorage.Remotes
 local AnomalyConfig = require(ReplicatedStorage.Shared.AnomalySwapConfig)
 
@@ -68,7 +69,7 @@ local MAP_RY = MAP_H / 2
 local minimap = Instance.new("Frame")
 minimap.Name = "Minimap"
 minimap.Size = UDim2.new(0, MAP_W, 0, MAP_H)
-minimap.Position = UDim2.new(0, 10, 0, topOffset + 44)
+minimap.Position = UDim2.new(0, 10, 0, topOffset + (isMobile and 80 or 44))
 minimap.BackgroundColor3 = Color3.fromRGB(5, 5, 10)
 minimap.BackgroundTransparency = 0.25
 minimap.BorderSizePixel = 0
@@ -222,6 +223,11 @@ RunService.RenderStepped:Connect(updateMinimap)
 
 local pingTargetRoom = nil
 local pingEndTime = 0
+
+rs.EchoPingEvent.Event:Connect(function(roomName, duration)
+	pingTargetRoom = roomName
+	pingEndTime = os.clock() + (duration or 5)
+end)
 
 _G.setAnomalyPing = function(roomName, duration)
 	pingTargetRoom = roomName
@@ -378,7 +384,7 @@ if isMobile then
 		if ok and s then
 			topOffset = s.Top + 10
 			timerBox.Position = UDim2.new(0, 10, 0, topOffset)
-			minimap.Position = UDim2.new(0, 10, 0, topOffset + (isMobile and 120 or 44))
+			minimap.Position = UDim2.new(0, 10, 0, topOffset + (isMobile and 80 or 44))
 		end
 
 		phaseBox.Position = UDim2.new(0.5, -150, 0, topOffset)
