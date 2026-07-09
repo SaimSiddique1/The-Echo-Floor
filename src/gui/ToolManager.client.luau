@@ -119,8 +119,7 @@ local function buildBars()
 		local leftBox = Instance.new("Frame")
 		leftBox.Name = "LeftBox"
 		leftBox.Size = UDim2.new(0, 150, 0, 195)
-		leftBox.Position = UDim2.new(0, 0, 1, -(bottomInset + 0))
-		leftBox.AnchorPoint = Vector2.new(0, 1)
+		leftBox.Position = UDim2.new(0, 8, 1, -(bottomInset + 195 + 72))
 		leftBox.BackgroundColor3 = Color3.fromRGB(10, 10, 14)
 		leftBox.BackgroundTransparency = 0.08
 		leftBox.BorderSizePixel = 0
