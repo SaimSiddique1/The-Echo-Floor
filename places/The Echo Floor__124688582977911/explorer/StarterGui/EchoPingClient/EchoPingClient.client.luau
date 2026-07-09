@@ -4,6 +4,7 @@ local UserInputService = game:GetService("UserInputService")
 local player = Players.LocalPlayer
 local Remotes = ReplicatedStorage.Remotes
 local rs = ReplicatedStorage
+local rs = ReplicatedStorage
 local isMobile = UserInputService.TouchEnabled
 
 local gui = nil
@@ -133,7 +134,6 @@ local function createGUI()
 	gui = screenGui
 end
 
--- Watch EchoPings value changes to auto-update count
 local function watchEchoPings()
 	local ls = player:FindFirstChild("leaderstats")
 	if not ls then

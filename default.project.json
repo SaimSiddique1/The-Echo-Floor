@@ -39,6 +39,7 @@
         "UseEchoPing": { "$className": "RemoteFunction" },
         "DevGrantCoins": { "$className": "RemoteEvent" }
       },
+      "EchoPingEvent": { "$className": "BindableEvent" },
       "Tools": {
         "$path": "src/tools"
       }

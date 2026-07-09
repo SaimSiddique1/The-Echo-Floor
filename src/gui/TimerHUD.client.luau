@@ -167,6 +167,8 @@ arrowCorner.CornerRadius = UDim.new(0, 2)
 arrowCorner.Parent = dirArrow
 
 local currentPhase = "explore"
+local pingTargetRoom = nil
+local pingEndTime = 0
 
 local function updateMinimap()
 	local char = player.Character
@@ -221,10 +223,8 @@ end
 
 RunService.RenderStepped:Connect(updateMinimap)
 
-local pingTargetRoom = nil
-local pingEndTime = 0
-
 rs.EchoPingEvent.Event:Connect(function(roomName, duration)
+	print("EchoPingEvent received:", roomName, duration)
 	pingTargetRoom = roomName
 	pingEndTime = os.clock() + (duration or 5)
 end)

@@ -41,6 +41,14 @@
       "className": "ReplicatedStorage",
       "children": [
         {
+          "name": "EchoPingEvent",
+          "className": "BindableEvent"
+        },
+        {
+          "name": "EchoPingEvent",
+          "className": "BindableEvent"
+        },
+        {
           "name": "Remotes",
           "className": "Folder",
           "children": [

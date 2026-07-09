@@ -513,6 +513,8 @@ local function getSearchTime(floorNum)
 	return 50
 end
 
+
+
 local function runIntermissionPhase(players, screen, floorNum)
 	setDoors(false)
 

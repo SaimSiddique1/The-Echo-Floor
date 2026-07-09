@@ -12,13 +12,14 @@ local ROOMS = { "Panic", "Hallway", "LivingRoom", "Kitchen", "Bedroom", "Bathroo
 local CATEGORIES = { "Object", "Lighting", "Architecture", "Audio", "Paranormal" }
 
 local barGui
-local selGui
-local hasGuessed = false
-local selectedRoom = nil
-local selectedCategory = nil
 local toolConnections = {}
-
-local toolConnections = {}
+local roomSelectionLabel
+	local BTN_W = isMobile and 70 or 88
+	local BTN_H = isMobile and 28 or 34
+	local LABEL_W = isMobile and 0 or 44
+	local GAP = isMobile and 3 or 4
+	local BAR_PAD = isMobile and 10 or 8
+	local BAR_H = isMobile and 0 or 40
 local roomSelectionLabel
 local typeSelectionLabel
 
@@ -94,37 +95,29 @@ local function buildBars()
 	barGui.IgnoreGuiInset = not isMobile
 	barGui.Parent = playerGui
 
-	-- click sound removed
-
 	local bottomInset = 0
 	if isMobile then
 		local _, br = GuiService:GetGuiInset()
 		bottomInset = br.Y
 	end
-
-	local BTN_W = isMobile and 70 or 88
-	local BTN_H = isMobile and 28 or 34
 	local BTN_W = isMobile and 70 or 88
 	local BTN_H = isMobile and 28 or 34
 	local LABEL_W = isMobile and 0 or 44
 	local GAP = isMobile and 3 or 4
 	local BAR_PAD = isMobile and 10 or 8
 	local BAR_H = isMobile and 0 or 40
-
-	local roomButtons = {}
 	local roomButtons = {}
 	local categoryButtons = {}
 	local lockInBtn
 	local panicLabel
 
 	if isMobile then
-		-- Mobile vertical stacks
 		local leftBox = Instance.new("Frame")
 		leftBox.Name = "LeftBox"
+		leftBox.Size = UDim2.new(0, 150, 0, 195)
 		leftBox.Size = UDim2.new(0, 150, 0, 210)
-		leftBox.Position = UDim2.new(0, 8, 1, -(bottomInset + 210))
-		leftBox.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 		leftBox.BackgroundTransparency = 0
+		leftBox.Position = UDim2.new(0, 8, 1, -(bottomInset + 210))
 		leftBox.BorderSizePixel = 0
 		leftBox.Parent = barGui
 		local lc = Instance.new("UICorner")
@@ -142,7 +135,6 @@ local function buildBars()
 		roomLabel.Text = "ROOM"
 		roomLabel.Parent = leftBox
 
-		-- 2 columns × 3 rows
 		local startY = 22
 		for i, r in ipairs(ROOMS) do
 			local pb = Instance.new("TextButton")
@@ -173,11 +165,11 @@ local function buildBars()
 				if r == "Panic" then
 					selectedCategory = "Panic"
 					for _, ob in ipairs(categoryButtons) do ob.Visible = false end
-				panicLabel.Visible = true
+					panicLabel.Visible = true
 				else
 					selectedCategory = nil
 					for _, ob in ipairs(categoryButtons) do ob.Visible = true end
-				panicLabel.Visible = false
+					panicLabel.Visible = false
 				end
 				lockInBtn.Visible = true
 				updateSelectionLabels()
@@ -235,6 +227,7 @@ local function buildBars()
 			pb.Font = Enum.Font.Gotham
 			pb.Text = c
 			pb.Parent = rightBox
+			pb.Parent = rightBox
 			local bc = Instance.new("UICorner")
 			bc.CornerRadius = UDim.new(0, 6)
 			bc.Parent = pb
@@ -254,13 +247,12 @@ local function buildBars()
 			table.insert(categoryButtons, pb)
 		end
 
-		-- Lock In centered below boxes
 		local LOCK_W = 120
 		local LOCK_H = 36
 		lockInBtn = Instance.new("TextButton")
 		lockInBtn.Name = "LockInBtn"
 		lockInBtn.Size = UDim2.new(0, LOCK_W, 0, LOCK_H)
-		lockInBtn.Position = UDim2.new(0.5, -LOCK_W / 2, 1, -(bottomInset + 70))
+		lockInBtn.Position = UDim2.new(0.5, -LOCK_W / 2, 1, -(bottomInset + 98))
 		lockInBtn.BackgroundColor3 = Color3.fromRGB(60, 160, 60)
 		lockInBtn.BorderSizePixel = 0
 		lockInBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -277,7 +269,7 @@ local function buildBars()
 		local combo = Instance.new("TextLabel")
 		combo.Name = "SelectionCombo"
 		combo.Size = UDim2.new(0, 200, 0, 18)
-		combo.Position = UDim2.new(0.5, -100, 1, -(bottomInset + 85))
+		combo.Position = UDim2.new(0.5, -100, 1, -(bottomInset + 116))
 		combo.BackgroundTransparency = 1
 		combo.TextColor3 = Color3.fromRGB(200, 200, 200)
 		combo.TextScaled = true
@@ -286,7 +278,6 @@ local function buildBars()
 		combo.Text = ""
 		combo.Parent = barGui
 	else
-		-- DESKTOP: original two-bar layout
 		local leftBar = Instance.new("Frame")
 		leftBar.Name = "LeftBar"
 		leftBar.Size = UDim2.new(0, LABEL_W + GAP + #ROOMS * (BTN_W + GAP), 0, BAR_H)
@@ -481,7 +472,6 @@ local function showBars()
 	selectedCategory = nil
 	hasGuessed = false
 	if isMobile then
-		-- Mobile: buttons are in LeftBox and RightBox
 		local leftBox = barGui:FindFirstChild("LeftBox")
 		if leftBox then
 			for _, ob in ipairs(leftBox:GetChildren()) do
@@ -572,7 +562,6 @@ RunService.Heartbeat:Connect(function()
 	end
 end)
 
--- No Anomaly tool handler
 local function handleNoAnomalyTool(tool)
 	if tool.Name ~= "No Anomaly" then return end
 	local con
@@ -588,7 +577,6 @@ for _, v in player.Backpack:GetChildren() do
 	if v:IsA("Tool") and v.Name == "No Anomaly" then handleNoAnomalyTool(v) end
 end
 
--- Build persistent selection labels (separate from barGui)
 local function buildSelectionLabels()
 	if selGui then selGui:Destroy() end
 
@@ -675,7 +663,6 @@ Remotes.RoundTimerTick.OnClientEvent:Connect(function(seconds, phase)
 		searchResetDone = false
 	end
 end)
-
 Remotes.FloorReset.OnClientEvent:Connect(function()
 	if barGui then barGui.Enabled = false end
 	if selGui then selGui.Enabled = false end
